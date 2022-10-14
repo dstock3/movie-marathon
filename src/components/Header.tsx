@@ -1,17 +1,22 @@
 import React from 'react'
-import { useContext } from 'react'
-import { ThemeContext } from './context/ThemeContext'
 
-const Header = () => {
-  const theme = useContext(ThemeContext)
-  
+type HeaderProps = {
+  thisStyle: React.CSSProperties,
+  thisUser: object | null
+}
+
+const Header = (props: HeaderProps) => {
+  console.log(props.thisUser)
+
   return (
     <header 
       className="head-menu" 
-      style={{ 
-      backgroundColor: theme.dark.main, 
-      color: theme.dark.text }}>
-        Header
+      style={props.thisStyle}>
+
+
+    
+    
+      
       
     </header>
   )

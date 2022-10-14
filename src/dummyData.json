@@ -1,0 +1,17 @@
+{"users":[
+    { 
+        "handle":"DaveyLovesFilms", 
+        "login":"dstock3@gmail.com",
+        "theme":"dark" 
+    },
+    { 
+        "handle":"HorrorEnthusiast", 
+        "login":"horror-fan@gmail.com",
+        "theme":"light" 
+    },
+    { 
+        "handle":"ClassicKarl", 
+        "login":"karl91@protonmail.com",
+        "theme":"dark" 
+    }
+]}
