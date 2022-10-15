@@ -3,6 +3,8 @@ import { useContext } from 'react'
 import { ThemeContext } from './components/context/ThemeContext'
 import './App.css';
 import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 import dummyData from './dummyData.json'
 
 const App = () => {
@@ -30,6 +32,10 @@ const App = () => {
 
     
       <Header thisStyle={thisStyle} thisUser={user} />
+
+      <Main thisStyle={thisStyle} thisUser={user} />
+
+      <Footer thisStyle={thisStyle} thisUser={user} />
 
     </div>
   );
