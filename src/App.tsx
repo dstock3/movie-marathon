@@ -30,7 +30,6 @@ const App = () => {
       className="main" 
       style={thisStyle}>
 
-    
       <Header thisStyle={thisStyle} thisUser={user} />
 
       <Main thisStyle={thisStyle} thisUser={user} />
