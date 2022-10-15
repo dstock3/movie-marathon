@@ -2,22 +2,20 @@ import React from 'react'
 
 type HeaderProps = {
   thisStyle: React.CSSProperties,
-  thisUser: object | null
+  thisUser?: {
+    handle: string,
+    login: string
+  }
 }
 
 const Header = (props: HeaderProps) => {
-  console.log(props.thisUser)
-
   return (
     <header 
       className="head-menu" 
       style={props.thisStyle}>
-
-
-    
-    
       
-      
+      {props.thisUser? <div>Welcome {props.thisUser.handle}!</div>: null}
+
     </header>
   )
 }
