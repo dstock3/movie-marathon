@@ -23,9 +23,7 @@ const Footer = (props: FooterProps) => {
         setFootStyle({...footStyle, ...darkTopBorder, ...props.thisStyle})
       } else if (props.thisUser.theme === "light") {
         setFootStyle({...footStyle, ...lightTopBorder, ...props.thisStyle})
-
       }
-
     }
 
   }, [props.thisUser, props.thisStyle])

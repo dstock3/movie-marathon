@@ -1,0 +1,11 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.hide-button {
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
+    cursor: pointer;
+}

@@ -23,13 +23,8 @@ const Header = (props: HeaderProps) => {
         setHeadStyle({...headStyle, ...darkBottomBorder, ...props.thisStyle})
       } else if (props.thisUser.theme === "light") {
         setHeadStyle({...headStyle, ...lightBottomBorder, ...props.thisStyle})
-
       }
-
     }
-
-    
-
   }, [props.thisUser, props.thisStyle])
 
   return (

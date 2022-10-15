@@ -6,11 +6,14 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import dummyData from './dummyData.json'
+import Sidebar from './components/Sidebar';
 
 const App = () => {
   const theme = useContext(ThemeContext)
   const [user, setUser] = useState(dummyData.users[0])
-  
+  const [isExpanded, setIsExpanded] = useState(true)
+  const [primeStyle, setPrimeStyle] = useState({})
+
   /* setting light as the default theme for the time being */
   const [thisStyle, setThisStyle] = useState({ 
     backgroundColor: theme.light.main, 
@@ -25,17 +28,26 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(()=> {
+    if (isExpanded) {
+      setPrimeStyle({"width":"80vw"})
+    } else {
+      setPrimeStyle({"width":"100vw"})
+    }
+  }, [isExpanded])
+
   return (
     <div 
-      className="main" 
+      className="App" 
       style={thisStyle}>
+        <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+        <section className={`primary`} style={primeStyle}>
+          <Header thisStyle={thisStyle} thisUser={user} />
 
-      <Header thisStyle={thisStyle} thisUser={user} />
+          <Main thisStyle={thisStyle} thisUser={user} />
 
-      <Main thisStyle={thisStyle} thisUser={user} />
-
-      <Footer thisStyle={thisStyle} thisUser={user} />
-
+          <Footer thisStyle={thisStyle} thisUser={user} />
+        </section>
     </div>
   );
 }
