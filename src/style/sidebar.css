@@ -3,9 +3,26 @@
     flex-direction: column;
 }
 
+.hide-button, .toggle-btn {
+    cursor: pointer;
+    padding: 5px;
+}
+
 .hide-button {
     border-radius: 5px;
     width: fit-content;
-    padding: 5px;
-    cursor: pointer;
+    
+}
+
+.toggle-btn {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 100%;
+    bottom: 45px;
+    left: 75px;
+    box-shadow: 5px 2px 7px rgba(34, 34, 34, 0.393);
 }

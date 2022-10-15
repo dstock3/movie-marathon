@@ -2,16 +2,25 @@
     { 
         "handle":"DaveyLovesFilms", 
         "login":"dstock3@gmail.com",
-        "theme":"dark" 
+        "theme":"dark",
+        "movies":[
+
+        ] 
     },
     { 
         "handle":"HorrorEnthusiast", 
         "login":"horror-fan@gmail.com",
-        "theme":"light" 
+        "theme":"light",         
+        "movies":[
+            
+        ]  
     },
     { 
         "handle":"ClassicKarl", 
         "login":"karl91@protonmail.com",
-        "theme":"dark" 
+        "theme":"dark",         
+        "movies":[
+            
+        ]  
     }
 ]}

@@ -7,10 +7,11 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/Sidebar';
+import ToggleSidebar from './components/modals/ToggleSidebar';
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[0])
+  const [user, setUser] = useState(dummyData.users[1])
   const [isExpanded, setIsExpanded] = useState(true)
   const [primeStyle, setPrimeStyle] = useState({})
 
@@ -37,18 +38,21 @@ const App = () => {
   }, [isExpanded])
 
   return (
-    <div 
-      className="App" 
-      style={thisStyle}>
-        <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
-        <section className={`primary`} style={primeStyle}>
-          <Header thisStyle={thisStyle} thisUser={user} />
+    <>
+      <div 
+        className="App" 
+        style={thisStyle}>
+          <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+          <section className={`primary`} style={primeStyle}>
+            <Header thisStyle={thisStyle} thisUser={user} />
 
-          <Main thisStyle={thisStyle} thisUser={user} />
+            <Main thisStyle={thisStyle} thisUser={user} />
 
-          <Footer thisStyle={thisStyle} thisUser={user} />
-        </section>
-    </div>
+            <Footer thisStyle={thisStyle} thisUser={user} />
+          </section>
+      </div>
+      {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
+    </>
   );
 }
 

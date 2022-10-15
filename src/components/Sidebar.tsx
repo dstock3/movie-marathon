@@ -34,7 +34,7 @@ const Sidebar = (props: SidebarProps) => {
     }, [props.thisUser, props.thisStyle])
 
     useEffect(()=> {
-        let expandedWidth ={"width":"20vw"}
+        let expandedWidth ={"width":"20vw", "visibility":"visible"}
         let compressed = {"width":0, "visibility":"collapse"}
 
         if (props.isExpanded) {
