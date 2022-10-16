@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { ThemeContext } from '../components/context/ThemeContext'
+import { ThemeContext } from '../context/ThemeContext'
+import '../../style/header.css'
+import SearchBar from '../SearchBar'
 
 type HeaderProps = {
   thisStyle: React.CSSProperties,
@@ -32,8 +34,11 @@ const Header = (props: HeaderProps) => {
       className="head-menu" 
       style={headStyle}>
       
-      {props.thisUser? <div>Welcome {props.thisUser.handle}!</div>: null}
-
+      {props.thisUser? 
+        <div className="welcome">Welcome {props.thisUser.handle}!</div>: 
+        <div className="welcome">Login to Access Features</div>}
+      <SearchBar />
+      <div className="menu">Menu</div>
     </header>
   )
 }

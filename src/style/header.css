@@ -1,0 +1,24 @@
+.head-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome {
+    margin-left: 15px;
+}
+
+.menu {
+    margin-right: 15px;
+}
+
+.search-container {
+    width: 18%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-input {
+    border-radius: 15px;
+}
+

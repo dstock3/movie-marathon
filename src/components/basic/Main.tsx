@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeContext } from '../components/context/ThemeContext'
+import { ThemeContext } from '../context/ThemeContext'
 
 type MainProps = {
     thisStyle: React.CSSProperties,

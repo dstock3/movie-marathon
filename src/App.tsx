@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react'
 import { ThemeContext } from './components/context/ThemeContext'
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import Header from './components/basic/Header';
+import Main from './components/basic/Main';
+import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[1])
+  const [user, setUser] = useState(dummyData.users[0])
   const [isExpanded, setIsExpanded] = useState(true)
   const [primeStyle, setPrimeStyle] = useState({})
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, Dispatch, SetStateAction } from 'react'
-import { ThemeContext } from '../components/context/ThemeContext'
-import '../style/sidebar.css'
+import { ThemeContext } from '../context/ThemeContext'
+import '../../style/sidebar.css'
 
 type SidebarProps = {
     thisStyle: React.CSSProperties,
