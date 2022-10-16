@@ -9,6 +9,7 @@ type HeaderProps = {
     handle: string,
     login: string,
     theme: string,
+    metadataIsAllowed: boolean,
     searchData: Array<string>, 
   }
 }
