@@ -30,7 +30,7 @@ const Footer = (props: FooterProps) => {
 
   return (
     <footer className="main-footer" style={footStyle} >
-        Footer
+        
     </footer>
   )
 }

@@ -9,6 +9,7 @@ type HeaderProps = {
     handle: string,
     login: string,
     theme: string,
+    searchData: Array<string>, 
   }
 }
 
@@ -37,7 +38,9 @@ const Header = (props: HeaderProps) => {
       {props.thisUser? 
         <div className="welcome">Welcome {props.thisUser.handle}!</div>: 
         <div className="welcome">Login to Access Features</div>}
-      <SearchBar />
+
+      <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} />
+
       <div className="menu">Menu</div>
     </header>
   )

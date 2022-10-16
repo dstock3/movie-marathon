@@ -13,7 +13,7 @@ type MainProps = {
 const Main = (props: MainProps) => {
   return (
     <main style={props.thisStyle}>
-        Main
+    
 
     </main>
   )

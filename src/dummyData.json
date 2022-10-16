@@ -3,6 +3,8 @@
         "handle":"DaveyLovesFilms", 
         "login":"dstock3@gmail.com",
         "theme":"dark",
+        "metadataIsAllowed": true,
+        "searchData": [],
         "movies":[
 
         ] 
@@ -10,7 +12,9 @@
     { 
         "handle":"HorrorEnthusiast", 
         "login":"horror-fan@gmail.com",
-        "theme":"light",         
+        "theme":"light",
+        "metadataIsAllowed": false,
+        "searchData": [],         
         "movies":[
             
         ]  
@@ -18,7 +22,9 @@
     { 
         "handle":"ClassicKarl", 
         "login":"karl91@protonmail.com",
-        "theme":"dark",         
+        "theme":"dark",
+        "metadataIsAllowed": true,
+        "searchData": [],         
         "movies":[
             
         ]  

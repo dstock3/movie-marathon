@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+type SearchProps = {
+  thisStyle: React.CSSProperties,
+  thisUser?: {
+    handle: string,
+    login: string,
+    theme: string,
+    searchData: Array<string>, 
+  }
+}
+
+const SearchBar = (props: SearchProps) => {
+  
+  useEffect(()=> {
+    if (props.thisUser) {
 
 
-const SearchBar = () => {
+    }
+
+  }, [props.thisUser])
+
   return (
     <div className="search-container">
         <img className="search-icon" alt="search icon"></img>
