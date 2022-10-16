@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, Dispatch, SetStateAction } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/header.css'
 import SearchBar from '../SearchBar'
+import { ResponseDataType } from "../../App"
 
 type HeaderProps = {
   thisStyle: React.CSSProperties,
@@ -10,8 +11,9 @@ type HeaderProps = {
     login: string,
     theme: string,
     metadataIsAllowed: boolean,
-    searchData: Array<string>, 
-  }
+    searchData: Array<string>
+  },
+  setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
 }
 
 const Header = (props: HeaderProps) => {
@@ -40,7 +42,7 @@ const Header = (props: HeaderProps) => {
         <div className="welcome">Welcome {props.thisUser.handle}!</div>: 
         <div className="welcome">Login to Access Features</div>}
 
-      <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} />
+      <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData}/>
 
       <div className="menu">Menu</div>
     </header>
