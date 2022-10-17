@@ -17,7 +17,7 @@ export type ResponseDataType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[0])
+  const [user, setUser] = useState(dummyData.users[2])
   const [isExpanded, setIsExpanded] = useState(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
@@ -33,6 +33,8 @@ const App = () => {
       setThisStyle({ backgroundColor: theme.dark.main, color: theme.dark.text })  
     } else if (user.theme === "light") {
       setThisStyle({ backgroundColor: theme.light.main, color: theme.light.text }) 
+    } else if (user.theme === "mint") {
+      setThisStyle({ backgroundColor: theme.mint.main, color: theme.mint.text }) 
     }
   }, [user])
 

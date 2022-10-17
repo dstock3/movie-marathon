@@ -24,6 +24,8 @@ const ToggleSidebar = (props: ToggleProps) => {
                 setToggleStyle({...toggleStyle, ...{"border": theme.dark.border}})
             } else if (props.thisUser.theme === "light") {
                 setToggleStyle({...toggleStyle, ...{"border": theme.light.border}})
+            } else if (props.thisUser.theme === "mint") {
+                setToggleStyle({...toggleStyle, ...{"border": theme.mint.border}})
             }
           }
     }, [props.thisUser, props.thisStyle])

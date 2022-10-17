@@ -22,3 +22,6 @@
     border-radius: 15px;
 }
 
+.search-icon {
+    cursor: pointer;
+}

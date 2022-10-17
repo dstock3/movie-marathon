@@ -19,16 +19,17 @@ const Sidebar = (props: SidebarProps) => {
     const [hideButton, setHideButton] = useState({})
 
     useEffect(()=> {
-        let darkRightBorder = {"borderRight": theme.dark.border}
-        let lightRightBorder = {"borderRight": theme.light.border}
-    
+
         if (props.thisUser) {
           if (props.thisUser.theme === "dark") {
-            setSidebarStyle({...sidebarStyle, ...darkRightBorder, ...props.thisStyle})
+            setSidebarStyle({...sidebarStyle, ...{"borderRight": theme.dark.border}, ...props.thisStyle})
             setHideButton({...props.thisStyle, ...{"border": theme.dark.border}})
           } else if (props.thisUser.theme === "light") {
-            setSidebarStyle({...sidebarStyle, ...lightRightBorder, ...props.thisStyle})
+            setSidebarStyle({...sidebarStyle, ...{"borderRight": theme.light.border}, ...props.thisStyle})
             setHideButton({...props.thisStyle, ...{"border": theme.light.border}})
+          } else if (props.thisUser.theme === "mint") {
+            setSidebarStyle({...sidebarStyle, ...{"borderRight": theme.mint.border}, ...props.thisStyle})
+            setHideButton({...props.thisStyle, ...{"border": theme.mint.border}})
           }
         }
     }, [props.thisUser, props.thisStyle])

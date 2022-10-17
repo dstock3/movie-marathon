@@ -43,11 +43,6 @@ const SearchBar = (props: SearchProps) => {
       .then(response => {
         console.log(response)
         
-        if (response) {
-          console.log(response.Search[0].Title)
-
-        }
-
         props.setResponseData(response)})
       .catch(err => console.error(err));
   }

@@ -21,14 +21,13 @@ const Header = (props: HeaderProps) => {
   const [headStyle, setHeadStyle] = useState({})
   
   useEffect(()=> {
-    let darkBottomBorder = {"borderBottom": theme.dark.border}
-    let lightBottomBorder = {"borderBottom": theme.light.border}
-
     if (props.thisUser) {
       if (props.thisUser.theme === "dark") {
-        setHeadStyle({...headStyle, ...darkBottomBorder, ...props.thisStyle})
+        setHeadStyle({...headStyle, ...{"borderBottom": theme.dark.border}, ...props.thisStyle})
       } else if (props.thisUser.theme === "light") {
-        setHeadStyle({...headStyle, ...lightBottomBorder, ...props.thisStyle})
+        setHeadStyle({...headStyle, ...{"borderBottom": theme.light.border}, ...props.thisStyle})
+      } else if (props.thisUser.theme === "mint") {
+        setHeadStyle({...headStyle, ...{"borderBottom": theme.mint.border}, ...props.thisStyle})
       }
     }
   }, [props.thisUser, props.thisStyle])
