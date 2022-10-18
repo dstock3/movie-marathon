@@ -8,6 +8,7 @@ import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
+import Calendar from './components/calendar/Calendar';
 
 export type ResponseDataType = {
     Response: boolean,
@@ -17,7 +18,7 @@ export type ResponseDataType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[2])
+  const [user, setUser] = useState(dummyData.users[0])
   const [isExpanded, setIsExpanded] = useState(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
@@ -48,7 +49,8 @@ const App = () => {
 
   return (
     <>
-      <div 
+      <Calendar />
+      {/*<div 
         className="App" 
         style={thisStyle}>
           <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
@@ -61,6 +63,7 @@ const App = () => {
           </section>
       </div>
       {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
+      */}
     </>
   );
 }

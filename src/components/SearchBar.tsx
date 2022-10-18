@@ -28,7 +28,7 @@ const SearchBar = (props: SearchProps) => {
   const handleSearch = () => {
 
     //When App API is developed, app post request in order to record search metadata (if user allows), e.g. if props.thisUser.metadataIsAllowed...
-
+    /*
     const options = {
       method: 'GET',
       headers: {
@@ -41,10 +41,9 @@ const SearchBar = (props: SearchProps) => {
     fetch(`https://movie-database-alternative.p.rapidapi.com/?s=${searchInput}&r=json&page=1`, options)
       .then(response => response.json())
       .then(response => {
-        console.log(response)
-        
         props.setResponseData(response)})
       .catch(err => console.error(err));
+      */
   }
 
   return (
