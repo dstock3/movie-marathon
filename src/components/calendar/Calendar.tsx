@@ -29,7 +29,7 @@ const Calendar = (props: CalendarProps) => {
   const [imgIconStyle, setImgIconStyle] = useState<React.CSSProperties>({"fill": theme.light.text})
   
   useEffect(()=> {
-    const today = new Date()
+    const today = new Date(currentDate)
 
     const currentYear = format(today, 'y')
 
@@ -56,7 +56,31 @@ const Calendar = (props: CalendarProps) => {
       
       setMonthRange(monthArray)
     }
-  }, [])
+  }, [currentMonth])
+
+  const changeMonth = (directive: String) => {
+    const currentYear = parseInt(format(new Date(), 'y'))
+    
+    let thisMonth = format(new Date(parseInt(format(new Date(), 'y')) - 1, parseInt(format(new Date(currentMonth + "1" + currentYear), 'MM')), parseInt(format(new Date(), 'dd'))), 'MM')
+
+    console.log("refMonth: " +thisMonth)
+    
+    if (directive === "back") {
+      let backOne = parseInt(thisMonth) - 1
+      console.log("back one: " + backOne)
+      let lastYear
+      if (backOne === 12) lastYear = currentYear + 1
+      setCurrentMonth(format(backOne, 'MMMM'))
+
+    } else if (directive === "forward") {
+      
+      let forwardOne = parseInt(thisMonth) + 1
+      let nextYear
+      if (forwardOne === 1) nextYear = currentYear + 1
+      console.log("forward one: " + forwardOne)
+      setCurrentMonth(format(forwardOne, 'MMMM'))
+    }
+  }
 
   useEffect(()=> {
     if (props.thisUser) {
@@ -78,7 +102,7 @@ const Calendar = (props: CalendarProps) => {
   return (
     <div className="calendar-container">
       <div className="calendar-controller">
-        <div className="back">
+        <div className="back" onClick={()=>changeMonth("back")}>
           <svg className="back-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
             <path id="back" d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z"/>
           </svg>
@@ -86,7 +110,7 @@ const Calendar = (props: CalendarProps) => {
 
         <h2 className="month">{currentMonth}</h2>
 
-        <div className="forward">
+        <div className="forward" onClick={()=>changeMonth("forward")}>
           <svg className="forward-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
             <path id="forward" d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/>
           </svg>

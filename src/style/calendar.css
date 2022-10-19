@@ -24,9 +24,11 @@
 }
 
 .calendar-controller {
-    width: 75%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
