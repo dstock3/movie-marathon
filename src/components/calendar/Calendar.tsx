@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar.css'
 import { ThemeContext } from '../context/ThemeContext'
@@ -20,12 +20,14 @@ type CalendarProps = {
 }
 
 const Calendar = (props: CalendarProps) => {
+  const theme = useContext(ThemeContext)
   const [currentDate, setCurrentDate] = useState(String(new Date()))
   const [currentMonth, setCurrentMonth] = useState(String(format(new Date(), 'MMMM')))
   const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
   const [thisMonthDays, setThisMonthDays] = useState()
   const [monthRange, setMonthRange] = useState<Array<String> | null>()
-
+  const [imgIconStyle, setImgIconStyle] = useState<React.CSSProperties>({"fill": theme.light.text})
+  
   useEffect(()=> {
     const today = new Date()
 
@@ -56,18 +58,38 @@ const Calendar = (props: CalendarProps) => {
     }
   }, [])
 
+  useEffect(()=> {
+    if (props.thisUser) {
+      let forward = document.getElementById("forward")
+      let back = document.getElementById("back")
+      if (props.thisUser.theme === "dark" && forward && back) {
+        forward.setAttribute("fill", theme.dark.text)
+        back.setAttribute("fill", theme.dark.text)
+      } else if (props.thisUser.theme === "light" && forward && back) {
+        forward.setAttribute("fill", theme.light.text)
+        back.setAttribute("fill", theme.light.text)
+      } else if (props.thisUser.theme === "mint" && forward && back) {
+        forward.setAttribute("fill", theme.mint.text)
+        back.setAttribute("fill", theme.mint.text)
+      }
+    }
+  }, [props.thisUser, props.thisStyle])
+
   return (
     <div className="calendar-container">
       <div className="calendar-controller">
         <div className="back">
-          <img src={backIcon} alt="back icon"></img>
-
+          <svg className="back-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+            <path id="back" d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z"/>
+          </svg>
         </div>
 
         <h2 className="month">{currentMonth}</h2>
 
         <div className="forward">
-          <img src={forwardIcon} alt="forward icon"></img>
+          <svg className="forward-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+            <path id="forward" d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/>
+          </svg>
         </div>
       </div>
       
