@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar.css'
 import { ThemeContext } from '../context/ThemeContext'
+import backIcon from '../../assets/back.svg'
+import forwardIcon from '../../assets/forward.svg'
 
 type CalendarProps = {
   thisStyle: React.CSSProperties,
@@ -56,7 +58,19 @@ const Calendar = (props: CalendarProps) => {
 
   return (
     <div className="calendar-container">
-      <h2 className="month">{currentMonth}</h2>
+      <div className="calendar-controller">
+        <div className="back">
+          <img src={backIcon} alt="back icon"></img>
+
+        </div>
+
+        <h2 className="month">{currentMonth}</h2>
+
+        <div className="forward">
+          <img src={forwardIcon} alt="forward icon"></img>
+        </div>
+      </div>
+      
       <div className="calendar-grid">
         {monthRange ? monthRange.map((value, index)=> {
           return (
@@ -64,7 +78,6 @@ const Calendar = (props: CalendarProps) => {
               <div className="date-value">{value}</div>
               
             </div>
-
           )
         }) : null}
       </div>

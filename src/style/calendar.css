@@ -21,6 +21,12 @@
     margin-block: 5px;
     text-align: center;
     border-bottom: 1px solid white;
+}
 
+.calendar-controller {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
