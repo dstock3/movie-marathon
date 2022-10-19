@@ -8,7 +8,6 @@ import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
-import Calendar from './components/calendar/Calendar';
 
 export type ResponseDataType = {
     Response: boolean,
@@ -49,8 +48,7 @@ const App = () => {
 
   return (
     <>
-      <Calendar />
-      {/*<div 
+      <div 
         className="App" 
         style={thisStyle}>
           <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
@@ -63,7 +61,6 @@ const App = () => {
           </section>
       </div>
       {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
-      */}
     </>
   );
 }

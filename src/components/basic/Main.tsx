@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/main.css'
+import Calendar from '../calendar/Calendar'
 
 type MainProps = {
     thisStyle: React.CSSProperties,
@@ -38,10 +39,11 @@ const Main = (props: MainProps) => {
               </div>
             );
           })}
+          
         </div>
         </>
     : null}
-    
+    <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData}/>
     </main>
   )
 }

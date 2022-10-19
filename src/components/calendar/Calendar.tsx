@@ -1,8 +1,23 @@
 import React, {useEffect, useState} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar.css'
+import { ThemeContext } from '../context/ThemeContext'
 
-const Calendar = () => {
+type CalendarProps = {
+  thisStyle: React.CSSProperties,
+  thisUser?: {
+    handle: string,
+    login: string,
+    theme: string,
+  },
+  responseData: {
+    Response: boolean,
+    Search: Array<object>,
+    totalResults: string,
+  } | null,
+}
+
+const Calendar = (props: CalendarProps) => {
   const [currentDate, setCurrentDate] = useState(String(new Date()))
   const [currentMonth, setCurrentMonth] = useState(String(format(new Date(), 'MMMM')))
   const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
