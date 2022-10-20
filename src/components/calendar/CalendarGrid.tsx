@@ -1,7 +1,11 @@
 import React from 'react'
 import '../../style/calendar-refactor.css'
 
-const CalendarGrid = () => {
+type GridProps = {
+    monthRange?: Array<Object> | null
+}
+
+const CalendarGrid = (props: GridProps) => {
   return (
     <div className="calendar-grid">
         <div className="row" id="week-one">
