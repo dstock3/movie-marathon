@@ -2,6 +2,7 @@ import React from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
+import CalendarRefactor from '../calendar/CalendarRefactor'
 
 type MainProps = {
     thisStyle: React.CSSProperties,
@@ -43,7 +44,10 @@ const Main = (props: MainProps) => {
         </div>
         </>
     : null}
+    <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData}/>
+    {/*
     <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData}/>
+    */}
     </main>
   )
 }
