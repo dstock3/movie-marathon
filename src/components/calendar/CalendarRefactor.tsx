@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar-refactor.css'
 import CalendarController from './CalendarController'
@@ -18,11 +18,16 @@ type CalendarProps = {
   } | null,
 }
 
+type MonthRangeType = Array<{
+    date: string,
+    day: string
+  }> | null
+
 const CalendarRefactor = (props: CalendarProps) => {
     const [currentMonth, setCurrentMonth] = useState("October")
     const [currentDate, setCurrentDate] = useState(String(new Date()))
     const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
-    const [monthRange, setMonthRange] = useState<Array<Object> | null>(null)
+    const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
 
     useEffect(()=> {
         const today = new Date(currentDate)
