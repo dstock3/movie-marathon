@@ -24,7 +24,7 @@ type MonthRangeType = Array<{
   }> | null
 
 const CalendarRefactor = (props: CalendarProps) => {
-    const [currentMonth, setCurrentMonth] = useState("October")
+    const [currentMonth, setCurrentMonth] = useState("February")
     const [currentDate, setCurrentDate] = useState(String(new Date()))
     const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
     const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
