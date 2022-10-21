@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../style/calendar-refactor.css'
 
 type GridProps = {
@@ -9,39 +9,43 @@ type GridProps = {
 }
 
 const CalendarGrid = (props: GridProps) => {
+    const [start, setStart] = useState(0)
+    
     useEffect(()=> {
-        let start
         if (props.monthRange) {
             switch(props.monthRange[0].day) {
                 case "Sunday":
-                    start = 1
+                    setStart(1)
                     break;
                 case "Monday":
-                    start = 2
+                    setStart(2)
                     break;
                 case "Tuesday":
-                    start = 3
+                    setStart(3)
                     break;
                 case "Wednesday":
-                    start = 4
+                    setStart(4)
                     break;
                 case "Thursday":
-                    start = 5
+                    setStart(5)
                     break;
                 case "Friday":
-                    start = 6
+                    setStart(6)
                     break;
                 case "Saturday":
-                    start = 7
+                    setStart(7)
                     break;
               }
         }
+    }, [props.monthRange])
 
+    useEffect(()=> {
         let dates = []
         
         if (props.monthRange && start) {
             for (let i = start; i < props.monthRange.length + 7; i++) {
                 let square = document.getElementById(String(i))
+                square?.classList.add("filled")
                 dates.push(square)
             }
 
@@ -53,8 +57,7 @@ const CalendarGrid = (props: GridProps) => {
                 dates[i]?.appendChild(dateElement)
             }
         }
-
-    }, [props.monthRange])
+    }, [start])
     
     return (
         <div className="calendar-grid">
@@ -173,29 +176,33 @@ const CalendarGrid = (props: GridProps) => {
 
                 </div>
             </div>
-            <div className="row" id="week-six">
-                <div className="square" id="36">
-
-                </div>
-                <div className="square" id="37">
-
-                </div>
-                <div className="square" id="38">
-
-                </div>
-                <div className="square" id="39">
-
-                </div>
-                <div className="square" id="40">
-
-                </div>
-                <div className="square" id="41">
-
-                </div>
-                <div className="square" id="42">
-
-                </div>
-            </div>
+            {props.monthRange ?
+                props.monthRange.length > 30 && start > 3?
+                    <div className="row" id="week-six">
+                        <div className="square" id="36">
+        
+                        </div>
+                        <div className="square" id="37">
+        
+                        </div>
+                        <div className="square" id="38">
+        
+                        </div>
+                        <div className="square" id="39">
+        
+                        </div>
+                        <div className="square" id="40">
+        
+                        </div>
+                        <div className="square" id="41">
+        
+                        </div>
+                        <div className="square" id="42">
+        
+                        </div>
+                    </div> : null 
+                : null
+            }
         </div>
     )
 }
