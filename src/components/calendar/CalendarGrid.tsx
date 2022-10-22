@@ -5,7 +5,7 @@ type GridProps = {
     monthRange?: Array<{
         date: string,
         day: string
-      }> | null
+      }> | null,
 }
 
 const CalendarGrid = (props: GridProps) => {
@@ -62,7 +62,7 @@ const CalendarGrid = (props: GridProps) => {
                 dates[i]?.appendChild(dateElement)
             }
         }
-    }, [start])
+    }, [start, props.monthRange])
     
     return (
         <div className="calendar-grid">
@@ -182,7 +182,7 @@ const CalendarGrid = (props: GridProps) => {
                 </div>
             </div>
             {props.monthRange ?
-                props.monthRange.length > 30 && start > 3?
+                props.monthRange.length > 30 && start > 5?
                     <div className="row" id="week-six">
                         <div className="square" id="36">
         
