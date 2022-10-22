@@ -41,6 +41,11 @@ const CalendarGrid = (props: GridProps) => {
 
     useEffect(()=> {
         let dates = []
+
+        for (let i = 1; i < 42; i++) {
+            let square = document.getElementById(String(i))
+            if (square?.firstChild) square.firstChild.remove()
+        }
         
         if (props.monthRange && start) {
             for (let i = start; i < props.monthRange.length + 7; i++) {

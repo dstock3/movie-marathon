@@ -24,7 +24,21 @@ type MonthRangeType = Array<{
   }> | null
 
 const CalendarRefactor = (props: CalendarProps) => {
-    const [currentMonth, setCurrentMonth] = useState("October")
+    const [months, setMonths] = useState([
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ])
+    const [currentMonth, setCurrentMonth] = useState(months[9])
     const [currentDate, setCurrentDate] = useState(String(new Date()))
     const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
     const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
@@ -54,18 +68,34 @@ const CalendarRefactor = (props: CalendarProps) => {
             currentYear === formattedThisYear) {
                 monthArray.push({"date":format(thisDay, 'MM/dd/y'), "day":format(thisDay, 'EEEE')})
           }
-          
           setMonthRange(monthArray)
         }
 
       }, [currentMonth])
     
     const changeMonth = (directive: string) => {
-        console.log(monthRange)
+      let index
+      for (let i = 0; i < months.length; i++) {
+        if (months[i] === currentMonth) {
+          index = i
+        }
+      }
 
+      if (directive === "back" && index !== undefined) {
+        if (index > 0) {
+          setCurrentMonth(months[index - 1])
+        } else {
+          setCurrentMonth(months[11])
+        }
+      } else if (directive === "forward" && index !== undefined) {
+        if (index < 11) {
+          setCurrentMonth(months[index + 1])
+        } else {
+          setCurrentMonth(months[0])
+        }
+      }
     }
     
-
     return (
         <div className="calendar-container">
             <CalendarController changeMonth={changeMonth} currentMonth={currentMonth} thisStyle={props.thisStyle} thisUser={props.thisUser} />
