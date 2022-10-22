@@ -50,3 +50,7 @@
 .date-content {
     margin-top: 10px;
 }
+
+.filled, .back, .forward {
+    cursor: pointer;
+}

@@ -57,6 +57,7 @@ const CalendarGrid = (props: GridProps) => {
                 let square = document.getElementById(String(i))
                 square?.classList.add("filled")
                 dates.push(square)
+                
             }
 
             for (let i = 0; i < props.monthRange.length; i++) {
