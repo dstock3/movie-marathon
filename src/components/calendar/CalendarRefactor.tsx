@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, Dispatch, SetStateAction} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar-refactor.css'
 import CalendarController from './CalendarController'
@@ -16,6 +16,7 @@ type CalendarProps = {
     Search: Array<object>,
     totalResults: string,
   } | null,
+  setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
 }
 
 type MonthRangeType = Array<{
@@ -110,7 +111,7 @@ const CalendarRefactor = (props: CalendarProps) => {
                 <div className="weekday">Saturday</div>
             </div>
 
-            <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} />
+            <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
         </div>
     )
 }

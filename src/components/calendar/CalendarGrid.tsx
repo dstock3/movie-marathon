@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, Dispatch, SetStateAction } from 'react'
 import '../../style/calendar-refactor.css'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -13,6 +13,7 @@ type GridProps = {
         login: string,
         theme: string,
       },
+      setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
 }
 
 const CalendarGrid = (props: GridProps) => {
@@ -62,8 +63,8 @@ const CalendarGrid = (props: GridProps) => {
     }, [props.monthRange])
 
     const showDate = (id: number) => {
+        props.setDateViewEnabled({"isOpen": true, "id": id})
         
-
     }
 
     useEffect(()=> {

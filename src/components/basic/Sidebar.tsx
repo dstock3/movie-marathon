@@ -19,7 +19,6 @@ const Sidebar = (props: SidebarProps) => {
     const [hideButton, setHideButton] = useState({})
 
     useEffect(()=> {
-
         if (props.thisUser) {
           if (props.thisUser.theme === "dark") {
             setSidebarStyle({...sidebarStyle, ...{"borderRight": theme.dark.border}, ...props.thisStyle})
@@ -48,9 +47,13 @@ const Sidebar = (props: SidebarProps) => {
 
     return (
         <section className="sidebar" style={sidebarStyle}>
-            <div className="hide-button" style={hideButton} onClick={() => props.setIsExpanded(!props.isExpanded)}>
-                Hide
-            </div>
+          <div className="week-view-option">
+            Week at a Glance
+          </div>
+          
+          <div className="hide-button" style={hideButton} onClick={() => props.setIsExpanded(!props.isExpanded)}>
+              Hide
+          </div>
             
         </section>
     )

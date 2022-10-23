@@ -8,6 +8,7 @@ import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
+import DateView from './components/modals/DateView';
 
 export type ResponseDataType = {
     Response: boolean,
@@ -18,10 +19,11 @@ export type ResponseDataType = {
 const App = () => {
   const theme = useContext(ThemeContext)
   const [user, setUser] = useState(dummyData.users[1])
-  const [isExpanded, setIsExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
-
+  const [dateViewEnabled, setDateViewEnabled] = useState<{"isOpen": boolean, "id": number | null}>({"isOpen": false, "id": null})
+  
   /* setting light as the default theme for the time being */
   const [thisStyle, setThisStyle] = useState({ 
     backgroundColor: theme.light.main, 
@@ -55,12 +57,13 @@ const App = () => {
           <section className={`primary`} style={primeStyle}>
             <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
 
-            <Main thisStyle={thisStyle} thisUser={user} responseData={responseData} />
+            <Main thisStyle={thisStyle} thisUser={user} responseData={responseData} setDateViewEnabled={setDateViewEnabled} />
 
             <Footer thisStyle={thisStyle} thisUser={user} />
           </section>
       </div>
       {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
+      {dateViewEnabled.isOpen ? <DateView dateViewEnabled={dateViewEnabled} thisStyle={thisStyle} thisUser={user} setDateViewEnabled={setDateViewEnabled} /> : null}
     </>
   );
 }

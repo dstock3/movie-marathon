@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Dispatch, SetStateAction} from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
@@ -16,6 +16,7 @@ type MainProps = {
       Search: Array<object>,
       totalResults: string,
     } | null,
+    setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
 }
 
 type MovieType = {
@@ -44,7 +45,7 @@ const Main = (props: MainProps) => {
         </div>
         </>
     : null}
-    <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData}/>
+    <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} setDateViewEnabled={props.setDateViewEnabled}/>
     {/*
     <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData}/>
     */}

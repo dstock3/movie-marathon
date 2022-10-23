@@ -1,0 +1,24 @@
+.date-view {
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    height: 75vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.date-controller {
+    margin-top: 15px;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-close {
+    cursor: pointer;
+}
