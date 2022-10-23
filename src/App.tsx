@@ -17,7 +17,7 @@ export type ResponseDataType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[0])
+  const [user, setUser] = useState(dummyData.users[1])
   const [isExpanded, setIsExpanded] = useState(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)

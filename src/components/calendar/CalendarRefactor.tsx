@@ -110,7 +110,7 @@ const CalendarRefactor = (props: CalendarProps) => {
                 <div className="weekday">Saturday</div>
             </div>
 
-            <CalendarGrid monthRange={monthRange} />
+            <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} />
         </div>
     )
 }
