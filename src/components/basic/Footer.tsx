@@ -15,17 +15,17 @@ const Footer = (props: FooterProps) => {
   const [footStyle, setFootStyle] = useState({})
 
   useEffect(()=> {
-
+    let themes = Object.keys(theme)
     if (props.thisUser) {
-      if (props.thisUser.theme === "dark") {
-        setFootStyle({...footStyle, ...{"borderTop": theme.dark.border}, ...props.thisStyle})
-      } else if (props.thisUser.theme === "light") {
-        setFootStyle({...footStyle, ...{"borderTop": theme.light.border}, ...props.thisStyle})
-      } else if (props.thisUser.theme === "mint") {
-        setFootStyle({...footStyle, ...{"borderTop": theme.mint.border}, ...props.thisStyle})
+      for (let i = 0; i < themes.length; i++) {
+        if (themes[i] === props.thisUser.theme) {
+          
+          let thisTheme: any = theme[themes[i] as keyof Object]
+
+          setFootStyle({...footStyle, ...{"borderTop": thisTheme.border}, ...props.thisStyle})
+        }
       }
     }
-
   }, [props.thisUser, props.thisStyle])
 
   return (

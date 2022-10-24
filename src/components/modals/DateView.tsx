@@ -21,18 +21,6 @@ const DateView = (props: DateViewType) => {
     const theme = useContext(ThemeContext)
     const [date, setDate] = useState<string | undefined | null>(null)
     const [dateStyle, setDateStyle] = useState<React.CSSProperties>(props.thisStyle)
-
-    useEffect(()=> {
-        let body = document.querySelector("body")
-        if (body) {
-            body.style.backgroundColor = "black"
-            body.style.transition = "all 0.25s ease-out"
-            body.style.opacity = "1"
-            body.style.zIndex = "1000"
-
-        }
-
-    }, [])
     
     useEffect(()=> {
         if (props.dateViewEnabled.id) {

@@ -18,7 +18,7 @@ export type ResponseDataType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[1])
+  const [user, setUser] = useState(dummyData.users[2])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
@@ -34,7 +34,7 @@ const App = () => {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
     let App = AppArray[0]
     App.style.transition = "all 0.25s ease-out"
-    
+
     if (dateViewEnabled.isOpen) {
       if (App) {
         App.style.opacity = ".5"
