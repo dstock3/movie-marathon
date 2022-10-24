@@ -31,6 +31,20 @@ const App = () => {
   })
 
   useEffect(()=> {
+    let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
+    let App = AppArray[0]
+    App.style.transition = "all 0.25s ease-out"
+    
+    if (dateViewEnabled.isOpen) {
+      if (App) {
+        App.style.opacity = ".5"
+      }
+    } else {
+      App.style.opacity = "1"
+    }
+  }, [dateViewEnabled])
+
+  useEffect(()=> {
     if (user.theme === "dark") {
       setThisStyle({ backgroundColor: theme.dark.main, color: theme.dark.text })  
     } else if (user.theme === "light") {
