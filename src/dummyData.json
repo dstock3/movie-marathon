@@ -28,5 +28,17 @@
         "movies":[
             
         ]  
+    },
+    { 
+        "handle":"DavisTheFilmMan", 
+        "login":"DDSFilm@protonmail.com",
+        "theme":"midnight",
+        "metadataIsAllowed": true,
+        "searchData": [],         
+        "movies":[
+            
+        ]  
     }
+
+
 ]}

@@ -18,7 +18,7 @@ export type ResponseDataType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[2])
+  const [user, setUser] = useState(dummyData.users[3])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
@@ -45,13 +45,19 @@ const App = () => {
   }, [dateViewEnabled])
 
   useEffect(()=> {
-    if (user.theme === "dark") {
-      setThisStyle({ backgroundColor: theme.dark.main, color: theme.dark.text })  
-    } else if (user.theme === "light") {
-      setThisStyle({ backgroundColor: theme.light.main, color: theme.light.text }) 
-    } else if (user.theme === "mint") {
-      setThisStyle({ backgroundColor: theme.mint.main, color: theme.mint.text }) 
+    let themes = Object.keys(theme)
+    if (user) {
+      for (let i = 0; i < themes.length; i++) {
+        if (themes[i] === user.theme) {
+          
+          let thisTheme: any = theme[themes[i] as keyof Object]
+
+          setThisStyle({ backgroundColor: thisTheme.main, color: thisTheme.text })  
+        }
+      }
     }
+
+
   }, [user])
 
   useEffect(()=> {

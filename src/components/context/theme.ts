@@ -19,8 +19,8 @@ export const themeTemplate = {
     },
     midnight: {
         name: "midnight",
-        main: '#050A30',
-        text: '#7EC8E3',
-        border: "2px solid #7EC8E3"
+        main: '#020B3A',
+        text: '#FBF5B3 ',
+        border: "2px solid #FBF5B3"
     }
 }
