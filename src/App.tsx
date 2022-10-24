@@ -33,14 +33,43 @@ const App = () => {
   useEffect(()=> {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
     let App = AppArray[0]
-    App.style.transition = "all 0.25s ease-out"
+    
+    let themes = Object.keys(theme)
 
     if (dateViewEnabled.isOpen) {
-      if (App) {
-        App.style.opacity = ".5"
+      if (App && user) {
+        for (let i = 0; i < themes.length; i++) {
+          if (themes[i] === user.theme) {
+            
+            let thisTheme: any = theme[themes[i] as keyof Object]
+  
+            setThisStyle({ 
+              ...thisStyle, 
+              ...{ backgroundColor: thisTheme.fade, 
+                filter: "blur(3px)", 
+                WebkitFilter: "blur(3px)",
+                transform: "scale(1.01)",
+                overflow: "hidden" 
+            }})  
+          }
+        }
       }
     } else {
-      App.style.opacity = "1"
+      if (user) {
+        for (let i = 0; i < themes.length; i++) {
+          if (themes[i] === user.theme) {
+            let thisTheme: any = theme[themes[i] as keyof Object]
+  
+            setThisStyle({ 
+              ...thisStyle, 
+              ...{ backgroundColor: thisTheme.main, 
+                filter: "unset", 
+                WebkitFilter: "unset",
+                transform: "scale(1)" 
+            }})  
+          }
+        }
+      }
     }
   }, [dateViewEnabled])
 
@@ -56,8 +85,6 @@ const App = () => {
         }
       }
     }
-
-
   }, [user])
 
   useEffect(()=> {

@@ -22,7 +22,7 @@ type CalendarProps = {
 type MonthRangeType = Array<{
     date: string,
     day: string
-  }> | null
+}> | null
 
 const CalendarRefactor = (props: CalendarProps) => {
     const [months, setMonths] = useState([

@@ -17,21 +17,20 @@ const CalendarController = (props: ControllerProps) => {
     const theme = useContext(ThemeContext)
     
     useEffect(()=> {
-        if (props.thisUser) {
-          let forward = document.getElementById("forward")
-          let back = document.getElementById("back")
-          if (props.thisUser.theme === "dark" && forward && back) {
-            forward.setAttribute("fill", theme.dark.text)
-            back.setAttribute("fill", theme.dark.text)
-          } else if (props.thisUser.theme === "light" && forward && back) {
-            forward.setAttribute("fill", theme.light.text)
-            back.setAttribute("fill", theme.light.text)
-          } else if (props.thisUser.theme === "mint" && forward && back) {
-            forward.setAttribute("fill", theme.mint.text)
-            back.setAttribute("fill", theme.mint.text)
+      let themes = Object.keys(theme)
+      if (props.thisUser) {
+        let forward = document.getElementById("forward")
+        let back = document.getElementById("back")
+        for (let i = 0; i < themes.length; i++) {
+          if (themes[i] === props.thisUser.theme) {
+            let thisTheme: any = theme[themes[i] as keyof Object]
+
+            forward?.setAttribute("fill", thisTheme.text)
+            back?.setAttribute("fill", thisTheme.text)
           }
         }
-      }, [props.thisUser, props.thisStyle])
+      }
+    }, [props.thisUser, props.thisStyle])
 
     return (
         <div className="calendar-controller">
