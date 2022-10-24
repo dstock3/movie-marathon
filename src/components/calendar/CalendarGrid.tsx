@@ -22,16 +22,17 @@ const CalendarGrid = (props: GridProps) => {
     const [thisTheme, setThisTheme] = useState<React.CSSProperties>({"border": theme.light.border})
     
     useEffect(()=> {
+        let themes = Object.keys(theme)
         if (props.thisUser) {
-            if (props.thisUser.theme === "dark") {
-                setThisTheme({"border": theme.dark.border, "color": theme.dark.text})
-            } else if (props.thisUser.theme === "light") {
-                setThisTheme({"border": theme.light.border, "color": theme.light.text})
-            } else if (props.thisUser.theme === "mint") {
-                setThisTheme({"border": theme.mint.border, "color": theme.mint.text})
+          for (let i = 0; i < themes.length; i++) {
+            if (themes[i] === props.thisUser.theme) {
+              
+              let thisTheme: any = theme[themes[i] as keyof Object]
+  
+              setThisTheme({"border": thisTheme.border, "color": thisTheme.text})
             }
           }
-
+        }
     }, [])
     
     useEffect(()=> {

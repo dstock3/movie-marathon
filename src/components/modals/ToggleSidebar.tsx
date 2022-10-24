@@ -19,15 +19,17 @@ const ToggleSidebar = (props: ToggleProps) => {
     const [toggleStyle, setToggleStyle] = useState(props.thisStyle)
 
     useEffect(()=> {
+        let themes = Object.keys(theme)
         if (props.thisUser) {
-            if (props.thisUser.theme === "dark") {
-                setToggleStyle({...toggleStyle, ...{"border": theme.dark.border}})
-            } else if (props.thisUser.theme === "light") {
-                setToggleStyle({...toggleStyle, ...{"border": theme.light.border}})
-            } else if (props.thisUser.theme === "mint") {
-                setToggleStyle({...toggleStyle, ...{"border": theme.mint.border}})
+          for (let i = 0; i < themes.length; i++) {
+            if (themes[i] === props.thisUser.theme) {
+              
+              let thisTheme: any = theme[themes[i] as keyof Object]
+  
+              setToggleStyle({...toggleStyle, ...{"border": thisTheme.border}})
             }
           }
+        }
     }, [props.thisUser, props.thisStyle])
 
     return ReactDOM.createPortal(
