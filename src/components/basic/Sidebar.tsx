@@ -47,14 +47,27 @@ const Sidebar = (props: SidebarProps) => {
 
     return (
         <section className="sidebar" style={sidebarStyle}>
-          <div className="week-view-option">
-            Week at a Glance
-          </div>
-          
-          <div className="hide-button" style={hideButton} onClick={() => props.setIsExpanded(!props.isExpanded)}>
+          <div className="sidebar-head">
+            <h1>FilmStack</h1>
+            <div className="hide-button" style={hideButton} onClick={() => props.setIsExpanded(!props.isExpanded)}>
               Hide
+            </div>
           </div>
-            
+
+          <ul className="sidebar-options">
+            <li className="sidebar-option">
+              Your Feed
+            </li>
+            <li className="sidebar-option">
+              Week at a Glance
+            </li>
+            <li className="sidebar-option">
+              Favorites
+            </li>
+            <li className="sidebar-option">
+              Upcoming Stacks
+            </li>
+          </ul>    
         </section>
     )
 }

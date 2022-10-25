@@ -1,6 +1,27 @@
 .sidebar {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-head {
+    width: 15%;
+    position: absolute;
+    top: 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-options {
+    list-style-type: none;
+    font-size: 1.25em;
+    margin-bottom: 50%;
+}
+
+.sidebar-option {
+    margin-bottom: 10px;
 }
 
 .hide-button, .toggle-btn {
@@ -9,9 +30,10 @@
 }
 
 .hide-button {
+    margin-right: 15px;
     border-radius: 5px;
     width: fit-content;
-    
+    box-shadow: 5px 2px 7px rgba(34, 34, 34, 0.393);
 }
 
 .toggle-btn {
