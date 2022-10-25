@@ -9,6 +9,7 @@
     align-items: center;
     border-radius: 15px;
     background-color: white;
+    box-shadow: 5px 2px 7px rgba(34, 34, 34, 0.393);
 }
 
 .date-controller {

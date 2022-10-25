@@ -9,7 +9,7 @@ export const themeTemplate = {
     light: {
         name: "light",
         main: '#F9F9F9',
-        fade: '#C7C7C7',
+        fade: '#9c9c9c',
         text: '#0B0B0B',
         border: "2px solid #0B0B0B"
     },

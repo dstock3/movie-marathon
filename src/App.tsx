@@ -18,17 +18,20 @@ export type ResponseDataType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[3])
+  const [user, setUser] = useState(dummyData.users[1])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
   const [dateViewEnabled, setDateViewEnabled] = useState<{"isOpen": boolean, "id": number | null}>({"isOpen": false, "id": null})
+  
   
   /* setting light as the default theme for the time being */
   const [thisStyle, setThisStyle] = useState({ 
     backgroundColor: theme.light.main, 
     color: theme.light.text 
   })
+
+  const [appStyle, setAppStyle] = useState(thisStyle)
 
   useEffect(()=> {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
@@ -42,15 +45,16 @@ const App = () => {
           if (themes[i] === user.theme) {
             
             let thisTheme: any = theme[themes[i] as keyof Object]
-  
-            setThisStyle({ 
-              ...thisStyle, 
-              ...{ backgroundColor: thisTheme.fade, 
-                filter: "blur(3px)", 
-                WebkitFilter: "blur(3px)",
+            
+            setAppStyle({
+              ...appStyle, 
+              ...{
+                backgroundColor: thisTheme.fade,
                 transform: "scale(1.01)",
-                overflow: "hidden" 
-            }})  
+                WebkitFilter: "blur(5px)", 
+                filter: "blur(5px)",
+              }
+            })
           }
         }
       }
@@ -60,8 +64,8 @@ const App = () => {
           if (themes[i] === user.theme) {
             let thisTheme: any = theme[themes[i] as keyof Object]
   
-            setThisStyle({ 
-              ...thisStyle, 
+            setAppStyle({ 
+              ...appStyle, 
               ...{ backgroundColor: thisTheme.main, 
                 filter: "unset", 
                 WebkitFilter: "unset",
@@ -99,7 +103,7 @@ const App = () => {
     <>
       <div 
         className="App" 
-        style={thisStyle}>
+        style={appStyle}>
           <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
           <section className={`primary`} style={primeStyle}>
             <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
