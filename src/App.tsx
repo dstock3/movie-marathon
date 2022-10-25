@@ -18,19 +18,13 @@ export type ResponseDataType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[1])
+  const [user, setUser] = useState(dummyData.users[3])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
   const [dateViewEnabled, setDateViewEnabled] = useState<{"isOpen": boolean, "id": number | null}>({"isOpen": false, "id": null})
   
-  
-  /* setting light as the default theme for the time being */
-  const [thisStyle, setThisStyle] = useState({ 
-    backgroundColor: theme.light.main, 
-    color: theme.light.text 
-  })
-
+  const [thisStyle, setThisStyle] = useState({ })
   const [appStyle, setAppStyle] = useState(thisStyle)
 
   useEffect(()=> {
@@ -66,7 +60,8 @@ const App = () => {
   
             setAppStyle({ 
               ...appStyle, 
-              ...{ backgroundColor: thisTheme.main, 
+              ...{ 
+                backgroundColor: thisTheme.main, 
                 filter: "unset", 
                 WebkitFilter: "unset",
                 transform: "scale(1)" 

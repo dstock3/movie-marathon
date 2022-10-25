@@ -13,6 +13,7 @@
 
 .date-controller {
     margin-top: 15px;
+    height: 10%;
     width: 85%;
     display: flex;
     justify-content: space-between;
@@ -21,4 +22,16 @@
 
 .date-close {
     cursor: pointer;
+}
+
+.date-view-body-container {
+    height: 85%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-view-body {
+    width: 80%;
 }
