@@ -22,7 +22,7 @@ type CalendarProps = {
   setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }
 
-type MonthRangeType = Array<{
+export type MonthRangeType = Array<{
     date: string,
     day: string
 }> | null
@@ -74,7 +74,6 @@ const CalendarRefactor = (props: CalendarProps) => {
           }
           setMonthRange(monthArray)
         }
-
       }, [currentMonth])
     
     const changeMonth = (directive: string) => {
@@ -118,7 +117,7 @@ const CalendarRefactor = (props: CalendarProps) => {
             <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
         </div>
         {props.dateViewEnabled.isOpen ? 
-          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} changeMonth={changeMonth} /> : null}
+          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonth} /> : null}
       </>
     )
 }

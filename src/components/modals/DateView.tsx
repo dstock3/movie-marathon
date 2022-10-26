@@ -3,6 +3,8 @@ import { ThemeContext } from '../context/ThemeContext'
 import ReactDOM from 'react-dom'
 import '../../style/date-view.css'
 import { DateViewEnabledType } from '../../App'
+import { format } from 'date-fns'
+import { MonthRangeType } from '../calendar/CalendarRefactor'
 
 type DateViewType = {
     thisStyle: React.CSSProperties,
@@ -13,6 +15,7 @@ type DateViewType = {
     },
     dateViewEnabled: DateViewEnabledType,
     setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
+    monthRange: MonthRangeType,
     changeMonth: (directive: string) => void,
 }
 
@@ -20,6 +23,7 @@ const DateView = (props: DateViewType) => {
     const theme = useContext(ThemeContext)
     const [date, setDate] = useState<string | undefined | null>(null)
     const [dateStyle, setDateStyle] = useState<React.CSSProperties>(props.thisStyle)
+    const [dir, setDir] = useState<string | null>(null)
     
     useEffect(()=> {
         if (props.dateViewEnabled.id) {
@@ -41,6 +45,41 @@ const DateView = (props: DateViewType) => {
           }
         }
     }, [props.thisUser])
+
+    useEffect(()=> {
+      if (props.monthRange) {
+        if (dir === "back") {
+          setDate(props.monthRange[props.monthRange.length - 1].date)
+        } else if (dir === "forward") {
+          setDate(props.monthRange[0].date)
+        }
+      }
+    }, [props.monthRange])
+
+    const changeDate = (directive: string) => {
+      setDir(directive)
+      let index
+      if (props.monthRange) {
+        for (let i = 0; i < props.monthRange.length; i++) {
+          if (props.monthRange[i].date === date) {
+            index = i
+          }
+        }
+        if (directive === "back" && index !== undefined) {
+          if (props.monthRange[index - 1] !== undefined) {
+            setDate(props.monthRange[index - 1].date)
+          } else {
+            props.changeMonth("back")
+          }
+        } else if (directive === "forward" && index !== undefined) {
+          if (props.monthRange[index + 1] !== undefined) {
+            setDate(props.monthRange[index + 1].date)
+          } else {
+            props.changeMonth("forward")
+          }
+        }
+      }
+    }
 
     useEffect(()=> {
         let themes = Object.keys(theme)
@@ -67,7 +106,7 @@ const DateView = (props: DateViewType) => {
                 <div className="date-close" onClick={()=>props.setDateViewEnabled({"isOpen": false, "id": null})}>X</div>
             </div>
             <div className="date-view-body-container">
-                <div className="date-view-back">
+                <div className="date-view-back" onClick={()=>changeDate("back")}>
                     <svg className="back-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
                         <path id="date-back" d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z"/>
                     </svg>
@@ -75,7 +114,7 @@ const DateView = (props: DateViewType) => {
                 <div className="date-view-body">
 
                 </div>
-                <div className="date-view-forward">
+                <div className="date-view-forward" onClick={()=>changeDate("forward")}>
                     <svg className="forward-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
                         <path id="date-forward" d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/>
                     </svg>
