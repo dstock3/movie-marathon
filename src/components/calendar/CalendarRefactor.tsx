@@ -118,7 +118,7 @@ const CalendarRefactor = (props: CalendarProps) => {
             <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
         </div>
         {props.dateViewEnabled.isOpen ? 
-          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} /> : null}
+          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} changeMonth={changeMonth} /> : null}
       </>
     )
 }

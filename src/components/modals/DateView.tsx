@@ -12,7 +12,8 @@ type DateViewType = {
       theme: string,
     },
     dateViewEnabled: DateViewEnabledType,
-    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
+    changeMonth: (directive: string) => void,
 }
 
 const DateView = (props: DateViewType) => {
