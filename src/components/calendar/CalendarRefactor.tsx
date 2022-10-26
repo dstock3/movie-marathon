@@ -4,7 +4,7 @@ import '../../style/calendar-refactor.css'
 import CalendarController from './CalendarController'
 import CalendarGrid from './CalendarGrid'
 import DateView from '../modals/DateView'
-import { DateViewType } from '../../App'
+import { DateViewEnabledType } from '../../App'
 
 type CalendarProps = {
   thisStyle: React.CSSProperties,
@@ -18,8 +18,8 @@ type CalendarProps = {
     Search: Array<object>,
     totalResults: string,
   } | null,
-  dateViewEnabled: DateViewType,
-  setDateViewEnabled: Dispatch<SetStateAction<DateViewType>>
+  dateViewEnabled: DateViewEnabledType,
+  setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }
 
 type MonthRangeType = Array<{

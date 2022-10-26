@@ -2,19 +2,17 @@ import React, { useContext, useEffect, useState, Dispatch, SetStateAction  } fro
 import { ThemeContext } from '../context/ThemeContext'
 import ReactDOM from 'react-dom'
 import '../../style/date-view.css'
+import { DateViewEnabledType } from '../../App'
 
 type DateViewType = {
-    dateViewEnabled: {
-        "isOpen": boolean, 
-        "id": number | null
-    },
     thisStyle: React.CSSProperties,
     thisUser?: {
       handle: string,
       login: string,
       theme: string,
     },
-    setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
+    dateViewEnabled: DateViewEnabledType,
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }
 
 const DateView = (props: DateViewType) => {

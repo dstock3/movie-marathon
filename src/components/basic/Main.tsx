@@ -3,7 +3,7 @@ import { ThemeContext } from '../context/ThemeContext'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
 import CalendarRefactor from '../calendar/CalendarRefactor'
-import { DateViewType } from '../../App'
+import { DateViewEnabledType } from '../../App'
 
 type MainProps = {
     thisStyle: React.CSSProperties,
@@ -17,8 +17,8 @@ type MainProps = {
       Search: Array<object>,
       totalResults: string,
     } | null,
-    dateViewEnabled: DateViewType,
-    setDateViewEnabled: Dispatch<SetStateAction<DateViewType>>
+    dateViewEnabled: DateViewEnabledType,
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }
 
 type MovieType = {

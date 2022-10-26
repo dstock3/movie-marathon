@@ -8,7 +8,6 @@ import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
-import DateView from './components/modals/DateView';
 
 export type ResponseDataType = {
     Response: boolean,
@@ -16,7 +15,7 @@ export type ResponseDataType = {
     totalResults: string
 }
 
-export type DateViewType = {
+export type DateViewEnabledType = {
   "isOpen": boolean, 
   "id": number | null
 }
@@ -27,7 +26,7 @@ const App = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
-  const [dateViewEnabled, setDateViewEnabled] = useState<DateViewType>({"isOpen": false, "id": null})
+  const [dateViewEnabled, setDateViewEnabled] = useState<DateViewEnabledType>({"isOpen": false, "id": null})
   
   const [thisStyle, setThisStyle] = useState({ })
   const [appStyle, setAppStyle] = useState(thisStyle)
