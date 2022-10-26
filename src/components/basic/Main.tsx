@@ -3,6 +3,7 @@ import { ThemeContext } from '../context/ThemeContext'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
 import CalendarRefactor from '../calendar/CalendarRefactor'
+import { DateViewType } from '../../App'
 
 type MainProps = {
     thisStyle: React.CSSProperties,
@@ -16,7 +17,8 @@ type MainProps = {
       Search: Array<object>,
       totalResults: string,
     } | null,
-    setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
+    dateViewEnabled: DateViewType,
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewType>>
 }
 
 type MovieType = {
@@ -45,7 +47,7 @@ const Main = (props: MainProps) => {
         </div>
         </>
     : null}
-    <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} setDateViewEnabled={props.setDateViewEnabled}/>
+    <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled}/>
     {/*
     <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData}/>
     */}

@@ -16,13 +16,18 @@ export type ResponseDataType = {
     totalResults: string
 }
 
+export type DateViewType = {
+  "isOpen": boolean, 
+  "id": number | null
+}
+
 const App = () => {
   const theme = useContext(ThemeContext)
   const [user, setUser] = useState(dummyData.users[3])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
-  const [dateViewEnabled, setDateViewEnabled] = useState<{"isOpen": boolean, "id": number | null}>({"isOpen": false, "id": null})
+  const [dateViewEnabled, setDateViewEnabled] = useState<DateViewType>({"isOpen": false, "id": null})
   
   const [thisStyle, setThisStyle] = useState({ })
   const [appStyle, setAppStyle] = useState(thisStyle)
@@ -103,13 +108,12 @@ const App = () => {
           <section className={`primary`} style={primeStyle}>
             <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
 
-            <Main thisStyle={thisStyle} thisUser={user} responseData={responseData} setDateViewEnabled={setDateViewEnabled} />
+            <Main thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
 
             <Footer thisStyle={thisStyle} thisUser={user} />
           </section>
       </div>
       {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
-      {dateViewEnabled.isOpen ? <DateView dateViewEnabled={dateViewEnabled} thisStyle={thisStyle} thisUser={user} setDateViewEnabled={setDateViewEnabled} /> : null}
     </>
   );
 }

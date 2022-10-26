@@ -3,6 +3,8 @@ import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar-refactor.css'
 import CalendarController from './CalendarController'
 import CalendarGrid from './CalendarGrid'
+import DateView from '../modals/DateView'
+import { DateViewType } from '../../App'
 
 type CalendarProps = {
   thisStyle: React.CSSProperties,
@@ -16,7 +18,8 @@ type CalendarProps = {
     Search: Array<object>,
     totalResults: string,
   } | null,
-  setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
+  dateViewEnabled: DateViewType,
+  setDateViewEnabled: Dispatch<SetStateAction<DateViewType>>
 }
 
 type MonthRangeType = Array<{
@@ -98,6 +101,7 @@ const CalendarRefactor = (props: CalendarProps) => {
     }
     
     return (
+      <>
         <div className="calendar-container">
             <CalendarController changeMonth={changeMonth} currentMonth={currentMonth} thisStyle={props.thisStyle} thisUser={props.thisUser} />
 
@@ -113,6 +117,9 @@ const CalendarRefactor = (props: CalendarProps) => {
 
             <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
         </div>
+        {props.dateViewEnabled.isOpen ? 
+          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} /> : null}
+      </>
     )
 }
 
