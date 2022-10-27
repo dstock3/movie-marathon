@@ -3,7 +3,6 @@ import { ThemeContext } from '../context/ThemeContext'
 import ReactDOM from 'react-dom'
 import '../../style/date-view.css'
 import { DateViewEnabledType } from '../../App'
-import { format } from 'date-fns'
 import { MonthRangeType } from '../calendar/CalendarRefactor'
 
 type DateViewType = {
