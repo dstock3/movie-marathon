@@ -21,15 +21,27 @@ type DateViewType = {
 
 const DateView = (props: DateViewType) => {
     const theme = useContext(ThemeContext)
-    const [date, setDate] = useState<string | undefined | null>(null)
+    const [thisDate, setThisDate] = useState<{"date": string, "day": string} | undefined | null>(null)
     const [dateStyle, setDateStyle] = useState<React.CSSProperties>(props.thisStyle)
     const [dir, setDir] = useState<string | null>(null)
     
     useEffect(()=> {
-        if (props.dateViewEnabled.id) {
-            const dateElement = document.getElementById(String(props.dateViewEnabled.id))
-            setDate(dateElement?.firstChild?.textContent)
+      if (props.dateViewEnabled.id && props.monthRange) {
+        const dateElement = document.getElementById(String(props.dateViewEnabled.id))
+        
+        let index
+        for (let i = 0; i < props.monthRange.length; i++) {
+          if (props.monthRange[i].date === dateElement?.firstChild?.textContent) {
+            index = i
+          }
         }
+        if (index) {
+          setThisDate({
+            "date": props.monthRange[index].date,
+            "day": props.monthRange[index].day
+          })
+        }
+      }
     }, [props.dateViewEnabled])
 
     useEffect(()=> {
@@ -49,9 +61,15 @@ const DateView = (props: DateViewType) => {
     useEffect(()=> {
       if (props.monthRange) {
         if (dir === "back") {
-          setDate(props.monthRange[props.monthRange.length - 1].date)
+          setThisDate({
+            "date": props.monthRange[props.monthRange.length - 1].date,
+            "day": props.monthRange[props.monthRange.length - 1].day,
+          })
         } else if (dir === "forward") {
-          setDate(props.monthRange[0].date)
+          setThisDate({
+            "date": props.monthRange[0].date,
+            "day": props.monthRange[0].day
+          })
         }
       }
     }, [props.monthRange])
@@ -59,21 +77,27 @@ const DateView = (props: DateViewType) => {
     const changeDate = (directive: string) => {
       setDir(directive)
       let index
-      if (props.monthRange) {
+      if (props.monthRange && thisDate) {
         for (let i = 0; i < props.monthRange.length; i++) {
-          if (props.monthRange[i].date === date) {
+          if (props.monthRange[i].date === thisDate.date) {
             index = i
           }
         }
         if (directive === "back" && index !== undefined) {
           if (props.monthRange[index - 1] !== undefined) {
-            setDate(props.monthRange[index - 1].date)
+            setThisDate({
+              "date": props.monthRange[index - 1].date, 
+              "day": props.monthRange[index - 1].day
+            })
           } else {
             props.changeMonth("back")
           }
         } else if (directive === "forward" && index !== undefined) {
           if (props.monthRange[index + 1] !== undefined) {
-            setDate(props.monthRange[index + 1].date)
+            setThisDate({
+              "date": props.monthRange[index + 1].date, 
+              "day": props.monthRange[index + 1].day
+            })
           } else {
             props.changeMonth("forward")
           }
@@ -100,9 +124,11 @@ const DateView = (props: DateViewType) => {
     return ReactDOM.createPortal(
         <div className="date-view" style={dateStyle}>
             <div className="date-controller">
-                <h2 className="date-head">
-                    {date}
-                </h2>
+                {thisDate ?                 
+                  <div className="date-head">
+                      <h3 className="date-view-date">{thisDate.date}</h3>
+                      <h2 className="date-view-day">{thisDate.day}</h2>
+                  </div> : null}
                 <div className="date-close" onClick={()=>props.setDateViewEnabled({"isOpen": false, "id": null})}>X</div>
             </div>
             <div className="date-view-body-container">
