@@ -40,7 +40,7 @@ const CalendarController = (props: ControllerProps) => {
                 </svg>
             </div>
 
-            <h2 className="month">{props.currentMonth}</h2>
+            <h2 className="month no-select">{props.currentMonth}</h2>
 
             <div className="forward" onClick={()=>props.changeMonth("forward")}>
                 <svg className="forward-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">

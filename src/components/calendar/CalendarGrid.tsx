@@ -80,15 +80,31 @@ const CalendarGrid = (props: GridProps) => {
 
         for (let i = 1; i < 42; i++) {
             let square = document.getElementById(String(i))
-            if (square?.firstChild) square.firstChild.remove()
+            square?.classList.remove("filled")
+            if (square?.firstChild) {
+                square.firstChild.remove() 
+            }
+
+            
+            let themes = Object.keys(theme)
+            
+            for (let x = 0; x < themes.length; x++) {
+                if (themes[x] === props.thisUser?.theme) {
+                  
+                  let thisTheme: any = theme[themes[x] as keyof Object]
+
+                  if (square !== null) {
+                    square.style.backgroundColor = thisTheme.main
+                    
+                  }
+                }
+            }
         }
         
         if (props.monthRange && start) {
             for (let i = start; i < props.monthRange.length + 7; i++) {
                 let square = document.getElementById(String(i))
-                square?.classList.add("filled")
                 dates.push(square)
-                
             }
 
             for (let i = 0; i < props.monthRange.length; i++) {
@@ -96,7 +112,22 @@ const CalendarGrid = (props: GridProps) => {
                 dateElement.classList.add("date-content")
                 let dateText = document.createTextNode(props.monthRange[i].date);
                 dateElement.appendChild(dateText)
+                dates[i]?.classList.add("filled")
                 dates[i]?.appendChild(dateElement)
+                let themes = Object.keys(theme)
+                
+                for (let x = 0; x < themes.length; x++) {
+                    if (themes[x] === props.thisUser?.theme) {
+                        
+                        let thisTheme: any = theme[themes[x] as keyof Object]
+
+                        let square = dates[i]
+
+                        if (square) {
+                            square.style.backgroundColor = thisTheme.highlight
+                        }
+                    }
+                }
             }
         }
     }, [start, props.monthRange])

@@ -105,13 +105,13 @@ const CalendarRefactor = (props: CalendarProps) => {
             <CalendarController changeMonth={changeMonth} currentMonth={currentMonth} thisStyle={props.thisStyle} thisUser={props.thisUser} />
 
             <div className="weekdays-container">
-                <div className="weekday">Sunday</div>
-                <div className="weekday">Monday</div>
-                <div className="weekday">Tuesday</div>
-                <div className="weekday">Wednesday</div>
-                <div className="weekday">Thursday</div>
-                <div className="weekday">Friday</div>
-                <div className="weekday">Saturday</div>
+                <div className="weekday no-select">Sunday</div>
+                <div className="weekday no-select">Monday</div>
+                <div className="weekday no-select">Tuesday</div>
+                <div className="weekday no-select">Wednesday</div>
+                <div className="weekday no-select">Thursday</div>
+                <div className="weekday no-select">Friday</div>
+                <div className="weekday no-select">Saturday</div>
             </div>
 
             <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
