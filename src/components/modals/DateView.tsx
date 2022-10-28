@@ -125,10 +125,10 @@ const DateView = (props: DateViewType) => {
             <div className="date-controller">
                 {thisDate ?                 
                   <div className="date-head">
-                      <h3 className="date-view-date">{thisDate.date}</h3>
-                      <h2 className="date-view-day">{thisDate.day}</h2>
+                      <h3 className="date-view-date no-select">{thisDate.date}</h3>
+                      <h2 className="date-view-day no-select">{thisDate.day}</h2>
                   </div> : null}
-                <div className="date-close" onClick={()=>props.setDateViewEnabled({"isOpen": false, "id": null})}>X</div>
+                <div className="date-close no-select" onClick={()=>props.setDateViewEnabled({"isOpen": false, "id": null})}>X</div>
             </div>
             <div className="date-view-body-container">
                 <div className="date-view-back" onClick={()=>changeDate("back")}>
