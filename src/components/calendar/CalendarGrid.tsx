@@ -7,13 +7,13 @@ type GridProps = {
         date: string,
         day: string
       }> | null,
-      thisStyle: React.CSSProperties,
-      thisUser?: {
+    thisStyle: React.CSSProperties,
+    thisUser?: {
         handle: string,
         login: string,
         theme: string,
       },
-      setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
+    setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
 }
 
 const CalendarGrid = (props: GridProps) => {
@@ -64,8 +64,15 @@ const CalendarGrid = (props: GridProps) => {
     }, [props.monthRange])
 
     const showDate = (id: number) => {
-        props.setDateViewEnabled({"isOpen": true, "id": id})
+        let dateElement = document.getElementById(String(id))
         
+        if (props.monthRange) {
+            for (let i = 0; i < props.monthRange.length; i++) {
+                if (props.monthRange[i].date === dateElement?.textContent) {
+                    props.setDateViewEnabled({"isOpen": true, "id": id})
+                }
+            }
+        }
     }
 
     useEffect(()=> {
