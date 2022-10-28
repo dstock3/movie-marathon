@@ -34,7 +34,7 @@ const DateView = (props: DateViewType) => {
             index = i
           }
         }
-        if (index) {
+        if (typeof index === "number") {
           setThisDate({
             "date": props.monthRange[index].date,
             "day": props.monthRange[index].day
