@@ -32,6 +32,13 @@
     align-items: center;
 }
 
+.date-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 57%;
+}
+
 .date-view-body {
     width: 80%;
 }

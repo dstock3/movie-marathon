@@ -36,6 +36,10 @@
     box-shadow: 5px 2px 7px rgba(34, 34, 34, 0.393);
 }
 
+.sidebar-selected {
+    list-style: circle;
+}
+
 .toggle-btn {
     height: 30px;
     width: 30px;

@@ -55,6 +55,9 @@ const Sidebar = (props: SidebarProps) => {
           </div>
 
           <ul className="sidebar-options">
+            <li className="sidebar-option sidebar-selected">
+              Calendar
+            </li>
             <li className="sidebar-option">
               Your Feed
             </li>
