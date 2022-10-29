@@ -51,14 +51,16 @@ const Sidebar = (props: SidebarProps) => {
 
     return (
         <section className="sidebar" style={sidebarStyle}>
-          <div className="sidebar-head">
-            <h1>FilmStack</h1>
-            <div className="hide-button" style={hideButton} onClick={() => props.setIsExpanded(!props.isExpanded)}>
-              Hide
+          <div className="sidebar-head-container">
+            <div className="sidebar-head">
+              <h1>FilmStack</h1>
+              <div className="hide-button" style={hideButton} onClick={() => props.setIsExpanded(!props.isExpanded)}>
+                Hide
+              </div>
             </div>
+            <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData}/>
           </div>
-          <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData}/>
-
+          
           <ul className="sidebar-options">
             <li className="sidebar-option sidebar-selected">
               Calendar

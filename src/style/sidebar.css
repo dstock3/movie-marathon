@@ -1,17 +1,21 @@
 .sidebar {
     display: flex;
     flex-direction: column;
+    align-items: space-between;
+}
+
+.sidebar-head-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+
 }
 
 .sidebar-head {
-    width: 15%;
-    position: absolute;
-    top: 4%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 85%;
 }
 
 .sidebar-options {
@@ -52,4 +56,24 @@
     bottom: 45px;
     left: 75px;
     box-shadow: 5px 2px 7px rgba(34, 34, 34, 0.393);
+}
+
+.search-container {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    border-radius: 15px;
+    margin-right: 15px;
+    width: 50%;
+    font-size: 1.10em;
+}
+
+.search-icon {
+    cursor: pointer;
+    margin-right: 15px;
 }

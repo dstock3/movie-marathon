@@ -11,17 +11,3 @@
 .menu {
     margin-right: 15px;
 }
-
-.search-container {
-    width: 18%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.search-input {
-    border-radius: 15px;
-}
-
-.search-icon {
-    cursor: pointer;
-}

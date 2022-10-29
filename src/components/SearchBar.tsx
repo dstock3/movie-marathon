@@ -1,5 +1,6 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import React, { useState, useEffect, Dispatch, SetStateAction, useContext } from 'react'
 import { ResponseDataType } from '../App'
+import { ThemeContext } from '../components/context/ThemeContext'
 
 type SearchProps = {
   thisStyle: React.CSSProperties,
@@ -15,12 +16,24 @@ type SearchProps = {
 
 const SearchBar = (props: SearchProps) => {
   const [searchInput, setSearchInput] = useState("");
+  const theme = useContext(ThemeContext)
+  const [searchStyle, setSearchStyle] = useState<React.CSSProperties>({});
   
   useEffect(()=> {
     if (props.thisUser) {
       //change search icon depending on user theme
 
+      let themes = Object.keys(theme)
+      if (props.thisUser) {
+        for (let i = 0; i < themes.length; i++) {
+          if (themes[i] === props.thisUser.theme) {
+            
+            let thisTheme: any = theme[themes[i] as keyof Object]
 
+            setSearchStyle({borderTop: thisTheme.border, borderBottom: thisTheme.border})
+          }
+        }
+      }
     }
 
   }, [props.thisUser])
@@ -47,7 +60,7 @@ const SearchBar = (props: SearchProps) => {
   }
 
   return (
-    <div className="search-container">
+    <div className="search-container" style={searchStyle}>
         <img className="search-icon" alt="search icon" onClick={handleSearch}></img>
         <input className="search-input" value={searchInput} onChange={e => setSearchInput(e.target.value)}></input>
     </div>
