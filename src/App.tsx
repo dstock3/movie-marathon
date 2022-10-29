@@ -22,7 +22,7 @@ export type DateViewEnabledType = {
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[3])
+  const [user, setUser] = useState(dummyData.users[2])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
@@ -103,7 +103,7 @@ const App = () => {
       <div 
         className="App" 
         style={appStyle}>
-          <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+          <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} />
           <section className={`primary`} style={primeStyle}>
             <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
 

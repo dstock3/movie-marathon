@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext, Dispatch, SetStateAction } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/sidebar.css'
+import SearchBar from '../SearchBar'
+import { ResponseDataType } from '../../App'
 
 type SidebarProps = {
     thisStyle: React.CSSProperties,
@@ -8,9 +10,12 @@ type SidebarProps = {
       handle: string,
       login: string,
       theme: string,
+      metadataIsAllowed: boolean,
+      searchData: Array<string>,
     },
     isExpanded: boolean,
-    setIsExpanded: Dispatch<SetStateAction<boolean>>
+    setIsExpanded: Dispatch<SetStateAction<boolean>>,
+    setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
 }
 
 const Sidebar = (props: SidebarProps) => {
@@ -42,7 +47,6 @@ const Sidebar = (props: SidebarProps) => {
         } else {
             setSidebarStyle({...sidebarStyle, ...compressed})
         }
-
     }, [props.isExpanded])
 
     return (
@@ -53,6 +57,7 @@ const Sidebar = (props: SidebarProps) => {
               Hide
             </div>
           </div>
+          <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData}/>
 
           <ul className="sidebar-options">
             <li className="sidebar-option sidebar-selected">
@@ -70,7 +75,7 @@ const Sidebar = (props: SidebarProps) => {
             <li className="sidebar-option">
               Upcoming Stacks
             </li>
-          </ul>    
+          </ul>
         </section>
     )
 }
