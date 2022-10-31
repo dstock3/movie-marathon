@@ -78,19 +78,19 @@ const Sidebar = (props: SidebarProps) => {
           </div>
           
           <ul className="sidebar-options">
-            <li className="sidebar-option" id="calendar-option" onClick={()=>props.setPage("calendar")}>
+            <li className="sidebar-option no-select" id="calendar-option" onClick={()=>props.setPage("calendar")}>
               Calendar
             </li>
-            <li className="sidebar-option" id="feed-option" onClick={()=>props.setPage("feed")}>
+            <li className="sidebar-option no-select" id="feed-option" onClick={()=>props.setPage("feed")}>
               Your Feed
             </li>
-            <li className="sidebar-option" id="week-option" onClick={()=>props.setPage("week")}>
+            <li className="sidebar-option no-select" id="week-option" onClick={()=>props.setPage("week")}>
               Week at a Glance
             </li>
-            <li className="sidebar-option" id="fav-option" onClick={()=>props.setPage("fav")}>
+            <li className="sidebar-option no-select" id="fav-option" onClick={()=>props.setPage("fav")}>
               Favorites
             </li>
-            <li className="sidebar-option" id="upcoming-option" onClick={()=>props.setPage("upcoming")}>
+            <li className="sidebar-option no-select" id="upcoming-option" onClick={()=>props.setPage("upcoming")}>
               Upcoming Stacks
             </li>
           </ul>
