@@ -18,7 +18,9 @@ type MainProps = {
       totalResults: string,
     } | null,
     dateViewEnabled: DateViewEnabledType,
-    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
+    page: string,
+    setPage: Dispatch<SetStateAction<string>>
 }
 
 type MovieType = {

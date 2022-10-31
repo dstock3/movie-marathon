@@ -16,6 +16,8 @@ type SidebarProps = {
     isExpanded: boolean,
     setIsExpanded: Dispatch<SetStateAction<boolean>>,
     setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
+    page: string,
+    setPage: Dispatch<SetStateAction<string>>
 }
 
 const Sidebar = (props: SidebarProps) => {
@@ -37,6 +39,20 @@ const Sidebar = (props: SidebarProps) => {
         }
       }
     }, [props.thisUser, props.thisStyle])
+
+    useEffect(()=> {
+      if (props.page) {
+        let options = Array.from(document.getElementsByClassName("sidebar-option"))
+        
+        for (let i = 0; i < options.length; i++) {
+          options[i].classList.remove("sidebar-selected")
+        }
+
+        let pageOption = document.getElementById(`${props.page}-option`)
+        pageOption?.classList.add("sidebar-selected")
+
+      }
+    }, [props.page])
 
     useEffect(()=> {
         let expandedWidth ={"width":"20vw", "visibility":"visible"}
@@ -62,19 +78,19 @@ const Sidebar = (props: SidebarProps) => {
           </div>
           
           <ul className="sidebar-options">
-            <li className="sidebar-option sidebar-selected">
+            <li className="sidebar-option" id="calendar-option" onClick={()=>props.setPage("calendar")}>
               Calendar
             </li>
-            <li className="sidebar-option">
+            <li className="sidebar-option" id="feed-option" onClick={()=>props.setPage("feed")}>
               Your Feed
             </li>
-            <li className="sidebar-option">
+            <li className="sidebar-option" id="week-option" onClick={()=>props.setPage("week")}>
               Week at a Glance
             </li>
-            <li className="sidebar-option">
+            <li className="sidebar-option" id="fav-option" onClick={()=>props.setPage("fav")}>
               Favorites
             </li>
-            <li className="sidebar-option">
+            <li className="sidebar-option" id="upcoming-option" onClick={()=>props.setPage("upcoming")}>
               Upcoming Stacks
             </li>
           </ul>
