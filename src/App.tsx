@@ -30,6 +30,7 @@ const App = () => {
   
   const [thisStyle, setThisStyle] = useState({ })
   const [appStyle, setAppStyle] = useState(thisStyle)
+  const [page, setPage] = useState<string>("calendar")
 
   useEffect(()=> {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
@@ -103,11 +104,11 @@ const App = () => {
       <div 
         className="App" 
         style={appStyle}>
-          <Sidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} />
+          <Sidebar page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} />
           <section className={`primary`} style={primeStyle}>
             <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
 
-            <Main thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
+            <Main page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
 
             <Footer thisStyle={thisStyle} thisUser={user} />
           </section>
