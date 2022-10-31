@@ -1,0 +1,17 @@
+.main-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.attribution {
+    margin-block: 25px;
+}
+
+.social-links {
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+
+}

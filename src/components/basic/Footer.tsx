@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
+import '../../style/footer.css'
 
 type FooterProps = {
     thisStyle: React.CSSProperties,
