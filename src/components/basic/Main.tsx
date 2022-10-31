@@ -4,6 +4,10 @@ import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
 import CalendarRefactor from '../calendar/CalendarRefactor'
 import { DateViewEnabledType } from '../../App'
+import Feed from '../feed/Feed'
+import WeekGlance from '../week/WeekGlance'
+import Favs from '../favorites/Favs'
+import Upcoming from '../upcoming/Upcoming'
 
 type MainProps = {
     thisStyle: React.CSSProperties,
@@ -49,10 +53,17 @@ const Main = (props: MainProps) => {
         </div>
         </>
     : null}
-    <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled}/>
-    {/*
-    <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData}/>
-    */}
+    {props.page === "calendar" ? 
+      <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled}/> : 
+    props.page === "feed" ? 
+      <Feed /> :
+    props.page === "week" ? 
+      <WeekGlance /> :
+    props.page === "fav" ?
+      <Favs /> :
+    props.page === "upcoming" ?
+      <Upcoming /> : null
+    }
     </main>
   )
 }
