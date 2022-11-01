@@ -49,9 +49,9 @@ const Calendar = (props: CalendarProps) => {
     const [currentYear, setCurrentYear] = useState(format(currentDate, 'y'))
 
     useEffect(()=> {    
-        const oneYearAgo = format(new Date(parseInt(format(new Date(), 'y')) - 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+        const oneYearAgo = format(new Date(parseInt(currentYear) - 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
     
-        const oneYearFromToday = format(new Date(parseInt(format(new Date(), 'y')) + 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+        const oneYearFromToday = format(new Date(parseInt(currentYear) + 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
         
         const thisRange = eachDayOfInterval({
           start: new Date(oneYearAgo),
@@ -71,7 +71,7 @@ const Calendar = (props: CalendarProps) => {
           }
           setMonthRange(monthArray)
         }
-      }, [currentMonth])
+      }, [currentMonth, currentYear])
     
     const changeMonth = (directive: string) => {
       let index
