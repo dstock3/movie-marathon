@@ -97,10 +97,6 @@ const Calendar = (props: CalendarProps) => {
         }
       }
     }
-    useEffect(()=> {
-      console.log(currentYear)
-
-    }, [currentYear])
     
     return (
       <>

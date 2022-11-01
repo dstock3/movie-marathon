@@ -14,6 +14,7 @@ type MainProps = {
       handle: string,
       login: string,
       theme: string,
+      movies: Array<string>
     },
     responseData: {
       Response: boolean,
@@ -26,7 +27,7 @@ type MainProps = {
     setPage: Dispatch<SetStateAction<string>>
 }
 
-type MovieType = {
+export type MovieType = {
   [key: string]: any
   propname?: any
 }
@@ -59,7 +60,7 @@ const Main = (props: MainProps) => {
     props.page === "week" ? 
       <WeekGlance /> :
     props.page === "fav" ?
-      <Favs /> :
+      <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     props.page === "upcoming" ?
       <Upcoming /> : null
     }
