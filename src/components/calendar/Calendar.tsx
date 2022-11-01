@@ -1,9 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState, Dispatch, SetStateAction} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar.css'
-import { ThemeContext } from '../context/ThemeContext'
-import backIcon from '../../assets/back.svg'
-import forwardIcon from '../../assets/forward.svg'
+import CalendarController from './CalendarController'
+import CalendarGrid from './CalendarGrid'
+import DateView from '../modals/DateView'
+import { DateViewEnabledType } from '../../App'
 
 type CalendarProps = {
   thisStyle: React.CSSProperties,
@@ -17,119 +18,111 @@ type CalendarProps = {
     Search: Array<object>,
     totalResults: string,
   } | null,
+  dateViewEnabled: DateViewEnabledType,
+  setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }
 
+export type MonthRangeType = Array<{
+    date: string,
+    day: string
+}> | null
+
 const Calendar = (props: CalendarProps) => {
-  const theme = useContext(ThemeContext)
-  const [currentDate, setCurrentDate] = useState(String(new Date()))
-  const [currentMonth, setCurrentMonth] = useState(String(format(new Date(), 'MMMM')))
-  const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
-  const [thisMonthDays, setThisMonthDays] = useState()
-  const [monthRange, setMonthRange] = useState<Array<String> | null>()
-  const [imgIconStyle, setImgIconStyle] = useState<React.CSSProperties>({"fill": theme.light.text})
-  
-  useEffect(()=> {
-    const today = new Date(currentDate)
+    const [months, setMonths] = useState([
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ])
+    const [currentMonth, setCurrentMonth] = useState(months[9])
+    const [currentDate, setCurrentDate] = useState(new Date())
+    const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
+    const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
+    const [currentYear, setCurrentYear] = useState(format(currentDate, 'y'))
 
-    const currentYear = format(today, 'y')
-
-    const oneYearAgo = format(new Date(parseInt(format(new Date(), 'y')) - 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
-
-    const oneYearFromToday = format(new Date(parseInt(format(new Date(), 'y')) + 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+    useEffect(()=> {    
+        const oneYearAgo = format(new Date(parseInt(format(new Date(), 'y')) - 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
     
-    const thisRange = eachDayOfInterval({
-      start: new Date(oneYearAgo),
-      end: new Date(oneYearFromToday)
-    })
-    setRangeOfDates(thisRange)
-    
-    let monthArray = []
-    for (let i = 0; i < thisRange.length; i++) {
-      let thisDay = new Date(thisRange[i])
-      let formattedThisYear = format(thisDay, 'y')
-      let formattedThisMonth = format(thisDay, 'MMMM')
-      
-      if (formattedThisMonth === currentMonth &&
-        currentYear === formattedThisYear) {
-          monthArray.push(format(thisDay, 'MM/dd/y'))
-      }
-      
-      setMonthRange(monthArray)
-    }
-  }, [currentMonth])
-
-  const changeMonth = (directive: String) => {
-    const currentYear = parseInt(format(new Date(), 'y'))
-    
-    let thisMonth = format(new Date(parseInt(format(new Date(), 'y')) - 1, parseInt(format(new Date(currentMonth + "1" + currentYear), 'MM')), parseInt(format(new Date(), 'dd'))), 'MM')
-
-    console.log("refMonth: " +thisMonth)
-    
-    if (directive === "back") {
-      let backOne = parseInt(thisMonth) - 1
-      console.log("back one: " + backOne)
-      let lastYear
-      if (backOne === 12) lastYear = currentYear + 1
-      setCurrentMonth(format(backOne, 'MMMM'))
-
-    } else if (directive === "forward") {
-      
-      let forwardOne = parseInt(thisMonth) + 1
-      let nextYear
-      if (forwardOne === 1) nextYear = currentYear + 1
-      console.log("forward one: " + forwardOne)
-      setCurrentMonth(format(forwardOne, 'MMMM'))
-    }
-  }
-
-  useEffect(()=> {
-    let forward = document.getElementById("forward")
-    let back = document.getElementById("back")
-
-    let themes = Object.keys(theme)
-    if (props.thisUser && forward && back) {
-      for (let i = 0; i < themes.length; i++) {
-        if (themes[i] === props.thisUser.theme) {
+        const oneYearFromToday = format(new Date(parseInt(format(new Date(), 'y')) + 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+        
+        const thisRange = eachDayOfInterval({
+          start: new Date(oneYearAgo),
+          end: new Date(oneYearFromToday)
+        })
+        setRangeOfDates(thisRange)
+        
+        let monthArray = []
+        for (let i = 0; i < thisRange.length; i++) {
+          let thisDay = new Date(thisRange[i])
+          let formattedThisYear = format(thisDay, 'y')
+          let formattedThisMonth = format(thisDay, 'MMMM')
           
-          let thisTheme: any = theme[themes[i] as keyof Object]
+          if (formattedThisMonth === currentMonth &&
+            currentYear === formattedThisYear) {
+                monthArray.push({"date":format(thisDay, 'MM/dd/y'), "day":format(thisDay, 'EEEE')})
+          }
+          setMonthRange(monthArray)
+        }
+      }, [currentMonth])
+    
+    const changeMonth = (directive: string) => {
+      let index
+      for (let i = 0; i < months.length; i++) {
+        if (months[i] === currentMonth) {
+          index = i
+        }
+      }
 
-          forward.setAttribute("fill", thisTheme.text)
-          back.setAttribute("fill", thisTheme.text)
+      if (directive === "back" && index !== undefined) {
+        if (index > 0) {
+          setCurrentMonth(months[index - 1])
+        } else {
+          setCurrentYear(String(parseInt(currentYear) - 1))
+          setCurrentMonth(months[11])
+        }
+      } else if (directive === "forward" && index !== undefined) {
+        if (index < 11) {
+          setCurrentMonth(months[index + 1])
+        } else {
+          setCurrentYear(String(parseInt(currentYear) + 1))
+          setCurrentMonth(months[0])
         }
       }
     }
-  }, [props.thisUser, props.thisStyle])
+    useEffect(()=> {
+      console.log(currentYear)
 
-  return (
-    <div className="calendar-container">
-      <div className="calendar-controller">
-        <div className="back" onClick={()=>changeMonth("back")}>
-          <svg className="back-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-            <path id="back" d="M28.05 36 16 23.95 28.05 11.9l2.15 2.15-9.9 9.9 9.9 9.9Z"/>
-          </svg>
-        </div>
+    }, [currentYear])
+    
+    return (
+      <>
+        <div className="calendar-container">
+            <CalendarController changeMonth={changeMonth} currentMonth={currentMonth} thisStyle={props.thisStyle} thisUser={props.thisUser} />
 
-        <h2 className="month">{currentMonth}</h2>
-
-        <div className="forward" onClick={()=>changeMonth("forward")}>
-          <svg className="forward-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-            <path id="forward" d="m18.75 36-2.15-2.15 9.9-9.9-9.9-9.9 2.15-2.15L30.8 23.95Z"/>
-          </svg>
-        </div>
-      </div>
-      
-      <div className="calendar-grid">
-        {monthRange ? monthRange.map((value, index)=> {
-          return (
-            <div className="day" key={index} id={String(index)}>
-              <div className="date-value">{value}</div>
-              
+            <div className="weekdays-container">
+                <div className="weekday no-select">Sunday</div>
+                <div className="weekday no-select">Monday</div>
+                <div className="weekday no-select">Tuesday</div>
+                <div className="weekday no-select">Wednesday</div>
+                <div className="weekday no-select">Thursday</div>
+                <div className="weekday no-select">Friday</div>
+                <div className="weekday no-select">Saturday</div>
             </div>
-          )
-        }) : null}
-      </div>
-    </div>
-  )
+
+            <CalendarGrid monthRange={monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
+        </div>
+        {props.dateViewEnabled.isOpen ? 
+          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonth} /> : null}
+      </>
+    )
 }
 
 export default Calendar

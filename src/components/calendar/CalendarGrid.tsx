@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, Dispatch, SetStateAction } from 'react'
-import '../../style/calendar-refactor.css'
+import '../../style/calendar.css'
 import { ThemeContext } from '../context/ThemeContext'
 
 type GridProps = {

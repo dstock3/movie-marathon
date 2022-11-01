@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
-import '../../style/calendar-refactor.css'
+import '../../style/calendar.css'
 
 type ControllerProps = {
     changeMonth: (directive: string) => void,

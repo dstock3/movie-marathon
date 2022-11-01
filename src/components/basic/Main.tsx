@@ -2,7 +2,6 @@ import React, {Dispatch, SetStateAction} from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
-import CalendarRefactor from '../calendar/CalendarRefactor'
 import { DateViewEnabledType } from '../../App'
 import Feed from '../feed/Feed'
 import WeekGlance from '../week/WeekGlance'
@@ -54,7 +53,7 @@ const Main = (props: MainProps) => {
         </>
     : null}
     {props.page === "calendar" ? 
-      <CalendarRefactor thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled}/> : 
+      <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled}/> : 
     props.page === "feed" ? 
       <Feed /> :
     props.page === "week" ? 
