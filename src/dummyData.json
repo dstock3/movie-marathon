@@ -6,11 +6,31 @@
         "metadataIsAllowed": true,
         "searchData": [],
         "movies":[
-            "The Matrix",
-            "Goodfellas",
-            "One Flew Over the Cuckoo's Nest",
-            "Se7en",
-            "Seven Samurai"
+            {
+
+                "Title": "The Matrix"
+
+            },
+            {
+
+                "Title": "Goodfellas"
+
+            },
+            {
+
+                "Title": "One Flew Over the Cuckoo's Nest"
+
+            },
+            {
+
+                "Title": "Se7en"
+
+            },
+            {
+
+                "Title": "Seven Samurai"
+
+            }            
         ] 
     },
     { 
@@ -20,11 +40,32 @@
         "metadataIsAllowed": false,
         "searchData": [],         
         "movies":[
-            "The Shawshank Redemption",
-            "The Godfather",
-            "The Dark Knight",
-            "The Godfather Part II",
-            "12 Angry Men"
+            {
+
+                "Title": "The Shawshank Redemption"
+
+            },
+            {
+
+                "Title":  "The Godfather"
+
+            },
+            {
+
+                "Title": "The Dark Knight"
+
+
+            },
+            {
+
+                "Title": "The Godfather Part II"
+
+            },
+            {
+
+                "Title": "12 Angry Men"
+
+            }
         ]  
     },
     { 
@@ -34,11 +75,33 @@
         "metadataIsAllowed": true,
         "searchData": [],         
         "movies":[
-            "Schindler's List",
-            "The Lord of the Rings: The Return of the King",
-            "Pulp Fiction",
-            "The Lord of the Rings: The Fellowship of the Ring",
-            "The Good, the Bad and the Ugly"            
+            {
+
+                "Title": "Schindler's List"
+
+            },
+            {
+
+                "Title": "The Lord of the Rings: The Return of the King"
+
+
+            },
+            {
+
+                "Title": "Pulp Fiction"
+
+
+            },
+            {
+
+                "Title": "The Lord of the Rings: The Fellowship of the Ring"
+    
+            },
+            {
+
+                "Title": "The Good, the Bad and the Ugly"
+
+            }
         ]  
     },
     { 
@@ -48,13 +111,37 @@
         "metadataIsAllowed": true,
         "searchData": [],         
         "movies":[
-            "Forrest Gump",
-            "Fight Club",
-            "Inception",
-            "The Lord of the Rings: The Two Towers",
-            "Star Wars: Episode V"
+            {
+                "Poster": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+                "Title": "Forrest Gump",
+                "Year": "1994",
+                "imdbID": "tt0109830"
+            },
+            {
+                "Poster": "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg",
+                "Title": "Fight Club",
+                "Year": "1999",
+                "imdbID": "tt0137523"
+            },
+            {
+                "Poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+                "Title": "Inception",
+                "Year": "2010",
+                "imdbID": "tt1375666"
+
+            },
+            {
+                "Poster": "https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+                "Title": "The Lord of the Rings: The Two Towers",
+                "Year": "2002",
+                "imdbID": "tt0167261"
+            },
+            {
+                "Poster": "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+                "Title": "Star Wars: Episode V",
+                "Year": "1980",
+                "imdbID": "tt0080684"
+            }
         ]  
     }
-
-
 ]}

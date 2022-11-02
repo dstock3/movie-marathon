@@ -14,7 +14,7 @@ type MainProps = {
       handle: string,
       login: string,
       theme: string,
-      movies: Array<string>
+      movies: Array<Object>
     },
     responseData: {
       Response: boolean,
