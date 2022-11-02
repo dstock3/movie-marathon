@@ -42,8 +42,9 @@ const Calendar = (props: CalendarProps) => {
       "November",
       "December"
     ])
-    const [currentMonth, setCurrentMonth] = useState(months[9])
+
     const [currentDate, setCurrentDate] = useState(new Date())
+    const [currentMonth, setCurrentMonth] = useState(format(new Date(), 'MMMM'))
     const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
     const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
     const [currentYear, setCurrentYear] = useState(format(currentDate, 'y'))
