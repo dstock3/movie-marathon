@@ -85,7 +85,6 @@ const CalendarGrid = (props: GridProps) => {
                 square.firstChild.remove() 
             }
 
-            
             let themes = Object.keys(theme)
             
             for (let x = 0; x < themes.length; x++) {
@@ -94,7 +93,7 @@ const CalendarGrid = (props: GridProps) => {
                   let thisTheme: any = theme[themes[x] as keyof Object]
 
                   if (square !== null) {
-                    square.style.backgroundColor = thisTheme.main
+                    square.style.backgroundColor = thisTheme.highlight
                     
                   }
                 }
@@ -114,20 +113,7 @@ const CalendarGrid = (props: GridProps) => {
                 dateElement.appendChild(dateText)
                 dates[i]?.classList.add("filled")
                 dates[i]?.appendChild(dateElement)
-                let themes = Object.keys(theme)
-                
-                for (let x = 0; x < themes.length; x++) {
-                    if (themes[x] === props.thisUser?.theme) {
-                        
-                        let thisTheme: any = theme[themes[x] as keyof Object]
 
-                        let square = dates[i]
-
-                        if (square) {
-                            square.style.backgroundColor = thisTheme.highlight
-                        }
-                    }
-                }
             }
         }
     }, [start, props.monthRange])
