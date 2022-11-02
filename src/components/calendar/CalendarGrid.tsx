@@ -93,7 +93,7 @@ const CalendarGrid = (props: GridProps) => {
                   let thisTheme: any = theme[themes[x] as keyof Object]
 
                   if (square !== null) {
-                    square.style.backgroundColor = thisTheme.highlight
+                    square.style.backgroundColor = thisTheme.main
                     
                   }
                 }
