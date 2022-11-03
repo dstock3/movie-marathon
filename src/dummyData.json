@@ -5,6 +5,12 @@
         "theme":"dark",
         "metadataIsAllowed": true,
         "searchData": [],
+        "posts": [
+            {
+                "date": "10/23/2022",
+                "content": "I guess you could say I'm a big 'film head,' as they say. My guys? Tarantino, Scorsese, Kubrick, etc. Heh!"
+            }
+        ], 
         "movies":[
             {
 
@@ -38,7 +44,13 @@
         "login":"horror-fan@gmail.com",
         "theme":"light",
         "metadataIsAllowed": false,
-        "searchData": [],         
+        "searchData": [],
+        "posts": [
+            {
+                "date": "10/11/2022",
+                "content": "Looking forward to the new Munsters movie directed by none other than Rob Zombie. It looks extremely kitchy, but that's what the subject matter calls for!"
+            }
+        ],          
         "movies":[
             {
 
@@ -73,7 +85,13 @@
         "login":"karl91@protonmail.com",
         "theme":"mint",
         "metadataIsAllowed": true,
-        "searchData": [],         
+        "searchData": [],
+        "posts": [
+            {
+                "date": "11/02/2022",
+                "content": "Love the resurgence of cheesy 2000s era horror movies like The Ring. Smile is right up my alley."
+            }
+        ],         
         "movies":[
             {
 
@@ -109,7 +127,21 @@
         "login":"DDSFilm@protonmail.com",
         "theme":"midnight",
         "metadataIsAllowed": true,
-        "searchData": [],         
+        "searchData": [],
+        "posts": [
+            {
+                "date": "11/01/2022",
+                "content": "Just watched an interesting film by the name of Triangle of Saddness. It's not for the faint of heart!"
+            },
+            {
+                "date": "10/15/2022",
+                "content": "Halloween is fast approaching! Anyone got a good horror rec?"
+            },
+            {
+                "date": "10/09/2022",
+                "content": "I know I'm late to the game, but the new Batman is incredible."
+            }
+        ],         
         "movies":[
             {
                 "Poster": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
