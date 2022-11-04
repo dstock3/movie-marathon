@@ -1,4 +1,3 @@
-import React from 'react'
 import { MovieType, FavProps } from '../../Types.types'
 import '../../style/favs.css'
 

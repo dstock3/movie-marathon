@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Dispatch, SetStateAction } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import '../../style/calendar.css'
 import { ThemeContext } from '../context/ThemeContext'
 import { GridProps} from '../../Types.types'
