@@ -20,6 +20,7 @@ type Post = {
 const Feed = (props: FeedProps) => {
   const [posts, setPosts] = useState<Array<Post> | null>(null)
   const [feedStyle, setFeedStyle] = useState<React.CSSProperties | Object>({})
+  const [postStyle, setPostStyle] = useState<React.CSSProperties | Object>({})
   const theme = useContext(ThemeContext)
 
   useEffect(()=> {
@@ -41,16 +42,22 @@ const Feed = (props: FeedProps) => {
   useEffect(()=> {
     let themes = Object.keys(theme)
 
-
     if (props.thisUser) {
       for (let i = 0; i < themes.length; i++) {
         if (themes[i] === props.thisUser.theme) {
           
           let thisTheme: any = theme[themes[i] as keyof Object]
 
+          setPostStyle({
+            ...postStyle, 
+            ...{borderBottom: thisTheme.border},
+            ...props.thisStyle 
+
+          })
+
           setFeedStyle({
             ...feedStyle, 
-            ...{borderLeft: thisTheme.border, borderRight: thisTheme.border}, 
+            ...{borderTop: thisTheme.border, borderLeft: thisTheme.border, borderRight: thisTheme.border}, 
             ...props.thisStyle})
         }
       }
@@ -68,7 +75,7 @@ const Feed = (props: FeedProps) => {
       })
       .map((post: Post, index)=> {
         return(
-          <div key={post.id} className="post-container">
+          <div key={post.id} className="post-container" style={postStyle}>
             <div className="post-head">
               <div className="post-handle">{post.handle}</div>
               <div className="post-date">{post.date}</div>
