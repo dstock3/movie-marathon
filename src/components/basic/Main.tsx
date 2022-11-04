@@ -8,13 +8,19 @@ import WeekGlance from '../week/WeekGlance'
 import Favs from '../favorites/Favs'
 import Upcoming from '../upcoming/Upcoming'
 
+export type PostType = {
+  date: string
+  content: string
+}
+
 type MainProps = {
     thisStyle: React.CSSProperties,
     thisUser?: {
       handle: string,
       login: string,
       theme: string,
-      movies: Array<Object>
+      movies: Array<Object>,
+      posts: Array<PostType>
     },
     responseData: {
       Response: boolean,
@@ -56,7 +62,7 @@ const Main = (props: MainProps) => {
     {props.page === "calendar" ? 
       <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled}/> : 
     props.page === "feed" ? 
-      <Feed /> :
+      <Feed thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     props.page === "week" ? 
       <WeekGlance /> :
     props.page === "fav" ?

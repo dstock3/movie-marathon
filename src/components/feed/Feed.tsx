@@ -1,9 +1,5 @@
 import React from 'react'
-
-type PostType = {
-  date: string
-  content: string
-}
+import { PostType } from '../basic/Main'
 
 type FeedProps = {
   thisStyle: React.CSSProperties,
@@ -11,7 +7,8 @@ type FeedProps = {
     handle: string,
     login: string,
     theme: string,
-    posts: PostType
+    movies: Array<Object>,
+    posts: Array<PostType>
   }
 }
 
@@ -20,7 +17,9 @@ const Feed = (props: FeedProps) => {
     <div className="feed-container">
       {props.thisUser?.posts.map((post: PostType, index) => {
         return (
-          <div className="post-container">
+          <div key={index} className="post-container">
+            {post.content}
+            
 
           </div>
         );
