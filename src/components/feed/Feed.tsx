@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Users, ThisUser } from '../basic/Main'
 import uniqueid from 'uniqid'
+import '../../style/feed.css'
+import { ThemeContext } from '../context/ThemeContext'
 
 type FeedProps = {
   users: Users,
@@ -17,6 +19,8 @@ type Post = {
 
 const Feed = (props: FeedProps) => {
   const [posts, setPosts] = useState<Array<Post> | null>(null)
+  const [feedStyle, setFeedStyle] = useState<React.CSSProperties | Object>({})
+  const theme = useContext(ThemeContext)
 
   useEffect(()=> {
     let postArray = []
@@ -34,8 +38,29 @@ const Feed = (props: FeedProps) => {
     setPosts(postArray)
   }, [props.users])
 
+  useEffect(()=> {
+    let themes = Object.keys(theme)
+
+
+    if (props.thisUser) {
+      for (let i = 0; i < themes.length; i++) {
+        if (themes[i] === props.thisUser.theme) {
+          
+          let thisTheme: any = theme[themes[i] as keyof Object]
+
+          setFeedStyle({
+            ...feedStyle, 
+            ...{borderLeft: thisTheme.border, borderRight: thisTheme.border}, 
+            ...props.thisStyle})
+        }
+      }
+    }
+
+
+  }, [props.thisStyle])
+
   return (
-    <div className="feed-container">
+    <div className="feed-container" style={feedStyle}>
       {posts?.sort(function compare(a, b) {
         let dateA = new Date(a.date);
         let dateB = new Date(b.date);
