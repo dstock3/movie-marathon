@@ -9,6 +9,7 @@ const DateView = (props: DateViewType) => {
     const [thisDate, setThisDate] = useState<{"date": string, "day": string} | undefined | null>(null)
     const [dateStyle, setDateStyle] = useState<React.CSSProperties>(props.thisStyle)
     const [dir, setDir] = useState<string | null>(null)
+    const [buttonStyle, setButtonStyle] = useState<React.CSSProperties | Object>({})
     
     useEffect(()=> {
       if (props.dateViewEnabled.id && props.monthRange) {
@@ -37,7 +38,13 @@ const DateView = (props: DateViewType) => {
               
               let thisTheme: any = theme[themes[i] as keyof Object]
   
-              setDateStyle({...props.thisStyle, ...{"border": thisTheme.border}})
+              setDateStyle({...props.thisStyle, ...{border: thisTheme.border}})
+              setButtonStyle({
+                ...props.thisStyle, 
+                ...{border: thisTheme.border, 
+                  backgroundColor: thisTheme.text,
+                  color: thisTheme.main
+                }})
             }
           }
         }
@@ -123,6 +130,9 @@ const DateView = (props: DateViewType) => {
                     </svg>
                 </div>
                 <div className="date-view-body">
+                  <div className="date-view-panel">
+                    <div className="add-button" style={buttonStyle}>+</div>
+                  </div>
 
                 </div>
                 <div className="date-view-forward" onClick={()=>changeDate("forward")}>

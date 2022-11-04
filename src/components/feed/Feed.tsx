@@ -43,13 +43,11 @@ const Feed = (props: FeedProps) => {
 
           setFeedStyle({
             ...feedStyle, 
-            ...{borderTop: thisTheme.border, borderLeft: thisTheme.border, borderRight: thisTheme.border}, 
+            ...{borderLeft: thisTheme.border, borderRight: thisTheme.border}, 
             ...props.thisStyle})
         }
       }
     }
-
-
   }, [props.thisStyle])
 
   return (

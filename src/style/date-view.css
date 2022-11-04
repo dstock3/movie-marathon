@@ -40,9 +40,27 @@
 }
 
 .date-view-body {
+    height: 85%;
     width: 80%;
 }
 
 .date-view-forward, .date-view-back {
     cursor: pointer;
+}
+
+.date-view-panel {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+}
+
+.add-button {
+    font-weight: bold;
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
