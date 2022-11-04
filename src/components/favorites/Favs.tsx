@@ -1,16 +1,6 @@
 import React from 'react'
-import { MovieType } from '../basic/Main'
+import { MovieType, FavProps } from '../../Types.types'
 import '../../style/favs.css'
-
-type FavProps = {
-  thisStyle: React.CSSProperties,
-  thisUser?: {
-    handle: string,
-    login: string,
-    theme: string,
-    movies: Array<Object>
-  }
-}
 
 const Favs = (props: FavProps) => {
   return (

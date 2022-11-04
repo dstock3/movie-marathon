@@ -1,19 +1,7 @@
-import React, { useEffect, useState, useContext, Dispatch, SetStateAction } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/header.css'
-import { ResponseDataType } from "../../App"
-
-type HeaderProps = {
-  thisStyle: React.CSSProperties,
-  thisUser?: {
-    handle: string,
-    login: string,
-    theme: string,
-    metadataIsAllowed: boolean,
-    searchData: Array<string>
-  },
-  setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
-}
+import { HeaderProps } from '../../Types.types'
 
 const Header = (props: HeaderProps) => {
   const theme = useContext(ThemeContext)

@@ -1,20 +1,7 @@
 import React, { useEffect, useState, useContext, Dispatch, SetStateAction } from 'react'
 import '../../style/calendar.css'
 import { ThemeContext } from '../context/ThemeContext'
-
-type GridProps = {
-    monthRange?: Array<{
-        date: string,
-        day: string
-      }> | null,
-    thisStyle: React.CSSProperties,
-    thisUser?: {
-        handle: string,
-        login: string,
-        theme: string,
-      },
-    setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
-}
+import { GridProps} from '../../Types.types'
 
 const CalendarGrid = (props: GridProps) => {
     const [start, setStart] = useState(0)

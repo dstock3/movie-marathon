@@ -1,15 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/footer.css'
-
-type FooterProps = {
-    thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-    }
-}
+import { FooterProps } from '../../Types.types'
 
 const Footer = (props: FooterProps) => {
   const theme = useContext(ThemeContext)

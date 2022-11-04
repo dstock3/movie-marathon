@@ -1,18 +1,6 @@
-import React, { useState, useEffect, Dispatch, SetStateAction, useContext } from 'react'
-import { ResponseDataType } from '../App'
+import React, { useState, useEffect,  useContext } from 'react'
+import { SearchProps,  } from '../Types.types'
 import { ThemeContext } from '../components/context/ThemeContext'
-
-type SearchProps = {
-  thisStyle: React.CSSProperties,
-  thisUser?: {
-    handle: string,
-    login: string,
-    theme: string,
-    metadataIsAllowed: boolean,
-    searchData: Array<string>,
-  },
-  setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
-}
 
 const SearchBar = (props: SearchProps) => {
   const [searchInput, setSearchInput] = useState("");

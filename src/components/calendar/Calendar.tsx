@@ -1,31 +1,10 @@
-import React, {useEffect, useState, Dispatch, SetStateAction} from 'react'
+import React, {useEffect, useState} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar.css'
 import CalendarController from './CalendarController'
 import CalendarGrid from './CalendarGrid'
 import DateView from '../modals/DateView'
-import { DateViewEnabledType } from '../../App'
-
-type CalendarProps = {
-  thisStyle: React.CSSProperties,
-  thisUser?: {
-    handle: string,
-    login: string,
-    theme: string,
-  },
-  responseData: {
-    Response: boolean,
-    Search: Array<object>,
-    totalResults: string,
-  } | null,
-  dateViewEnabled: DateViewEnabledType,
-  setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
-}
-
-export type MonthRangeType = Array<{
-    date: string,
-    day: string
-}> | null
+import { MonthRangeType, CalendarProps } from '../../Types.types'
 
 const Calendar = (props: CalendarProps) => {
     const [months, setMonths] = useState([

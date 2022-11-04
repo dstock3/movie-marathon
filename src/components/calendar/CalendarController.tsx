@@ -1,17 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/calendar.css'
-
-type ControllerProps = {
-    changeMonth: (directive: string) => void,
-    currentMonth: string,
-    thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-    }
-}
+import { ControllerProps } from '../../Types.types'
 
 const CalendarController = (props: ControllerProps) => {
     const theme = useContext(ThemeContext)

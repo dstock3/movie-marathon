@@ -1,21 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Users, ThisUser } from '../basic/Main'
 import uniqueid from 'uniqid'
 import '../../style/feed.css'
 import { ThemeContext } from '../context/ThemeContext'
-
-type FeedProps = {
-  users: Users,
-  thisStyle: React.CSSProperties,
-  thisUser?: ThisUser
-}
-
-type Post = {
-  id: string,
-  handle: string, 
-  content: string, 
-  date: string
-}
+import { FeedProps, Post } from '../../Types.types'
 
 const Feed = (props: FeedProps) => {
   const [posts, setPosts] = useState<Array<Post> | null>(null)
@@ -52,7 +39,6 @@ const Feed = (props: FeedProps) => {
             ...postStyle, 
             ...{borderBottom: thisTheme.border},
             ...props.thisStyle 
-
           })
 
           setFeedStyle({

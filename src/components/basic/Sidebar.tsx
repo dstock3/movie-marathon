@@ -2,23 +2,7 @@ import React, { useState, useEffect, useContext, Dispatch, SetStateAction } from
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/sidebar.css'
 import SearchBar from '../SearchBar'
-import { ResponseDataType } from '../../App'
-
-type SidebarProps = {
-    thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-      metadataIsAllowed: boolean,
-      searchData: Array<string>,
-    },
-    isExpanded: boolean,
-    setIsExpanded: Dispatch<SetStateAction<boolean>>,
-    setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
-    page: string,
-    setPage: Dispatch<SetStateAction<string>>
-}
+import { SidebarProps } from '../../Types.types'
 
 const Sidebar = (props: SidebarProps) => {
     const theme = useContext(ThemeContext)

@@ -8,17 +8,7 @@ import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
-
-export type ResponseDataType = {
-    Response: boolean,
-    Search: Array<object>,
-    totalResults: string
-}
-
-export type DateViewEnabledType = {
-  "isOpen": boolean, 
-  "id": number | null
-}
+import { ResponseDataType, DateViewEnabledType } from './Types.types'
 
 const App = () => {
   const theme = useContext(ThemeContext)

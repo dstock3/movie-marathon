@@ -1,60 +1,11 @@
-import React, {Dispatch, SetStateAction} from 'react'
-import { ThemeContext } from '../context/ThemeContext'
+import React from 'react'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
-import { DateViewEnabledType } from '../../App'
 import Feed from '../feed/Feed'
 import WeekGlance from '../week/WeekGlance'
 import Favs from '../favorites/Favs'
 import Upcoming from '../upcoming/Upcoming'
-
-export type PostType = {
-  date: string
-  content: string
-}
-
-export type ThisUser = {
-  handle: string,
-  login: string,
-  theme: string,
-  movies: Array<Object>,
-  posts: Array<PostType>
-}
-
-export type Users = {
-  handle: string;
-  login: string;
-  theme: string;
-  metadataIsAllowed: boolean;
-  searchData: never[];
-  posts: {
-      date: string;
-      content: string;
-  }[];
-  movies: {
-      Title: string;
-  }[];
-}[]
-
-type MainProps = {
-    users: Users, 
-    thisStyle: React.CSSProperties,
-    thisUser?: ThisUser,
-    responseData: {
-      Response: boolean,
-      Search: Array<object>,
-      totalResults: string,
-    } | null,
-    dateViewEnabled: DateViewEnabledType,
-    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
-    page: string,
-    setPage: Dispatch<SetStateAction<string>>
-}
-
-export type MovieType = {
-  [key: string]: any
-  propname?: any
-}
+import { MainProps, MovieType } from '../../Types.types'
 
 const Main = (props: MainProps) => {
   return (

@@ -1,9 +1,7 @@
 import { createContext } from 'react'
 import { themeTemplate } from './theme'
+import { ThemeContextProviderProps } from '../../Types.types'
 
-type ThemeContextProviderProps = {
-    children: React.ReactNode
-}
 export const ThemeContext = createContext(themeTemplate)
 
 export const ThemeContextProvider =

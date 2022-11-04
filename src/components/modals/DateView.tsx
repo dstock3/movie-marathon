@@ -1,22 +1,8 @@
-import React, { useContext, useEffect, useState, Dispatch, SetStateAction  } from 'react'
+import React, { useContext, useEffect, useState  } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import ReactDOM from 'react-dom'
 import '../../style/date-view.css'
-import { DateViewEnabledType } from '../../App'
-import { MonthRangeType } from '../calendar/Calendar'
-
-type DateViewType = {
-    thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-    },
-    dateViewEnabled: DateViewEnabledType,
-    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
-    monthRange: MonthRangeType,
-    changeMonth: (directive: string) => void,
-}
+import { DateViewType } from '../../Types.types'
 
 const DateView = (props: DateViewType) => {
     const theme = useContext(ThemeContext)
