@@ -7,14 +7,14 @@ type FeedProps = {
   thisUser?: ThisUser
 }
 
-type allPosts = {
+type Post = {
   handle: string, 
   content: string, 
   date: string
 }
 
 const Feed = (props: FeedProps) => {
-  const [posts, setPosts] = useState<Array<allPosts> | null>(null)
+  const [posts, setPosts] = useState<Array<Post> | null>(null)
 
   useEffect(()=> {
     let postArray = []
@@ -42,7 +42,18 @@ const Feed = (props: FeedProps) => {
 
   return (
     <div className="feed-container">
+      {posts?.map((post: Post, index)=> {
+        return(
+          <div key={index} className="post-container">
+            <div className="post-head">
+              <div className="post-handle">{post.handle}</div>
+              <div className="post-date">{post.date}</div>
+            </div>
 
+            <div className="post-content">{post.content}</div>
+          </div>
+        )
+      })}
     </div>
   )
 }
