@@ -108,7 +108,7 @@ const App = () => {
           <section className={`primary`} style={primeStyle}>
             <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
 
-            <Main page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
+            <Main users={dummyData.users} page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
 
             <Footer thisStyle={thisStyle} thisUser={user} />
           </section>

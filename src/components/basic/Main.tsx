@@ -13,15 +13,33 @@ export type PostType = {
   content: string
 }
 
+export type ThisUser = {
+  handle: string,
+  login: string,
+  theme: string,
+  movies: Array<Object>,
+  posts: Array<PostType>
+}
+
+export type Users = {
+  handle: string;
+  login: string;
+  theme: string;
+  metadataIsAllowed: boolean;
+  searchData: never[];
+  posts: {
+      date: string;
+      content: string;
+  }[];
+  movies: {
+      Title: string;
+  }[];
+}[]
+
 type MainProps = {
+    users: Users, 
     thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-      movies: Array<Object>,
-      posts: Array<PostType>
-    },
+    thisUser?: ThisUser,
     responseData: {
       Response: boolean,
       Search: Array<object>,
@@ -62,7 +80,7 @@ const Main = (props: MainProps) => {
     {props.page === "calendar" ? 
       <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled}/> : 
     props.page === "feed" ? 
-      <Feed thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
+      <Feed users={props.users} thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     props.page === "week" ? 
       <WeekGlance /> :
     props.page === "fav" ?
