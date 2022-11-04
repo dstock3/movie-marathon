@@ -29,3 +29,25 @@
     width: 75%;
     margin-bottom: 15px;
 }
+
+.post-likes {
+    font-weight: bold;
+}
+
+.likes-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50px;
+}
+
+.likes-icon {
+    cursor: pointer;
+}
+
+.post-panel {
+    width: 75%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -8,7 +8,8 @@
         "posts": [
             {
                 "date": "10/23/2022",
-                "content": "I guess you could say I'm a big 'film head,' as they say. My guys? Tarantino, Scorsese, Kubrick, etc. Heh!"
+                "content": "I guess you could say I'm a big 'film head,' as they say. My guys? Tarantino, Scorsese, Kubrick, etc. Heh!",
+                "likes": 3
             }
         ], 
         "movies":[
@@ -48,7 +49,8 @@
         "posts": [
             {
                 "date": "10/11/2022",
-                "content": "Looking forward to the new Munsters movie directed by none other than Rob Zombie. It looks extremely kitchy, but that's what the subject matter calls for!"
+                "content": "Looking forward to the new Munsters movie directed by none other than Rob Zombie. It looks extremely kitchy, but that's what the subject matter calls for!",
+                "likes": 3
             }
         ],          
         "movies":[
@@ -89,7 +91,8 @@
         "posts": [
             {
                 "date": "11/02/2022",
-                "content": "Love the resurgence of cheesy 2000s era horror movies like The Ring. Smile is right up my alley."
+                "content": "Love the resurgence of cheesy 2000s era horror movies like The Ring. Smile is right up my alley.",
+                "likes": 7
             }
         ],         
         "movies":[
@@ -132,15 +135,18 @@
 
             {
                 "date": "11/01/2022",
-                "content": "Just watched an interesting film by the name of Triangle of Saddness. It's not for the faint of heart!"
+                "content": "Just watched an interesting film by the name of Triangle of Saddness. It's not for the faint of heart!",
+                "likes": 4
             },
             {
                 "date": "10/15/2022",
-                "content": "Halloween is fast approaching! Anyone got a good horror rec?"
+                "content": "Halloween is fast approaching! Anyone got a good horror rec?",
+                "likes": 12
             },
             {
                 "date": "10/09/2022",
-                "content": "I know I'm late to the game, but the new Batman is incredible."
+                "content": "I know I'm late to the game, but the new Batman is incredible.",
+                "likes": 5
             }
         ],         
         "movies":[

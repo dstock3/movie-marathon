@@ -106,7 +106,8 @@ export type Post = {
     id: string,
     handle: string, 
     content: string, 
-    date: string
+    date: string,
+    likes: number
 }
 
 export type MonthRangeType = Array<{
