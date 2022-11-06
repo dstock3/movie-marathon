@@ -134,6 +134,7 @@ export type CalendarProps = {
 export type ControllerProps = {
     changeMonth: (directive: string) => void,
     currentMonth: string,
+    currentYear: string,
     thisStyle: React.CSSProperties,
     thisUser?: {
       handle: string,

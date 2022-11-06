@@ -81,7 +81,7 @@ const Calendar = (props: CalendarProps) => {
     return (
       <>
         <div className="calendar-container">
-            <CalendarController changeMonth={changeMonth} currentMonth={currentMonth} thisStyle={props.thisStyle} thisUser={props.thisUser} />
+            <CalendarController changeMonth={changeMonth} currentMonth={currentMonth} currentYear={currentYear} thisStyle={props.thisStyle} thisUser={props.thisUser} />
 
             <div className="weekdays-container">
                 <div className="weekday no-select">Sunday</div>
