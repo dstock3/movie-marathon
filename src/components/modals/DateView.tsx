@@ -10,6 +10,7 @@ const DateView = (props: DateViewType) => {
     const [dateStyle, setDateStyle] = useState<React.CSSProperties>(props.thisStyle)
     const [dir, setDir] = useState<string | null>(null)
     const [buttonStyle, setButtonStyle] = useState<React.CSSProperties | Object>({})
+    const [buttonContainerStyle, setButtonContainerStyle] = useState<React.CSSProperties | Object>({})
     
     useEffect(()=> {
       if (props.dateViewEnabled.id && props.monthRange) {
@@ -44,7 +45,14 @@ const DateView = (props: DateViewType) => {
                 ...{border: thisTheme.border, 
                   backgroundColor: thisTheme.text,
                   color: thisTheme.main
-                }})
+              }})
+              
+              setButtonContainerStyle({
+                ...props.thisStyle, 
+                ...{border: thisTheme.border, 
+                  backgroundColor: thisTheme.main,
+                  color: thisTheme.text
+              }})
             }
           }
         }
@@ -131,7 +139,10 @@ const DateView = (props: DateViewType) => {
                 </div>
                 <div className="date-view-body">
                   <div className="date-view-panel">
-                    <div className="add-button" style={buttonStyle}>+</div>
+                    <div className="add-button-container" style={buttonContainerStyle}>
+                      <div className="add-button-label">Add Movie</div>
+                      <div className="add-button" style={buttonStyle}>+</div>
+                    </div>
                   </div>
 
                 </div>
