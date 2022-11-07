@@ -63,6 +63,18 @@ export type SidebarProps = {
     setPage: Dispatch<SetStateAction<string>>
 }
 
+export type ToolBarProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: {
+      handle: string,
+      login: string,
+      theme: string,
+      metadataIsAllowed: boolean,
+      searchData: Array<string>,
+    }
+}
+
+
 export type PostType = {
     date: string
     content: string

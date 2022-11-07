@@ -3,6 +3,7 @@ import { ThemeContext } from '../context/ThemeContext'
 import '../../style/sidebar.css'
 import SearchBar from '../SearchBar'
 import { SidebarProps } from '../../Types.types'
+import ToolBar from '../tools/ToolBar'
 
 const Sidebar = (props: SidebarProps) => {
     const theme = useContext(ThemeContext)
@@ -60,7 +61,9 @@ const Sidebar = (props: SidebarProps) => {
             </div>
             <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData}/>
           </div>
-          
+
+          <ToolBar thisStyle={props.thisStyle} thisUser={props.thisUser} />
+
           <ul className="sidebar-options">
             <li className="sidebar-option no-select" id="calendar-option" onClick={()=>props.setPage("calendar")}>
               Calendar

@@ -77,3 +77,23 @@
     cursor: pointer;
     margin-right: 18px;
 }
+
+.toolbar-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.toolbar {
+    margin-inline: 15px;
+    display: flex;
+}
+
+.toolbar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 15px;
+    cursor: pointer;
+}
