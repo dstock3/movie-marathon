@@ -207,3 +207,13 @@ export type SearchProps = {
     },
     setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
 }
+
+export type WeekGlanceProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: {
+        handle: string,
+        login: string,
+        theme: string,
+        movies: Array<Object>
+    }
+}

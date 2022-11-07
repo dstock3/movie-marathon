@@ -33,7 +33,7 @@ const Main = (props: MainProps) => {
     props.page === "feed" ? 
       <Feed users={props.users} thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     props.page === "week" ? 
-      <WeekGlance /> :
+      <WeekGlance thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     props.page === "fav" ?
       <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     props.page === "upcoming" ?

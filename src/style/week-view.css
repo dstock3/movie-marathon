@@ -1,0 +1,21 @@
+.week-view {
+    margin-top: 7%;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.week-view-day {
+    height: 50%;
+    min-width: 13%;
+    border-radius: 15px;
+}
+
+.week-label {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25em;
+}
