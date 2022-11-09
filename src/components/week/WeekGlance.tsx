@@ -28,7 +28,37 @@ const WeekGlance = (props: WeekGlanceProps) => {
         if (props.monthRange[i].date === today) {
           for (let prop in newWeek) {
             if (prop === props.monthRange[i].day) {
-              newWeek[prop] = props.monthRange[i].date  
+              newWeek[prop] = props.monthRange[i].date
+              let arr = Object.entries(newWeek)
+              let thisIndex = arr.findIndex(e => e[0] === prop);
+              
+              if (thisIndex === 0) {
+                newWeek[Object.keys(newWeek)[1]] = props.monthRange[i + 1].date
+                newWeek[Object.keys(newWeek)[2]] = props.monthRange[i + 2].date
+                newWeek[Object.keys(newWeek)[3]] = props.monthRange[i + 3].date
+                newWeek[Object.keys(newWeek)[4]] = props.monthRange[i + 4].date
+                newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 5].date
+                newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 6].date
+              } else if (thisIndex === 1) {
+
+              } else if (thisIndex === 2) {
+                
+              } else if (thisIndex === 3) {
+                newWeek[Object.keys(newWeek)[0]] = props.monthRange[i - 3].date
+                newWeek[Object.keys(newWeek)[1]] = props.monthRange[i - 2].date
+                newWeek[Object.keys(newWeek)[2]] = props.monthRange[i - 1].date
+
+                newWeek[Object.keys(newWeek)[4]] = props.monthRange[i + 1].date
+                newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 2].date
+                newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 3].date
+              } else if (thisIndex === 4) {
+
+              } else if (thisIndex === 5) {
+
+              } else if (thisIndex === 6) {
+
+              }
+
             }
           }
         }
@@ -36,6 +66,11 @@ const WeekGlance = (props: WeekGlanceProps) => {
     }
     setThisWeek(newWeek)
   }, [props.monthRange])
+
+  useEffect(()=> {
+    console.log(thisWeek)
+
+  }, [thisWeek])
 
   useEffect(()=> {
     let themes = Object.keys(theme)
