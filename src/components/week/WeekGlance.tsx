@@ -9,30 +9,32 @@ const WeekGlance = (props: WeekGlanceProps) => {
   const [weekViewStyle, setWeekViewStyle] = useState<React.CSSProperties | Object>({})
   const [dayStyle, setDayStyle] = useState<React.CSSProperties | Object>({})
   
-  const [thisWeek, setThisWeek] = useState(
-    {"sunday": "", 
-    "monday": "", 
-    "tuesday": "", 
-    "wednesday": "",
-    "thursday": "",
-    "friday": "",
-    "saturday": ""
+  const [thisWeek, setThisWeek] = useState<any>(
+    {"Sunday": "", 
+    "Monday": "", 
+    "Tuesday": "", 
+    "Wednesday": "",
+    "Thursday": "",
+    "Friday": "",
+    "Saturday": ""
   })
 
   useEffect(()=> {
     let today = format(props.currentDate, 'MM/dd/y')
+    let newWeek = thisWeek
 
     if (props.monthRange) {
       for (let i = 0; i < props.monthRange.length; i++) {
         if (props.monthRange[i].date === today) {
-          console.log(today)
-
+          for (let prop in newWeek) {
+            if (prop === props.monthRange[i].day) {
+              newWeek[prop] = props.monthRange[i].date  
+            }
+          }
         }
-
       }
     }
-    console.log(props.monthRange)
-
+    setThisWeek(newWeek)
   }, [props.monthRange])
 
   useEffect(()=> {
@@ -55,49 +57,49 @@ const WeekGlance = (props: WeekGlanceProps) => {
       <div className="week-view-day sunday" style={dayStyle}>
         <div className="week-label">Sunday</div>
         <div className="week-contents">
-          {thisWeek.sunday}
+          {thisWeek.Sunday}
           
         </div>
       </div>
       <div className="week-view-day monday" style={dayStyle}>
         <div className="week-label">Monday</div>
         <div className="week-contents">
-          {thisWeek.monday}
+          {thisWeek.Monday}
 
         </div>
       </div>
       <div className="week-view-day tuesday" style={dayStyle}>
         <div className="week-label">Tuesday</div>
         <div className="week-contents">
-          {thisWeek.tuesday}
+          {thisWeek.Tuesday}
 
         </div>
       </div>
       <div className="week-view-day wednesday" style={dayStyle}>
         <div className="week-label">Wednesday</div>
         <div className="week-contents">
-          {thisWeek.wednesday}
+          {thisWeek.Wednesday}
 
         </div>
       </div>
       <div className="week-view-day thursday" style={dayStyle}>
         <div className="week-label">Thursday</div>
         <div className="week-contents">
-          {thisWeek.thursday}
+          {thisWeek.Thursday}
 
         </div>
       </div>
       <div className="week-view-day friday" style={dayStyle}>
         <div className="week-label">Friday</div>
         <div className="week-contents">
-          {thisWeek.friday}
+          {thisWeek.Friday}
 
         </div>
       </div>
       <div className="week-view-day saturday" style={dayStyle}>
         <div className="week-label">Saturday</div>
         <div className="week-contents">
-          {thisWeek.saturday}
+          {thisWeek.Saturday}
 
         </div>
       </div>
