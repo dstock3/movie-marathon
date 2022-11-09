@@ -27,31 +27,45 @@ const WeekGlance = (props: WeekGlanceProps) => {
     <div className="week-view" style={weekViewStyle}>
       <div className="week-view-day sunday" style={dayStyle}>
         <div className="week-label">Sunday</div>
-
+        <div className="week-contents">
+          
+        </div>
       </div>
       <div className="week-view-day monday" style={dayStyle}>
         <div className="week-label">Monday</div>
-        
+        <div className="week-contents">
+
+        </div>
       </div>
       <div className="week-view-day tuesday" style={dayStyle}>
         <div className="week-label">Tuesday</div>
-        
+        <div className="week-contents">
+
+        </div>
       </div>
       <div className="week-view-day wednesday" style={dayStyle}>
         <div className="week-label">Wednesday</div>
-        
+        <div className="week-contents">
+
+        </div>
       </div>
       <div className="week-view-day thursday" style={dayStyle}>
         <div className="week-label">Thursday</div>
+        <div className="week-contents">
 
+        </div>
       </div>
       <div className="week-view-day friday" style={dayStyle}>
         <div className="week-label">Friday</div>
+        <div className="week-contents">
 
+        </div>
       </div>
       <div className="week-view-day saturday" style={dayStyle}>
         <div className="week-label">Saturday</div>
+        <div className="week-contents">
 
+        </div>
       </div>
     </div>
   )
