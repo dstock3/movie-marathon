@@ -140,7 +140,15 @@ export type CalendarProps = {
         totalResults: string,
     } | null,
     dateViewEnabled: DateViewEnabledType,
-    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
+    currentYear: string,
+    setRangeOfDates: Dispatch<SetStateAction<Array<Date> | null>>,
+    currentMonth: string,
+    setMonthRange: Dispatch<SetStateAction<MonthRangeType>>,
+    setCurrentMonth: Dispatch<SetStateAction<string>>,
+    months: Array<string>,
+    setCurrentYear: Dispatch<SetStateAction<string>>,
+    monthRange: MonthRangeType
 }
 
 export type ControllerProps = {
