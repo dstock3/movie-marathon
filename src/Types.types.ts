@@ -223,5 +223,7 @@ export type WeekGlanceProps = {
         login: string,
         theme: string,
         movies: Array<Object>
-    }
+    },
+    currentDate: Date,
+    monthRange: MonthRangeType
 }
