@@ -8,6 +8,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
   const theme = useContext(ThemeContext)
   const [weekViewStyle, setWeekViewStyle] = useState<React.CSSProperties | Object>({})
   const [dayStyle, setDayStyle] = useState<React.CSSProperties | Object>({})
+  const [weekFooterStyle, setWeekFooterStyle] = useState<React.CSSProperties | Object>({})
   
   const [thisWeek, setThisWeek] = useState<any>(
     {"Sunday": "", 
@@ -95,11 +96,6 @@ const WeekGlance = (props: WeekGlanceProps) => {
   }, [props.monthRange])
 
   useEffect(()=> {
-    console.log(thisWeek)
-
-  }, [thisWeek])
-
-  useEffect(()=> {
     let themes = Object.keys(theme)
     if (props.thisUser) {
       for (let i = 0; i < themes.length; i++) {
@@ -109,6 +105,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
 
           setWeekViewStyle({...props.thisStyle, ...{borderBottom: thisTheme.border, borderTop: thisTheme.border}})
           setDayStyle({...props.thisStyle, ...{border: thisTheme.border}})
+          setWeekFooterStyle({...props.thisStyle, ...{color: thisTheme.main, backgroundColor: thisTheme.text}})
         }
       }
     }
@@ -122,7 +119,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer">
+          <div className="week-footer" style={weekFooterStyle}>
             {thisWeek.Sunday}
           </div>  
         </div>
@@ -133,7 +130,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer">
+          <div className="week-footer" style={weekFooterStyle}>
             {thisWeek.Monday}
           </div>
         </div>
@@ -145,7 +142,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
 
           </div>
 
-          <div className="week-footer">
+          <div className="week-footer" style={weekFooterStyle}>
             {thisWeek.Tuesday}
           </div>
         </div>
@@ -156,7 +153,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer">
+          <div className="week-footer" style={weekFooterStyle}>
             {thisWeek.Wednesday}
           </div>
         </div>
@@ -167,7 +164,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer">
+          <div className="week-footer" style={weekFooterStyle}>
             {thisWeek.Thursday}
           </div> 
         </div>
@@ -178,7 +175,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer">
+          <div className="week-footer" style={weekFooterStyle}>
             {thisWeek.Friday}
           </div>
         </div>
@@ -189,7 +186,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer">
+          <div className="week-footer" style={weekFooterStyle}>
             {thisWeek.Saturday}
           </div>
         </div>

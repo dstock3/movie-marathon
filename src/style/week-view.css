@@ -30,9 +30,16 @@
 
 .week-movie-container {
     height: 75%;
+    width: 95%;
 }
 
 .week-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 10px;
-
+    border-radius: 5px;
+    font-weight: bold;
+    width: 55%;
+    height: 10%;
 }
