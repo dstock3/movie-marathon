@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
 import Feed from '../feed/Feed'
@@ -7,6 +7,7 @@ import Favs from '../favorites/Favs'
 import Upcoming from '../upcoming/Upcoming'
 import { MainProps, MovieType, MonthRangeType } from '../../Types.types'
 import { format } from 'date-fns'
+import DateView from '../modals/DateView'
 
 const Main = (props: MainProps) => {
   const [months, setMonths] = useState([
@@ -30,7 +31,33 @@ const Main = (props: MainProps) => {
   const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
   const [currentYear, setCurrentYear] = useState(format(currentDate, 'y'))
 
+  const changeMonth = (directive: string) => {
+    let index
+    for (let i = 0; i < months.length; i++) {
+      if (months[i] === currentMonth) {
+        index = i
+      }
+    }
+
+    if (directive === "back" && index !== undefined) {
+      if (index > 0) {
+        setCurrentMonth(months[index - 1])
+      } else {
+        setCurrentYear(String(parseInt(currentYear) - 1))
+        setCurrentMonth(months[11])
+      }
+    } else if (directive === "forward" && index !== undefined) {
+      if (index < 11) {
+        setCurrentMonth(months[index + 1])
+      } else {
+        setCurrentYear(String(parseInt(currentYear) + 1))
+        setCurrentMonth(months[0])
+      }
+    }
+  }
+
   return (
+    <>
     <main style={props.thisStyle}>
       {props.responseData ?
         <>
@@ -51,17 +78,24 @@ const Main = (props: MainProps) => {
         </>
     : null}
     {props.page === "calendar" ? 
-      <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled} currentYear={currentYear} setRangeOfDates={setRangeOfDates} currentMonth={currentMonth} setMonthRange={setMonthRange} setCurrentMonth={setCurrentMonth} months={months} setCurrentYear={setCurrentYear} monthRange={monthRange} /> : 
+      <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled} currentYear={currentYear} setRangeOfDates={setRangeOfDates} currentMonth={currentMonth} setMonthRange={setMonthRange} setCurrentMonth={setCurrentMonth} months={months} setCurrentYear={setCurrentYear} monthRange={monthRange} changeMonth={changeMonth} /> : 
+    
     props.page === "feed" ? 
       <Feed users={props.users} thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
+    
     props.page === "week" ? 
-      <WeekGlance thisStyle={props.thisStyle} thisUser={props.thisUser} currentDate={currentDate} monthRange={monthRange} /> :
+      <WeekGlance thisStyle={props.thisStyle} thisUser={props.thisUser} currentDate={currentDate} monthRange={monthRange} setDateViewEnabled={props.setDateViewEnabled} /> :
+    
     props.page === "fav" ?
       <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
+    
     props.page === "upcoming" ?
       <Upcoming /> : null
     }
     </main>
+    {props.dateViewEnabled.isOpen ? 
+          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonth} /> : null}
+    </>
   )
 }
 

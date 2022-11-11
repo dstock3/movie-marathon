@@ -148,7 +148,8 @@ export type CalendarProps = {
     setCurrentMonth: Dispatch<SetStateAction<string>>,
     months: Array<string>,
     setCurrentYear: Dispatch<SetStateAction<string>>,
-    monthRange: MonthRangeType
+    monthRange: MonthRangeType,
+    changeMonth: (directive: string) => void
 }
 
 export type ControllerProps = {
@@ -225,5 +226,6 @@ export type WeekGlanceProps = {
         movies: Array<Object>
     },
     currentDate: Date,
-    monthRange: MonthRangeType
+    monthRange: MonthRangeType,
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }

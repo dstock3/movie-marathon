@@ -31,52 +31,23 @@ const Calendar = (props: CalendarProps) => {
           props.setMonthRange(monthArray)
         }
       }, [props.currentMonth, props.currentYear])
-    
-    const changeMonth = (directive: string) => {
-      let index
-      for (let i = 0; i < props.months.length; i++) {
-        if (props.months[i] === props.currentMonth) {
-          index = i
-        }
-      }
-
-      if (directive === "back" && index !== undefined) {
-        if (index > 0) {
-          props.setCurrentMonth(props.months[index - 1])
-        } else {
-          props.setCurrentYear(String(parseInt(props.currentYear) - 1))
-          props.setCurrentMonth(props.months[11])
-        }
-      } else if (directive === "forward" && index !== undefined) {
-        if (index < 11) {
-          props.setCurrentMonth(props.months[index + 1])
-        } else {
-          props.setCurrentYear(String(parseInt(props.currentYear) + 1))
-          props.setCurrentMonth(props.months[0])
-        }
-      }
-    }
-    
+        
     return (
-      <>
-        <div className="calendar-container">
-            <CalendarController changeMonth={changeMonth} currentMonth={props.currentMonth} currentYear={props.currentYear} thisStyle={props.thisStyle} thisUser={props.thisUser} />
+      <div className="calendar-container">
+          <CalendarController changeMonth={props.changeMonth} currentMonth={props.currentMonth} currentYear={props.currentYear} thisStyle={props.thisStyle} thisUser={props.thisUser} />
 
-            <div className="weekdays-container">
-                <div className="weekday no-select">Sunday</div>
-                <div className="weekday no-select">Monday</div>
-                <div className="weekday no-select">Tuesday</div>
-                <div className="weekday no-select">Wednesday</div>
-                <div className="weekday no-select">Thursday</div>
-                <div className="weekday no-select">Friday</div>
-                <div className="weekday no-select">Saturday</div>
-            </div>
+          <div className="weekdays-container">
+              <div className="weekday no-select">Sunday</div>
+              <div className="weekday no-select">Monday</div>
+              <div className="weekday no-select">Tuesday</div>
+              <div className="weekday no-select">Wednesday</div>
+              <div className="weekday no-select">Thursday</div>
+              <div className="weekday no-select">Friday</div>
+              <div className="weekday no-select">Saturday</div>
+          </div>
 
-            <CalendarGrid monthRange={props.monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
-        </div>
-        {props.dateViewEnabled.isOpen ? 
-          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={props.monthRange} changeMonth={changeMonth} /> : null}
-      </>
+          <CalendarGrid monthRange={props.monthRange} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled}/>
+      </div>
     )
 }
 

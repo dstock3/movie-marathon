@@ -111,82 +111,94 @@ const WeekGlance = (props: WeekGlanceProps) => {
     }
   }, [props.thisUser, props.thisStyle])
 
+  const showDate = (id: number) => {
+    let dateElement = document.getElementById(String(id))
+
+    if (props.monthRange) {
+        for (let i = 0; i < props.monthRange.length; i++) {
+            if (props.monthRange[i].date === dateElement?.textContent) {
+                props.setDateViewEnabled({"isOpen": true, "id": id})
+            }
+        }
+    }
+  }
+
   return (
     <div className="week-view" style={weekViewStyle}>
-      <div className="week-view-day sunday" style={dayStyle}>
+      <div className="week-view-day sunday" style={dayStyle} onClick={()=> showDate(43)}>
         <div className="week-label">Sunday</div>
         <div className="week-contents">
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer" style={weekFooterStyle}>
+          <div className="week-footer" id="43" style={weekFooterStyle}>
             {thisWeek.Sunday}
           </div>  
         </div>
       </div>
-      <div className="week-view-day monday" style={dayStyle}>
+      <div className="week-view-day monday" style={dayStyle} onClick={()=> showDate(44)}>
         <div className="week-label">Monday</div>
         <div className="week-contents">
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer" style={weekFooterStyle}>
+          <div className="week-footer" id="44" style={weekFooterStyle}>
             {thisWeek.Monday}
           </div>
         </div>
       </div>
-      <div className="week-view-day tuesday" style={dayStyle}>
+      <div className="week-view-day tuesday" style={dayStyle} onClick={()=> showDate(45)}>
         <div className="week-label">Tuesday</div>
         <div className="week-contents">
           <div className="week-movie-container">
 
           </div>
 
-          <div className="week-footer" style={weekFooterStyle}>
+          <div className="week-footer" id="45" style={weekFooterStyle}>
             {thisWeek.Tuesday}
           </div>
         </div>
       </div>
-      <div className="week-view-day wednesday" style={dayStyle}>
+      <div className="week-view-day wednesday" style={dayStyle} onClick={()=> showDate(46)}>
         <div className="week-label">Wednesday</div>
         <div className="week-contents">
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer" style={weekFooterStyle}>
+          <div className="week-footer" id="46" style={weekFooterStyle}>
             {thisWeek.Wednesday}
           </div>
         </div>
       </div>
-      <div className="week-view-day thursday" style={dayStyle}>
+      <div className="week-view-day thursday" style={dayStyle} onClick={()=> showDate(47)}>
         <div className="week-label">Thursday</div>
         <div className="week-contents">
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer" style={weekFooterStyle}>
+          <div className="week-footer" id="47" style={weekFooterStyle}>
             {thisWeek.Thursday}
           </div> 
         </div>
       </div>
-      <div className="week-view-day friday" style={dayStyle}>
+      <div className="week-view-day friday" style={dayStyle} onClick={()=> showDate(48)}>
         <div className="week-label">Friday</div>
         <div className="week-contents">
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer" style={weekFooterStyle}>
+          <div className="week-footer" id="48" style={weekFooterStyle}>
             {thisWeek.Friday}
           </div>
         </div>
       </div>
-      <div className="week-view-day saturday" style={dayStyle}>
+      <div className="week-view-day saturday" style={dayStyle} onClick={()=> showDate(49)}>
         <div className="week-label">Saturday</div>
         <div className="week-contents">
           <div className="week-movie-container">
 
           </div>
-          <div className="week-footer" style={weekFooterStyle}>
+          <div className="week-footer" id="49" style={weekFooterStyle}>
             {thisWeek.Saturday}
           </div>
         </div>

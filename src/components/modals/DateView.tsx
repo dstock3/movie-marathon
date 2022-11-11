@@ -14,14 +14,23 @@ const DateView = (props: DateViewType) => {
     
     useEffect(()=> {
       if (props.dateViewEnabled.id && props.monthRange) {
-        const dateElement = document.getElementById(String(props.dateViewEnabled.id))
-        
+        let dateElement = document.getElementById(String(props.dateViewEnabled.id))
         let index
-        for (let i = 0; i < props.monthRange.length; i++) {
-          if (props.monthRange[i].date === dateElement?.firstChild?.textContent) {
-            index = i
+        
+        if (props.dateViewEnabled.id < 43) {
+          for (let i = 0; i < props.monthRange.length; i++) {
+            if (props.monthRange[i].date === dateElement?.firstChild?.textContent) {
+              index = i
+            }
+          }
+        } else {
+          for (let i = 0; i < props.monthRange.length; i++) {
+            if (props.monthRange[i].date === dateElement?.textContent) {
+              index = i
+            }
           }
         }
+
         if (typeof index === "number") {
           setThisDate({
             "date": props.monthRange[index].date,
@@ -30,7 +39,7 @@ const DateView = (props: DateViewType) => {
         }
       }
     }, [props.dateViewEnabled])
-
+    
     useEffect(()=> {
         let themes = Object.keys(theme)
         if (props.thisUser) {
