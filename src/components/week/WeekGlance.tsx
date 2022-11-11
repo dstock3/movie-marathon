@@ -40,9 +40,20 @@ const WeekGlance = (props: WeekGlanceProps) => {
                 newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 5].date
                 newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 6].date
               } else if (thisIndex === 1) {
+                newWeek[Object.keys(newWeek)[0]] = props.monthRange[i - 1].date
 
+                newWeek[Object.keys(newWeek)[2]] = props.monthRange[i + 1].date
+                newWeek[Object.keys(newWeek)[3]] = props.monthRange[i + 2].date
+                newWeek[Object.keys(newWeek)[4]] = props.monthRange[i + 3].date
+                newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 4].date
+                newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 5].date
               } else if (thisIndex === 2) {
-                
+                newWeek[Object.keys(newWeek)[1]] = props.monthRange[i - 1].date
+
+                newWeek[Object.keys(newWeek)[3]] = props.monthRange[i + 1].date
+                newWeek[Object.keys(newWeek)[4]] = props.monthRange[i + 2].date
+                newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 3].date
+                newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 4].date
               } else if (thisIndex === 3) {
                 newWeek[Object.keys(newWeek)[0]] = props.monthRange[i - 3].date
                 newWeek[Object.keys(newWeek)[1]] = props.monthRange[i - 2].date
@@ -59,13 +70,22 @@ const WeekGlance = (props: WeekGlanceProps) => {
                 
                 newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 1].date
                 newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 2].date
-
               } else if (thisIndex === 5) {
-
+                newWeek[Object.keys(newWeek)[0]] = props.monthRange[i - 5].date
+                newWeek[Object.keys(newWeek)[1]] = props.monthRange[i - 4].date
+                newWeek[Object.keys(newWeek)[2]] = props.monthRange[i - 3].date
+                newWeek[Object.keys(newWeek)[3]] = props.monthRange[i - 2].date
+                newWeek[Object.keys(newWeek)[4]] = props.monthRange[i - 1].date
+                
+                newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 1].date
               } else if (thisIndex === 6) {
-
+                newWeek[Object.keys(newWeek)[0]] = props.monthRange[i - 6].date
+                newWeek[Object.keys(newWeek)[1]] = props.monthRange[i - 5].date
+                newWeek[Object.keys(newWeek)[2]] = props.monthRange[i - 4].date
+                newWeek[Object.keys(newWeek)[3]] = props.monthRange[i - 3].date
+                newWeek[Object.keys(newWeek)[4]] = props.monthRange[i - 2].date
+                newWeek[Object.keys(newWeek)[5]] = props.monthRange[i - 1].date
               }
-
             }
           }
         }
