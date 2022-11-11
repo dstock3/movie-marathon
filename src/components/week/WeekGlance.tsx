@@ -52,6 +52,13 @@ const WeekGlance = (props: WeekGlanceProps) => {
                 newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 2].date
                 newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 3].date
               } else if (thisIndex === 4) {
+                newWeek[Object.keys(newWeek)[0]] = props.monthRange[i - 4].date
+                newWeek[Object.keys(newWeek)[1]] = props.monthRange[i - 3].date
+                newWeek[Object.keys(newWeek)[2]] = props.monthRange[i - 2].date
+                newWeek[Object.keys(newWeek)[3]] = props.monthRange[i - 1].date
+                
+                newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 1].date
+                newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 2].date
 
               } else if (thisIndex === 5) {
 
