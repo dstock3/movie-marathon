@@ -119,50 +119,79 @@ const WeekGlance = (props: WeekGlanceProps) => {
       <div className="week-view-day sunday" style={dayStyle}>
         <div className="week-label">Sunday</div>
         <div className="week-contents">
-          {thisWeek.Sunday}
-          
+          <div className="week-movie-container">
+
+          </div>
+          <div className="week-footer">
+            {thisWeek.Sunday}
+          </div>  
         </div>
       </div>
       <div className="week-view-day monday" style={dayStyle}>
         <div className="week-label">Monday</div>
         <div className="week-contents">
-          {thisWeek.Monday}
+          <div className="week-movie-container">
 
+          </div>
+          <div className="week-footer">
+            {thisWeek.Monday}
+          </div>
         </div>
       </div>
       <div className="week-view-day tuesday" style={dayStyle}>
         <div className="week-label">Tuesday</div>
         <div className="week-contents">
-          {thisWeek.Tuesday}
+          <div className="week-movie-container">
 
+          </div>
+
+          <div className="week-footer">
+            {thisWeek.Tuesday}
+          </div>
         </div>
       </div>
       <div className="week-view-day wednesday" style={dayStyle}>
         <div className="week-label">Wednesday</div>
         <div className="week-contents">
-          {thisWeek.Wednesday}
+          <div className="week-movie-container">
 
+          </div>
+          <div className="week-footer">
+            {thisWeek.Wednesday}
+          </div>
         </div>
       </div>
       <div className="week-view-day thursday" style={dayStyle}>
         <div className="week-label">Thursday</div>
         <div className="week-contents">
-          {thisWeek.Thursday}
+          <div className="week-movie-container">
 
+          </div>
+          <div className="week-footer">
+            {thisWeek.Thursday}
+          </div> 
         </div>
       </div>
       <div className="week-view-day friday" style={dayStyle}>
         <div className="week-label">Friday</div>
         <div className="week-contents">
-          {thisWeek.Friday}
+          <div className="week-movie-container">
 
+          </div>
+          <div className="week-footer">
+            {thisWeek.Friday}
+          </div>
         </div>
       </div>
       <div className="week-view-day saturday" style={dayStyle}>
         <div className="week-label">Saturday</div>
         <div className="week-contents">
-          {thisWeek.Saturday}
+          <div className="week-movie-container">
 
+          </div>
+          <div className="week-footer">
+            {thisWeek.Saturday}
+          </div>
         </div>
       </div>
     </div>

@@ -19,3 +19,20 @@
     font-weight: bold;
     font-size: 1.25em;
 }
+
+.week-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+}
+
+.week-movie-container {
+    height: 75%;
+}
+
+.week-footer {
+    margin-top: 10px;
+
+}
