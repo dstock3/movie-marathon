@@ -11,7 +11,14 @@ const DateView = (props: DateViewType) => {
     const [dir, setDir] = useState<string | null>(null)
     const [buttonStyle, setButtonStyle] = useState<React.CSSProperties | Object>({})
     const [buttonContainerStyle, setButtonContainerStyle] = useState<React.CSSProperties | Object>({})
-    
+
+    useEffect(()=> {
+      if (props.thisUser?.stacks) {
+        console.log(props.thisUser?.stacks)
+      }
+
+    }, [props.thisUser])
+
     useEffect(()=> {
       if (props.dateViewEnabled.id && props.monthRange) {
         let dateElement = document.getElementById(String(props.dateViewEnabled.id))

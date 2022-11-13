@@ -55,6 +55,7 @@ export type SidebarProps = {
       theme: string,
       metadataIsAllowed: boolean,
       searchData: Array<string>,
+      stacks: Array<Object>
     },
     isExpanded: boolean,
     setIsExpanded: Dispatch<SetStateAction<boolean>>,
@@ -85,7 +86,8 @@ export type ThisUser = {
     login: string,
     theme: string,
     movies: Array<Object>,
-    posts: Array<PostType>
+    posts: Array<PostType>,
+    stacks: Array<Object>
 }
   
 export type Users = {
@@ -198,6 +200,7 @@ export type DateViewType = {
       handle: string,
       login: string,
       theme: string,
+      stacks: Array<Object>
     },
     dateViewEnabled: DateViewEnabledType,
     setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
