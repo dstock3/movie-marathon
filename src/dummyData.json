@@ -135,7 +135,55 @@
                 "imdbID": "tt0060196",
                 "Poster": "https://m.media-amazon.com/images/M/MV5BNjJlYmNkZGItM2NhYy00MjlmLTk5NmQtNjg1NmM2ODU4OTMwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
             }
-        ]  
+        ],
+        "stacks": [
+            {
+                "name": "Christmas Movie Marathon",
+                "desc": "A delightful mix of lighthearted X Mas films.",
+                "lineup": [
+                    {
+                        "Title": "The Santa Clause",
+                        "Year": "1994",
+                        "imdbID": "tt0111070",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BYzI0ZGRiYTEtNGExYi00ZDI2LWExMjMtODMzNDZjMTVjOWMxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg",
+                        "Date": "12/02/2022",
+                        "Notes": "Tim Allen's career sure has taken a dive"
+                    },
+                    {
+                        "Title": "Elf",
+                        "Year": "2003",
+                        "imdbID": "tt0319343",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BMzUxNzkzMzQtYjIxZC00NzU0LThkYTQtZjNhNTljMTA1MDA1L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+                        "Date": "12/09/2022",
+                        "Notes": "At the height of Will Ferrell's career, he transformed himself into an Elf."
+                    },
+                    {
+                        "Title": "Home Alone",
+                        "Year": "1990",
+                        "imdbID": "tt0099785",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BMzFkM2YwOTQtYzk2Mi00N2VlLWE3NTItN2YwNDg1YmY0ZDNmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+                        "Date": "12/16/2022",
+                        "Notes": "Macaulay Culkin should be in more things."
+                    },
+                    {
+                        "Title": "The Nightmare Before Christmas",
+                        "Year": "1993",
+                        "imdbID": "tt0107688",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BNWE4OTNiM2ItMjY4Ni00ZTViLWFiZmEtZGEyNGY2ZmNlMzIyXkEyXkFqcGdeQXVyMDU5NDcxNw@@._V1_SX300.jpg",
+                        "Date": "12/23/2022",
+                        "Notes": "Going through my moody goth phase...AGAIN!"
+                    },
+                    {
+                        "Title": "A Christmas Story",
+                        "Year": "1983",
+                        "imdbID": "tt0085334",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BOWMyNjE0MzEtMzVjNy00NjIxLTg0ZjMtMWJhNGI1YmVjYTczL2ltYWdlXkEyXkFqcGdeQXVyNzc5MjA3OA@@._V1_SX300.jpg",
+                        "Date": "12/24/2022",
+                        "Notes": "Because I haven't seen this movie 1000 times already."
+                    }
+                ]
+            }
+        ] 
     },
     { 
         "handle":"DavisTheFilmMan", 
