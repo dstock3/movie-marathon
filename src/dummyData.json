@@ -38,7 +38,30 @@
                 "Title": "Seven Samurai"
 
             }            
-        ] 
+        ],
+        "stacks": [
+            {
+                "name": "Nic Cage November",
+                "desc": "A Nic Cage Movie Marathon",
+                "lineup": [
+                    {
+
+                    },
+                    {
+
+                    },
+                    {
+
+                    },
+                    {
+
+                    },
+                    {
+
+                    }
+                ]
+            }
+        ]
     },
     { 
         "handle":"HorrorEnthusiast", 
