@@ -75,7 +75,6 @@ export type ToolBarProps = {
     }
 }
 
-
 export type PostType = {
     date: string
     content: string
