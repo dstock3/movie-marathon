@@ -191,33 +191,42 @@
                         "Title": "Pig",
                         "Year": "2021",
                         "imdbID": "tt11003218",
-                        "Poster": "https://m.media-amazon.com/images/M/MV5BOTc2NjRmN2QtMGY1Ny00MTc2LWJmMWUtZmViOTkyNjk2NGExXkEyXkFqcGdeQXVyNzg5MzIyOA@@._V1_SX300.jpg"
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BOTc2NjRmN2QtMGY1Ny00MTc2LWJmMWUtZmViOTkyNjk2NGExXkEyXkFqcGdeQXVyNzg5MzIyOA@@._V1_SX300.jpg",
+                        "Date": "11/04/2022",
+                        "Notes": "Haven't seen this one yet. Looking forward to it."
                     },
                     {
                         "Title": "Face/Off",
                         "Year": "1997",
                         "imdbID": "tt0119094",
-                        "Poster": "https://m.media-amazon.com/images/M/MV5BYzFjNzIxMmEtMzY5NS00YTgzLTkwYWEtN2FjMmY0NmNkZWY3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BYzFjNzIxMmEtMzY5NS00YTgzLTkwYWEtN2FjMmY0NmNkZWY3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+                        "Date": "11/11/2022",
+                        "Notes": "Quintessential Cage"
                     },
                     {
                         "Title": "Vampire's Kiss",
                         "Year": "1988",
                         "imdbID": "tt0098577",
-                        "Poster": "https://m.media-amazon.com/images/M/MV5BMTM1MDAyMDYxMV5BMl5BanBnXkFtZTcwNDQwMzc3NA@@._V1_SX300.jpg"
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BMTM1MDAyMDYxMV5BMl5BanBnXkFtZTcwNDQwMzc3NA@@._V1_SX300.jpg",
+                        "Date": "11/15/2022",
+                        "Notes": "One of Cage's finest performances."
                     },
                     {
                         "Title": "National Treasure",
                         "Year": "2004",
                         "imdbID": "tt0368891",
-                        "Poster": "https://m.media-amazon.com/images/M/MV5BMTY3NTc4OTYxMF5BMl5BanBnXkFtZTcwMjk5NzUyMw@@._V1_SX300.jpg"
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BMTY3NTc4OTYxMF5BMl5BanBnXkFtZTcwMjk5NzUyMw@@._V1_SX300.jpg",
+                        "Date": "11/24/2022",
+                        "Notes": "Appropriate for Thanksgiving?"
 
                     },
                     {
                         "Title": "Adaptation.",
                         "Year": "2002",
                         "imdbID": "tt0268126",
-                        "Poster": "https://m.media-amazon.com/images/M/MV5BN2JjNzVhOTMtNTc3Yi00NGNjLWI3YjgtYjkyZTYzY2FmMmIxXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
-
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BN2JjNzVhOTMtNTc3Yi00NGNjLWI3YjgtYjkyZTYzY2FmMmIxXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg",
+                        "Date": "11/25/2022",
+                        "Notes": "After Black Friday shopping, of course."
                     }
                 ]
             }
