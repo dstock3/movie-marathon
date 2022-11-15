@@ -1,24 +1,23 @@
 import { Dispatch, SetStateAction } from 'react'
 
+export type ThisUser = {
+    handle: string,
+    login: string,
+    theme: string,
+    movies: Array<Object>,
+    posts: Array<PostType>,
+    stacks: Array<Object>
+}
+
 export type HeaderProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-        handle: string,
-        login: string,
-        theme: string,
-        metadataIsAllowed: boolean,
-        searchData: Array<string>
-    },
+    thisUser?: ThisUser,
     setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
 }
 
 export type FooterProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-    }
+    thisUser?: ThisUser
 }
 
 export type ResponseDataType = {
@@ -49,14 +48,7 @@ export type MainProps = {
 
 export type SidebarProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-      metadataIsAllowed: boolean,
-      searchData: Array<string>,
-      stacks: Array<Object>
-    },
+    thisUser?: ThisUser,
     isExpanded: boolean,
     setIsExpanded: Dispatch<SetStateAction<boolean>>,
     setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
@@ -66,29 +58,14 @@ export type SidebarProps = {
 
 export type ToolBarProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-      metadataIsAllowed: boolean,
-      searchData: Array<string>,
-    }
+    thisUser?: ThisUser
 }
 
 export type PostType = {
     date: string
     content: string
 }
-  
-export type ThisUser = {
-    handle: string,
-    login: string,
-    theme: string,
-    movies: Array<Object>,
-    posts: Array<PostType>,
-    stacks: Array<Object>
-}
-  
+    
 export type Users = {
     handle: string;
     login: string;
@@ -130,11 +107,7 @@ export type MonthRangeType = Array<{
 
 export type CalendarProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-        handle: string,
-        login: string,
-        theme: string,
-    },
+    thisUser?: ThisUser,
     responseData: {
         Response: boolean,
         Search: Array<object>,
@@ -158,11 +131,7 @@ export type ControllerProps = {
     currentMonth: string,
     currentYear: string,
     thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-    }
+    thisUser?: ThisUser
 }
 
 export type GridProps = {
@@ -171,11 +140,7 @@ export type GridProps = {
         day: string
       }> | null,
     thisStyle: React.CSSProperties,
-    thisUser?: {
-        handle: string,
-        login: string,
-        theme: string,
-      },
+    thisUser?: ThisUser,
     setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
 }
 
@@ -185,22 +150,12 @@ export type ThemeContextProviderProps = {
 
 export type FavProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-        handle: string,
-        login: string,
-        theme: string,
-        movies: Array<Object>
-    }
+    thisUser?: ThisUser
 }
 
 export type DateViewType = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-      handle: string,
-      login: string,
-      theme: string,
-      stacks: Array<Object>
-    },
+    thisUser?: ThisUser,
     dateViewEnabled: DateViewEnabledType,
     setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
     monthRange: MonthRangeType,
@@ -209,24 +164,13 @@ export type DateViewType = {
 
 export type SearchProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-        handle: string,
-        login: string,
-        theme: string,
-        metadataIsAllowed: boolean,
-        searchData: Array<string>,
-    },
+    thisUser?: ThisUser,
     setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
 }
 
 export type WeekGlanceProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: {
-        handle: string,
-        login: string,
-        theme: string,
-        movies: Array<Object>
-    },
+    thisUser?: ThisUser,
     currentDate: Date,
     monthRange: MonthRangeType,
     setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
