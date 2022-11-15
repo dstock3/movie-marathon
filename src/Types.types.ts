@@ -1,12 +1,40 @@
 import { Dispatch, SetStateAction } from 'react'
 
+type Movie = {
+    Title: string,
+    Year: string,
+    imdbID: string,
+    Poster: string
+}
+
+type Film = {
+    Title: string,
+    Year: string,
+    imdbID: string,
+    Poster: string,
+    Date: string,
+    Notes?: string | null
+}
+
+type Stack = {
+    name: string,
+    desc: string,
+    lineup: Array<Film>
+}
+
+export type PostType = {
+    date: string
+    content: string,
+    likes: number
+}
+
 export type ThisUser = {
     handle: string,
     login: string,
     theme: string,
-    movies: Array<Object>,
+    movies: Array<Movie>,
     posts: Array<PostType>,
-    stacks: Array<Object>
+    stacks: Array<Stack>
 }
 
 export type HeaderProps = {
@@ -61,11 +89,6 @@ export type ToolBarProps = {
     thisUser?: ThisUser
 }
 
-export type PostType = {
-    date: string
-    content: string
-}
-    
 export type Users = {
     handle: string;
     login: string;
