@@ -90,7 +90,7 @@ const Main = (props: MainProps) => {
       <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     
     props.page === "upcoming" ?
-      <Upcoming /> : null
+      <Upcoming thisStyle={props.thisStyle} thisUser={props.thisUser} /> : null
     }
     </main>
     {props.dateViewEnabled.isOpen ? 

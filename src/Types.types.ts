@@ -198,3 +198,8 @@ export type WeekGlanceProps = {
     monthRange: MonthRangeType,
     setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }
+
+export type Stacks = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser
+}
