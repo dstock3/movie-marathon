@@ -8,11 +8,11 @@ import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
-import { ResponseDataType, DateViewEnabledType } from './Types.types'
+import { ResponseDataType, DateViewEnabledType, ThisUser } from './Types.types'
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState(dummyData.users[3])
+  const [user, setUser] = useState<ThisUser>(dummyData.users[3])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
