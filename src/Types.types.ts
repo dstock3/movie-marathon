@@ -7,7 +7,7 @@ type Movie = {
     Poster: string
 }
 
-type Film = {
+export type Film = {
     Title: string,
     Year: string,
     imdbID: string,
@@ -16,7 +16,7 @@ type Film = {
     Notes?: string | null
 }
 
-type Stack = {
+export type ThisStack = {
     name: string,
     desc: string,
     lineup: Array<Film>
@@ -34,7 +34,7 @@ export type ThisUser = {
     theme: string,
     movies: Array<Movie>,
     posts: Array<PostType>,
-    stacks?: Array<Stack> | undefined
+    stacks?: Array<ThisStack> | undefined
 }
 
 export type HeaderProps = {
