@@ -203,3 +203,8 @@ export type Stacks = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser
 }
+
+export type FilmContainerProps = {
+    film: Film,
+    index: number
+}

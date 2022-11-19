@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import FilmContainer from './FilmContainer'
 import { Stacks, ThisStack, Film } from '../../Types.types'
 
 const Upcoming = (props:Stacks) => {
@@ -21,14 +22,7 @@ const Upcoming = (props:Stacks) => {
                   <div className="stack-container">
                     {stack.lineup.map((film: Film, thisIndex) => {
                       return (
-                        <div className="film-container" key={thisIndex}>
-                          <div className="film-title">{film.Title}</div>
-                          <div className="film-date">{film.Date}</div>
-                          <div className="film-poster-container">
-                            <img className="film-poster" src={film.Poster} alt={film.Title + " poster"}></img>
-                          </div>
-                          <div className="film-notes">{film.Notes}</div>
-                        </div>
+                        <FilmContainer index={thisIndex} film={film} />
                       )
                     })}
                   </div>
