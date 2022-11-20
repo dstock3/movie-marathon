@@ -246,6 +246,7 @@
             {
                 "name": "Nic Cage November",
                 "desc": "A Nic Cage Movie Marathon",
+                "id": 1,
                 "lineup": [
                     {
                         "Title": "Pig",

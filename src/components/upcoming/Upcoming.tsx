@@ -22,6 +22,10 @@ const Upcoming = (props:Stacks) => {
     }
   }, [])
 
+  const handleClick = (ind:number):void => {
+
+  }
+
   return (
     <div className="upcoming-stacks">
       {props.thisUser?.stacks ?
@@ -30,7 +34,7 @@ const Upcoming = (props:Stacks) => {
           <ul className="stack-list">
             {props.thisUser?.stacks.map((stack: ThisStack, index) => {
               return (
-                <li className="stack-info" key={index} style={thisTheme}>
+                <li className="stack-info" id={stack.name} key={index} style={thisTheme} onClick={()=>handleClick(index)}>
                   <div className="stack-name">{stack.name}</div>
                   <div className="stack-desc">{stack.desc}</div>
                   <div className="stack-container">

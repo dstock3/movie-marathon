@@ -50,7 +50,7 @@ const CalendarGrid = (props: GridProps) => {
         }
     }, [props.monthRange])
 
-    const showDate = (id: number) => {
+    const showDate = (id: number):void => {
         let dateElement = document.getElementById(String(id))
         
         if (props.monthRange) {

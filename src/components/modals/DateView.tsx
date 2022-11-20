@@ -90,7 +90,7 @@ const DateView = (props: DateViewType) => {
       }
     }, [props.monthRange])
 
-    const changeDate = (directive: string) => {
+    const changeDate = (directive: string):void => {
       setDir(directive)
       let index
       if (props.monthRange && thisDate) {

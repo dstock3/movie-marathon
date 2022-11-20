@@ -56,7 +56,7 @@ const Feed = (props: FeedProps) => {
     }
   }, [props.thisStyle])
 
-  const clickHandler = (post:Post) => {
+  const clickHandler = (post:Post):void => {
     /*need to do a POST request once API is developed:
       -add like to corresponding post
       -notify the author that a user has liked their post
