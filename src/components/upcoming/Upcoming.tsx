@@ -7,6 +7,15 @@ import '../../style/upcoming.css'
 const Upcoming = (props:Stacks) => {
   const theme = useContext(ThemeContext)
   const [thisTheme, setThisTheme] = useState<React.CSSProperties>({"border": theme.light.border})
+  const [status, setStatus] = useState<{}>({})
+
+  useEffect(()=> {
+    if (props.thisUser) {
+      //setStatus({})
+
+
+    }
+  }, [props.thisUser])
 
   useEffect(()=> {
     let themes = Object.keys(theme)
