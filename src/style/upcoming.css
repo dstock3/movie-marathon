@@ -1,0 +1,13 @@
+.upcoming-stacks {
+    width: 100%;
+}
+
+.stack-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.stack-info {
+    display: flex;
+    flex-direction: column;
+}

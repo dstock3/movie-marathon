@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import FilmContainer from './FilmContainer'
 import { Stacks, ThisStack, Film } from '../../Types.types'
+import '../../style/upcoming.css'
 
 const Upcoming = (props:Stacks) => {
   useEffect(()=> {
