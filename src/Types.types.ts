@@ -204,7 +204,14 @@ export type Stacks = {
     thisUser?: ThisUser
 }
 
+export type StackContainerProps = {
+    stack: ThisStack,
+    index: number,
+    thisTheme: React.CSSProperties
+}
+
 export type FilmContainerProps = {
     film: Film,
     index: number
 }
+

@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
-import FilmContainer from './FilmContainer'
-import { Stacks, ThisStack, Film } from '../../Types.types'
+import { Stacks, ThisStack } from '../../Types.types'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/upcoming.css'
+import StackContainer from './StackContainer'
 
 const Upcoming = (props:Stacks) => {
   const theme = useContext(ThemeContext)
@@ -10,7 +10,11 @@ const Upcoming = (props:Stacks) => {
   const [status, setStatus] = useState<{}>({})
 
   useEffect(()=> {
-    if (props.thisUser) {
+    if (props.thisUser?.stacks) {
+      for (let prop in props.thisUser?.stacks) {
+        console.log(props.thisUser?.stacks[prop].lineup)
+
+      }
       //setStatus({})
 
 
@@ -31,9 +35,7 @@ const Upcoming = (props:Stacks) => {
     }
   }, [])
 
-  const handleClick = (ind:number):void => {
-
-  }
+  
 
   return (
     <div className="upcoming-stacks">
@@ -43,17 +45,7 @@ const Upcoming = (props:Stacks) => {
           <ul className="stack-list">
             {props.thisUser?.stacks.map((stack: ThisStack, index) => {
               return (
-                <li className="stack-info" id={stack.name} key={index} style={thisTheme} onClick={()=>handleClick(index)}>
-                  <div className="stack-name">{stack.name}</div>
-                  <div className="stack-desc">{stack.desc}</div>
-                  <div className="stack-container">
-                    {stack.lineup.map((film: Film, thisIndex) => {
-                      return (
-                        <FilmContainer index={thisIndex} film={film} />
-                      )
-                    })}
-                  </div>
-                </li>
+                <StackContainer stack={stack} thisTheme={thisTheme} index={index} />
               )
             })}    
           </ul>
