@@ -35,7 +35,6 @@ const Upcoming = (props:Stacks) => {
     }
   }, [])
 
-  
 
   return (
     <div className="upcoming-stacks">
