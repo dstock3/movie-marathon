@@ -43,7 +43,9 @@
 .square {
     width: 14%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .date-content {
@@ -52,4 +54,9 @@
 
 .filled, .back, .forward {
     cursor: pointer;
+}
+
+.movie-night {
+    margin-bottom: 15px;
+    font-weight: bold;
 }

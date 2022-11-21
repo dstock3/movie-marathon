@@ -50,7 +50,8 @@ const CalendarGrid = (props: GridProps) => {
         }
     }, [props.monthRange])
 
-    const showDate = (id: number):void => {
+    const showDate = (id: number) => {
+        console.log(id)
         let dateElement = document.getElementById(String(id))
         
         if (props.monthRange) {
@@ -68,8 +69,14 @@ const CalendarGrid = (props: GridProps) => {
         for (let i = 1; i < 42; i++) {
             let square = document.getElementById(String(i))
             square?.classList.remove("filled")
-            if (square?.firstChild) {
-                square.firstChild.remove() 
+
+            let childElements
+            if (square?.children) {
+                childElements = Array.from(square?.children)
+                for (let x = 0; x < childElements.length; x++) {
+                    childElements[x].remove()
+
+                }
             }
 
             let themes = Object.keys(theme)
@@ -100,20 +107,22 @@ const CalendarGrid = (props: GridProps) => {
                 dateElement.appendChild(dateText)
                 dates[i]?.classList.add("filled")
                 dates[i]?.appendChild(dateElement)
-
+                
+                let movieElement = document.createElement("div")
+                movieElement.classList.add("movie-night")
+                dates[i]?.appendChild(movieElement)
+                
                 if (props.thisUser?.stacks) {
                     for (let x = 0; x < props.thisUser?.stacks?.length; x++) {
                         for (let y = 0; y < props.thisUser?.stacks[x].lineup.length; y++) {
-                            
                             if (props.thisUser?.stacks[x].lineup[y].Date === props.monthRange[i].date) {
-                                dateElement.classList.add("movie-night")
-
+                                let movieText = document.createTextNode(props.thisUser?.stacks[x].lineup[y].Title);
+                                movieElement.appendChild(movieText)
                             }
-                            
-                            
                         }
                     }
                 }
+                
             }
         }
     }, [start, props.monthRange, props.thisUser])
