@@ -56,7 +56,7 @@ const CalendarGrid = (props: GridProps) => {
         
         if (props.monthRange) {
             for (let i = 0; i < props.monthRange.length; i++) {
-                if (props.monthRange[i].date === dateElement?.textContent) {
+                if (props.monthRange[i].date === dateElement?.firstChild?.textContent) {
                     props.setDateViewEnabled({"isOpen": true, "id": id})
                 }
             }
