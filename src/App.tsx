@@ -17,7 +17,6 @@ const App = () => {
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
   const [dateViewEnabled, setDateViewEnabled] = useState<DateViewEnabledType>({"isOpen": false, "id": null})
-  
   const [thisStyle, setThisStyle] = useState({ })
   const [appStyle, setAppStyle] = useState(thisStyle)
   const [page, setPage] = useState<string>("calendar")
@@ -53,14 +52,14 @@ const App = () => {
           if (themes[i] === user.theme) {
             let thisTheme: any = theme[themes[i] as keyof Object]
   
-            setAppStyle({ 
-              ...appStyle, 
-              ...{ 
+            setAppStyle({
+              ...appStyle,
+              ...{
                 backgroundColor: thisTheme.main, 
                 filter: "unset", 
                 WebkitFilter: "unset",
                 transform: "scale(1)" 
-            }})  
+            }})
           }
         }
       }

@@ -21,7 +21,7 @@ const CalendarGrid = (props: GridProps) => {
           }
         }
     }, [])
-    
+
     useEffect(()=> {
         if (props.monthRange) {
             switch(props.monthRange[0].day) {
@@ -101,10 +101,24 @@ const CalendarGrid = (props: GridProps) => {
                 dates[i]?.classList.add("filled")
                 dates[i]?.appendChild(dateElement)
 
+                if (props.thisUser?.stacks) {
+                    for (let x = 0; x < props.thisUser?.stacks?.length; x++) {
+                        for (let y = 0; y < props.thisUser?.stacks[x].lineup.length; y++) {
+                            
+                            if (props.thisUser?.stacks[x].lineup[y].Date === props.monthRange[i].date) {
+                                dateElement.classList.add("movie-night")
+
+                            }
+                            
+                            
+                        }
+                    }
+                }
             }
         }
-    }, [start, props.monthRange])
-    
+    }, [start, props.monthRange, props.thisUser])
+
+
     return (
         <div className="calendar-grid">
             <div className="row" id="week-one">
