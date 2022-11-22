@@ -32,6 +32,10 @@
 .week-movie-container {
     height: 75%;
     width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
 .week-footer {
