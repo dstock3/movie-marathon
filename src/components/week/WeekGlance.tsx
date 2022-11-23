@@ -32,6 +32,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
               newWeek[prop] = props.monthRange[i].date
               let arr = Object.entries(newWeek)
               let thisIndex = arr.findIndex(e => e[0] === prop);
+              console.log(thisIndex)
 
               if (thisIndex === 0) {
                 newWeek[Object.keys(newWeek)[1]] = props.monthRange[i + 1].date
@@ -49,6 +50,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
                 newWeek[Object.keys(newWeek)[5]] = props.monthRange[i + 4].date
                 newWeek[Object.keys(newWeek)[6]] = props.monthRange[i + 5].date
               } else if (thisIndex === 2) {
+                newWeek[Object.keys(newWeek)[0]] = props.monthRange[i - 2].date
                 newWeek[Object.keys(newWeek)[1]] = props.monthRange[i - 1].date
 
                 newWeek[Object.keys(newWeek)[3]] = props.monthRange[i + 1].date
@@ -122,7 +124,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
       }
     }
   }
-
+/*
   useEffect(()=> {
     if (props.thisUser?.stacks) {
       for (let i = 0; i < props.thisUser?.stacks?.length; i++) {
@@ -141,8 +143,8 @@ const WeekGlance = (props: WeekGlanceProps) => {
         }
       }
     }
-  }, [thisWeek])
-
+  }, [thisWeek, props.thisUser?.stacks])
+*/
   return (
     <div className="week-view" style={weekViewStyle}>
       <div className="week-view-day sunday" style={dayStyle} onClick={()=> showDate(43)}>
