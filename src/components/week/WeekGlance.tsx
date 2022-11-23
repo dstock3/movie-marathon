@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
-import { WeekGlanceProps, ThisUser } from '../../Types.types'
+import { WeekGlanceProps } from '../../Types.types'
 import '../../style/week-view.css'
 import { format } from 'date-fns'
 
@@ -9,6 +9,16 @@ const WeekGlance = (props: WeekGlanceProps) => {
   const [weekViewStyle, setWeekViewStyle] = useState<React.CSSProperties | Object>({})
   const [dayStyle, setDayStyle] = useState<React.CSSProperties | Object>({})
   const [weekFooterStyle, setWeekFooterStyle] = useState<React.CSSProperties | Object>({})
+  
+  const [movieNights, setMovieNights] = useState<any>(
+    {"Sunday": "", 
+    "Monday": "", 
+    "Tuesday": "", 
+    "Wednesday": "",
+    "Thursday": "",
+    "Friday": "",
+    "Saturday": ""
+  })
   
   const [thisWeek, setThisWeek] = useState<any>(
     {"Sunday": "", 
@@ -32,8 +42,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
               newWeek[prop] = props.monthRange[i].date
               let arr = Object.entries(newWeek)
               let thisIndex = arr.findIndex(e => e[0] === prop);
-              console.log(thisIndex)
-
+              
               if (thisIndex === 0) {
                 newWeek[Object.keys(newWeek)[1]] = props.monthRange[i + 1].date
                 newWeek[Object.keys(newWeek)[2]] = props.monthRange[i + 2].date
@@ -124,9 +133,10 @@ const WeekGlance = (props: WeekGlanceProps) => {
       }
     }
   }
-/*
+
   useEffect(()=> {
-    if (props.thisUser?.stacks) {
+    let weekLineup = movieNights
+    if (props.thisUser?.stacks && props.monthRange) {
       for (let i = 0; i < props.thisUser?.stacks?.length; i++) {
         for (let x = 0; x < props.thisUser?.stacks[i].lineup.length; x++) {
           for (let z = 43; z < 50; z++) {
@@ -134,24 +144,28 @@ const WeekGlance = (props: WeekGlanceProps) => {
             let weekDayText = dateElement?.innerHTML
 
             if (props.thisUser?.stacks[i].lineup[x].Date === weekDayText) {
-              let dateParent = dateElement?.parentElement
-              let contents = dateParent?.firstChild
-              let movieNight = document.createTextNode(props.thisUser?.stacks[i].lineup[x].Title)
-              contents?.appendChild(movieNight)
+              for (let c = 0; c < props.monthRange.length; c++) {
+                if (props.monthRange[c].date === weekDayText) {
+                  
+                  let day = props.monthRange[c].day
+                  weekLineup[day] = props.thisUser?.stacks[i].lineup[x].Title
+                }
+              }
             }
           }
         }
       }
     }
-  }, [thisWeek, props.thisUser?.stacks])
-*/
+    setMovieNights(weekLineup)
+  }, [thisWeek])
+
   return (
     <div className="week-view" style={weekViewStyle}>
       <div className="week-view-day sunday" style={dayStyle} onClick={()=> showDate(43)}>
         <div className="week-label">Sunday</div>
         <div className="week-contents">
           <div className="week-movie-container">
-            
+            {movieNights.Sunday}
           </div>
           <div className="week-footer" id="43" style={weekFooterStyle}>
             {thisWeek.Sunday}
@@ -162,7 +176,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
         <div className="week-label">Monday</div>
         <div className="week-contents">
           <div className="week-movie-container">
-            
+            {movieNights.Monday}
           </div>
           <div className="week-footer" id="44" style={weekFooterStyle}>
             {thisWeek.Monday}
@@ -173,7 +187,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
         <div className="week-label">Tuesday</div>
         <div className="week-contents">
           <div className="week-movie-container">
-            
+            {movieNights.Tuesday}
           </div>
           <div className="week-footer" id="45" style={weekFooterStyle}>
             {thisWeek.Tuesday}
@@ -184,7 +198,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
         <div className="week-label">Wednesday</div>
         <div className="week-contents">
           <div className="week-movie-container">
-            
+            {movieNights.Wednesday}
           </div>
           <div className="week-footer" id="46" style={weekFooterStyle}>
             {thisWeek.Wednesday}
@@ -195,7 +209,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
         <div className="week-label">Thursday</div>
         <div className="week-contents">
           <div className="week-movie-container">
-            
+            {movieNights.Thursday}
           </div>
           <div className="week-footer" id="47" style={weekFooterStyle}>
             {thisWeek.Thursday}
@@ -206,7 +220,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
         <div className="week-label">Friday</div>
         <div className="week-contents">
           <div className="week-movie-container">
-            
+            {movieNights.Friday}
           </div>
           <div className="week-footer" id="48" style={weekFooterStyle}>
             {thisWeek.Friday}
@@ -217,7 +231,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
         <div className="week-label">Saturday</div>
         <div className="week-contents">
           <div className="week-movie-container">
-            
+            {movieNights.Saturday}
           </div>
           <div className="week-footer" id="49" style={weekFooterStyle}>
             {thisWeek.Saturday}
