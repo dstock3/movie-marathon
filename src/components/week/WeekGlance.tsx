@@ -70,6 +70,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           for (let prop in newWeek) {
             if (prop === props.monthRange[i].day) {
               newWeek[prop as keyof Week] = props.monthRange[i].date
+              weekLineup = assignMovieNight(weekLineup, props.monthRange[i].date)
               let arr = Object.entries(newWeek)
               let thisIndex = arr.findIndex(e => e[0] === prop);
               

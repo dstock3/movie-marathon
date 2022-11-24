@@ -12,7 +12,7 @@ import { ResponseDataType, DateViewEnabledType, ThisUser } from './Types.types'
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState<ThisUser>(dummyData.users[1])
+  const [user, setUser] = useState<ThisUser>(dummyData.users[3])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
