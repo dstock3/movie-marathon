@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import FilmContainer from './FilmContainer'
 import { StackContainerProps, Film } from '../../Types.types'
 
-const StackContainer = (props: StackContainerProps) => {
+const StackContainer = (props: StackContainerProps):JSX.Element => {
     const [isActive, setIsActive] = useState(false)
 
     const handleClick = ():void => {
@@ -14,10 +14,8 @@ const StackContainer = (props: StackContainerProps) => {
             <div className="stack-name">{props.stack.name}</div>
             <div className="stack-desc">{props.stack.desc}</div>
             <div className="stack-container">
-            {isActive ? props.stack.lineup.map((film: Film, thisIndex) => {
-                return (
-                <FilmContainer index={thisIndex} film={film} />
-                )
+            {isActive ? props.stack.lineup.map((film: Film, thisIndex):JSX.Element => {
+                return (<FilmContainer index={thisIndex} film={film} />)
             }) : null}
             </div>
         </li>

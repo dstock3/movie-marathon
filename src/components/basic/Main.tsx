@@ -10,7 +10,7 @@ import { format } from 'date-fns'
 import DateView from '../modals/DateView'
 
 const Main = (props: MainProps) => {
-  const [months, setMonths] = useState([
+  const [months, setMonths] = useState<string[]>([
     "January",
     "February",
     "March",
@@ -25,13 +25,13 @@ const Main = (props: MainProps) => {
     "December"
   ])
 
-  const [currentDate, setCurrentDate] = useState(new Date())
-  const [currentMonth, setCurrentMonth] = useState(format(new Date(), 'MMMM'))
+  const [currentDate, setCurrentDate] = useState<Date>(new Date())
+  const [currentMonth, setCurrentMonth] = useState<string>(format(new Date(), 'MMMM'))
   const [rangeofDates, setRangeOfDates] = useState<Array<Date> | null>(null)
   const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
-  const [currentYear, setCurrentYear] = useState(format(currentDate, 'y'))
+  const [currentYear, setCurrentYear] = useState<string>(format(currentDate, 'y'))
 
-  const changeMonth = (directive: string) => {
+  const changeMonth = (directive: string):void => {
     let index
     for (let i = 0; i < months.length; i++) {
       if (months[i] === currentMonth) {
@@ -63,7 +63,7 @@ const Main = (props: MainProps) => {
         <>
         <h2>Total Results {props.responseData["totalResults"]}</h2>
         <div className="search-results">
-          {props.responseData.Search.map((movie:MovieType, index) => {
+          {props.responseData.Search.map((movie:MovieType, index):JSX.Element => {
             return (
               <div className="movie-list-item" key={index}>
                 <div className="movie-title">

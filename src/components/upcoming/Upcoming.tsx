@@ -42,7 +42,7 @@ const Upcoming = (props:Stacks) => {
         <>
           <h2>Upcoming Stacks</h2>
           <ul className="stack-list">
-            {props.thisUser?.stacks.map((stack: ThisStack, index) => {
+            {props.thisUser?.stacks.map((stack: ThisStack, index):JSX.Element  => {
               return (
                 <StackContainer stack={stack} thisTheme={thisTheme} index={index} />
               )

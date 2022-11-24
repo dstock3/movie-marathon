@@ -10,15 +10,15 @@ const WeekGlance = (props: WeekGlanceProps) => {
   const [dayStyle, setDayStyle] = useState<React.CSSProperties | Object>({})
   const [weekFooterStyle, setWeekFooterStyle] = useState<React.CSSProperties | Object>({})
   
-type Week = {
-  Sunday: string,
-  Monday: string,
-  Tuesday: string,
-  Wednesday: string,
-  Thursday: string,
-  Friday: string,
-  Saturday: string
-}
+  type Week = {
+    Sunday: string,
+    Monday: string,
+    Tuesday: string,
+    Wednesday: string,
+    Thursday: string,
+    Friday: string,
+    Saturday: string
+  }
 
   const [movieNights, setMovieNights] = useState<Week>(
     {"Sunday": "", 
