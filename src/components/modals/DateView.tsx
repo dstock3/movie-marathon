@@ -11,10 +11,12 @@ const DateView = (props: DateViewType) => {
     const [dir, setDir] = useState<string | null>(null)
     const [buttonStyle, setButtonStyle] = useState<React.CSSProperties | Object>({})
     const [buttonContainerStyle, setButtonContainerStyle] = useState<React.CSSProperties | Object>({})
+    const [movieNight, setMovieNight] = useState<string | null | undefined>("")
 
     useEffect(()=> {
       if (props.dateViewEnabled.id && props.monthRange) {
         let dateElement = document.getElementById(String(props.dateViewEnabled.id))
+        
         let index
         
         if (props.dateViewEnabled.id < 43) {
@@ -23,12 +25,22 @@ const DateView = (props: DateViewType) => {
               index = i
             }
           }
+          let movie:string | null
+          
+          if (dateElement?.parentElement?.children) {
+            let children = Array.from(dateElement?.children)
+            movie = children[1].textContent            
+            setMovieNight(movie)
+          }
+          
         } else {
           for (let i = 0; i < props.monthRange.length; i++) {
             if (props.monthRange[i].date === dateElement?.textContent) {
               index = i
             }
           }
+          setMovieNight(dateElement?.parentElement?.firstChild?.textContent)
+
         }
 
         if (typeof index === "number") {
@@ -153,6 +165,7 @@ const DateView = (props: DateViewType) => {
                       <div className="add-button" style={buttonStyle}>+</div>
                     </div>
                   </div>
+                  <div>{movieNight}</div>
 
                 </div>
                 <div className="date-view-forward" onClick={()=>changeDate("forward")}>
