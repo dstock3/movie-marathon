@@ -196,13 +196,22 @@ const WeekGlance = (props: WeekGlanceProps) => {
     }
   }, [props.thisUser, props.thisStyle])
 
-  const showDate = (id: number):void => {
-    let dateElement = document.getElementById(String(id))
+  const showDate = (id: number, movieTitle: string, date: string):void => {
+    let movie
+    if (props.thisUser?.stacks) {
+      for (let i = 0; i < props.thisUser?.stacks.length; i++) {
+          for (let x = 0; x < props.thisUser?.stacks[i].lineup.length; x++) {
+              if (props.thisUser?.stacks[i].lineup[x].Title === movieTitle) {
+                  movie = props.thisUser?.stacks[i].lineup[x]
+              }
+          }
+      }
+    }
 
     if (props.monthRange) {
       for (let i = 0; i < props.monthRange.length; i++) {
-        if (props.monthRange[i].date === dateElement?.textContent) {
-            props.setDateViewEnabled({"isOpen": true, "id": id})
+        if (props.monthRange[i].date === date) {
+            props.setDateViewEnabled({"isOpen": true, "id": id, date: date, movie: movie})
         }
       }
     }
@@ -210,7 +219,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
 
   return (
     <div className="week-view" style={weekViewStyle}>
-      <div className="week-view-day sunday" style={dayStyle} onClick={()=> showDate(43)}>
+      <div className="week-view-day sunday" style={dayStyle} onClick={()=> showDate(43, movieNights.Sunday, thisWeek.Sunday)}>
         <div className="week-label">Sunday</div>
         <div className="week-contents">
           <div className="week-movie-container">
@@ -221,7 +230,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           </div>  
         </div>
       </div>
-      <div className="week-view-day monday" style={dayStyle} onClick={()=> showDate(44)}>
+      <div className="week-view-day monday" style={dayStyle} onClick={()=> showDate(44, movieNights.Monday, thisWeek.Monday)}>
         <div className="week-label">Monday</div>
         <div className="week-contents">
           <div className="week-movie-container">
@@ -232,7 +241,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           </div>
         </div>
       </div>
-      <div className="week-view-day tuesday" style={dayStyle} onClick={()=> showDate(45)}>
+      <div className="week-view-day tuesday" style={dayStyle} onClick={()=> showDate(45, movieNights.Tuesday, thisWeek.Tuesday)}>
         <div className="week-label">Tuesday</div>
         <div className="week-contents">
           <div className="week-movie-container">
@@ -243,7 +252,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           </div>
         </div>
       </div>
-      <div className="week-view-day wednesday" style={dayStyle} onClick={()=> showDate(46)}>
+      <div className="week-view-day wednesday" style={dayStyle} onClick={()=> showDate(46, movieNights.Wednesday, thisWeek.Wednesday)}>
         <div className="week-label">Wednesday</div>
         <div className="week-contents">
           <div className="week-movie-container">
@@ -254,7 +263,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           </div>
         </div>
       </div>
-      <div className="week-view-day thursday" style={dayStyle} onClick={()=> showDate(47)}>
+      <div className="week-view-day thursday" style={dayStyle} onClick={()=> showDate(47, movieNights.Thursday, thisWeek.Thursday)}>
         <div className="week-label">Thursday</div>
         <div className="week-contents">
           <div className="week-movie-container">
@@ -265,7 +274,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           </div> 
         </div>
       </div>
-      <div className="week-view-day friday" style={dayStyle} onClick={()=> showDate(48)}>
+      <div className="week-view-day friday" style={dayStyle} onClick={()=> showDate(48, movieNights.Friday, thisWeek.Friday)}>
         <div className="week-label">Friday</div>
         <div className="week-contents">
           <div className="week-movie-container">
@@ -276,7 +285,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
           </div>
         </div>
       </div>
-      <div className="week-view-day saturday" style={dayStyle} onClick={()=> showDate(49)}>
+      <div className="week-view-day saturday" style={dayStyle} onClick={()=> showDate(49, movieNights.Saturday, thisWeek.Saturday)}>
         <div className="week-label">Saturday</div>
         <div className="week-contents">
           <div className="week-movie-container">
