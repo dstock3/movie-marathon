@@ -165,8 +165,12 @@ const DateView = (props: DateViewType) => {
                       <div className="add-button" style={buttonStyle}>+</div>
                     </div>
                   </div>
-                  <div>{movieNight}</div>
-
+                  <div className="movie-container">
+                    <div className="movie-title">
+                      {props.dateViewEnabled.movie?.Title + " (" + props.dateViewEnabled.movie?.Year + ")"}
+                    </div>
+                    <img className="movie-poster" alt={props.dateViewEnabled.movie?.Title + " poster"} src={props.dateViewEnabled.movie?.Poster}></img>
+                  </div>
                 </div>
                 <div className="date-view-forward" onClick={()=>changeDate("forward")}>
                     <svg className="forward-icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
