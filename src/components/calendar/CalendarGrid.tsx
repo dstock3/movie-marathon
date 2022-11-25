@@ -52,11 +52,29 @@ const CalendarGrid = (props: GridProps) => {
 
     const showDate = (id: number):void => {
         let dateElement = document.getElementById(String(id))
-        
+        let children
+        if (dateElement?.children) { children = Array.from(dateElement?.children) }
+        let date
+        let movieTitle
+        if (children) { 
+            date = children[0].textContent 
+            movieTitle = children[1].textContent 
+        }
+        let movie
+        if (props.thisUser?.stacks) {
+            for (let i = 0; i < props.thisUser?.stacks.length; i++) {
+                for (let x = 0; x < props.thisUser?.stacks[i].lineup.length; x++) {
+                    if (props.thisUser?.stacks[i].lineup[x].Title === movieTitle) {
+                        movie = props.thisUser?.stacks[i].lineup[x]
+                    }
+                }
+            }
+        }
+
         if (props.monthRange) {
             for (let i = 0; i < props.monthRange.length; i++) {
                 if (props.monthRange[i].date === dateElement?.firstChild?.textContent) {
-                    props.setDateViewEnabled({"isOpen": true, "id": id})
+                    props.setDateViewEnabled({"isOpen": true, "id": id, "date": date, "movie": movie})
                 }
             }
         }

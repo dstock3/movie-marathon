@@ -55,8 +55,10 @@ export type ResponseDataType = {
 }
 
 export type DateViewEnabledType = {
-  "isOpen": boolean, 
-  "id": number | null
+  isOpen: boolean, 
+  id: number | null,
+  date?: string | null,
+  movie?: Movie | null
 }
 
 export type MainProps = {
@@ -164,7 +166,7 @@ export type GridProps = {
       }> | null,
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser,
-    setDateViewEnabled: Dispatch<SetStateAction<{"isOpen": boolean, "id": number | null}>>
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
 }
 
 export type ThemeContextProviderProps = {

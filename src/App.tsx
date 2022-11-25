@@ -16,7 +16,7 @@ const App = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)
-  const [dateViewEnabled, setDateViewEnabled] = useState<DateViewEnabledType>({"isOpen": false, "id": null})
+  const [dateViewEnabled, setDateViewEnabled] = useState<DateViewEnabledType>({"isOpen": false, "id": null, "date": null, "movie": null})
   const [thisStyle, setThisStyle] = useState({ })
   const [appStyle, setAppStyle] = useState(thisStyle)
   const [page, setPage] = useState<string>("calendar")
