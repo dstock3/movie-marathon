@@ -59,145 +59,143 @@ const WeekGlance = (props: WeekGlanceProps) => {
     }
     return lineup
   }
-  /*
-  useEffect(()=> {    
-    const oneYearAgo = format(new Date(parseInt(props.currentYear) - 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+  
 
-    const oneYearFromToday = format(new Date(parseInt(props.currentYear) + 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
-    
-    const thisRange = eachDayOfInterval({
-      start: new Date(oneYearAgo),
-      end: new Date(oneYearFromToday)
-    })
-    //props.setRangeOfDates(thisRange)
-    
-    let monthArray = []
-    for (let i = 0; i < thisRange.length; i++) {
-      let thisDay = new Date(thisRange[i])
-      let formattedThisYear = format(thisDay, 'y')
-      let formattedThisMonth = format(thisDay, 'MMMM')
-      
-      if (formattedThisMonth === props.currentMonth &&
-        props.currentYear === formattedThisYear) {
-            monthArray.push({"date":format(thisDay, 'MM/dd/y'), "day":format(thisDay, 'EEEE')})
-      }
-      props.setMonthRange(monthArray)
-    }
-  }, [props.currentMonth, props.currentYear])
-  */
+  
 
   useEffect(()=> {
-    let today = format(props.currentDate, 'MM/dd/y')
+    let currentYear = format(new Date(), 'y')
+
+    const oneMonthAgo = format(new Date(parseInt(currentYear), parseInt(format(new Date(), 'MM')) - 2, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+
+    const oneMonthFromToday = format(new Date(parseInt(currentYear), parseInt(format(new Date(), 'MM')) + 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+    
+    const thisRange = eachDayOfInterval({
+      start: new Date(oneMonthAgo),
+      end: new Date(oneMonthFromToday)
+    })
+
+    let weekArray = []
+    let today = format(new Date(), 'MM/dd/y')
+    
+    for (let i = 0; i < thisRange.length; i++) {
+      let thisDay = format(new Date(thisRange[i]), 'MM/dd/y')
+
+      if (today === thisDay) {
+        for (let x = -7; x < 7; x++) {
+          weekArray.push({"date":format(new Date(thisRange[i + x]), 'MM/dd/y'), "day":format(new Date(thisRange[i + x]), 'EEEE')})
+        }
+      }
+    }
+
     let newWeek = thisWeek
     let weekLineup: Week = movieNights
 
-    if (weekRange) {
-      for (let i = 0; i < weekRange.length; i++) {
-        if (weekRange[i].date === today) {
-          for (let prop in newWeek) {
-            if (prop === weekRange[i].day) {
-              newWeek[prop as keyof Week] = weekRange[i].date
-              weekLineup = assignMovieNight(weekLineup, weekRange[i].date)
-              let arr = Object.entries(newWeek)
-              let thisIndex = arr.findIndex(e => e[0] === prop);
+    for (let i = 0; i < weekArray.length; i++) {
+      if (weekArray[i].date === today) {
+        for (let prop in newWeek) {
+          if (prop === weekArray[i].day) {
+            newWeek[prop as keyof Week] = weekArray[i].date
+            weekLineup = assignMovieNight(weekLineup, weekArray[i].date)
+            let arr = Object.entries(newWeek)
+            let thisIndex = arr.findIndex(e => e[0] === prop);
+            
+            if (thisIndex === 0) {
+              newWeek[Object.keys(newWeek)[1] as keyof Week] = weekArray[i + 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 1].date)
+              newWeek[Object.keys(newWeek)[2] as keyof Week] = weekArray[i + 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 2].date)
+              newWeek[Object.keys(newWeek)[3] as keyof Week] = weekArray[i + 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 3].date)
+              newWeek[Object.keys(newWeek)[4] as keyof Week] = weekArray[i + 4].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 4].date)
+              newWeek[Object.keys(newWeek)[5] as keyof Week] = weekArray[i + 5].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 5].date)
+              newWeek[Object.keys(newWeek)[6] as keyof Week] = weekArray[i + 6].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 6].date)
+            } else if (thisIndex === 1) {
+              newWeek[Object.keys(newWeek)[0] as keyof Week] = weekArray[i - 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 1].date)
+
+              newWeek[Object.keys(newWeek)[2] as keyof Week] = weekArray[i + 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 1].date)
+              newWeek[Object.keys(newWeek)[3] as keyof Week] = weekArray[i + 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 2].date)
+              newWeek[Object.keys(newWeek)[4] as keyof Week] = weekArray[i + 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 3].date)
+              newWeek[Object.keys(newWeek)[5] as keyof Week] = weekArray[i + 4].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 4].date)
+              newWeek[Object.keys(newWeek)[6] as keyof Week] = weekArray[i + 5].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 5].date)
+            } else if (thisIndex === 2) {
+              newWeek[Object.keys(newWeek)[0] as keyof Week] = weekArray[i - 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 2].date)
+              newWeek[Object.keys(newWeek)[1] as keyof Week] = weekArray[i - 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 1].date)
+
+              newWeek[Object.keys(newWeek)[3] as keyof Week] = weekArray[i + 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 1].date)
+              newWeek[Object.keys(newWeek)[4] as keyof Week] = weekArray[i + 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 2].date)
+              newWeek[Object.keys(newWeek)[5] as keyof Week] = weekArray[i + 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 3].date)
+              newWeek[Object.keys(newWeek)[6] as keyof Week] = weekArray[i + 4].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 4].date)
+            } else if (thisIndex === 3) {
+              newWeek[Object.keys(newWeek)[0] as keyof Week] = weekArray[i - 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 3].date)
+              newWeek[Object.keys(newWeek)[1] as keyof Week] = weekArray[i - 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 2].date)
+              newWeek[Object.keys(newWeek)[2] as keyof Week] = weekArray[i - 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 1].date)
+
+              newWeek[Object.keys(newWeek)[4] as keyof Week] = weekArray[i + 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 1].date)
+              newWeek[Object.keys(newWeek)[5] as keyof Week] = weekArray[i + 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 2].date)
+              newWeek[Object.keys(newWeek)[6] as keyof Week] = weekArray[i + 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 3].date)
+            } else if (thisIndex === 4) {
+              newWeek[Object.keys(newWeek)[0] as keyof Week] = weekArray[i - 4].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 4].date)
+              newWeek[Object.keys(newWeek)[1] as keyof Week] = weekArray[i - 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 3].date)
+              newWeek[Object.keys(newWeek)[2] as keyof Week] = weekArray[i - 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 2].date)
+              newWeek[Object.keys(newWeek)[3] as keyof Week] = weekArray[i - 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 1].date)
               
-              if (thisIndex === 0) {
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 4].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 4].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 5].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 5].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 6].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 6].date)
-              } else if (thisIndex === 1) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
-
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 4].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 4].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 5].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 5].date)
-              } else if (thisIndex === 2) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
-
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 4].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 4].date)
-              } else if (thisIndex === 3) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
-
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
-              } else if (thisIndex === 4) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 4].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 4].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
-                
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
-              } else if (thisIndex === 5) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 5].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 5].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 4].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 4].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
-                
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
-              } else if (thisIndex === 6) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 6].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 6].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 5].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 5].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 4].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 4].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
-              }
+              newWeek[Object.keys(newWeek)[5] as keyof Week] = weekArray[i + 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 1].date)
+              newWeek[Object.keys(newWeek)[6] as keyof Week] = weekArray[i + 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 2].date)
+            } else if (thisIndex === 5) {
+              newWeek[Object.keys(newWeek)[0] as keyof Week] = weekArray[i - 5].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 5].date)
+              newWeek[Object.keys(newWeek)[1] as keyof Week] = weekArray[i - 4].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 4].date)
+              newWeek[Object.keys(newWeek)[2] as keyof Week] = weekArray[i - 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 3].date)
+              newWeek[Object.keys(newWeek)[3] as keyof Week] = weekArray[i - 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 2].date)
+              newWeek[Object.keys(newWeek)[4] as keyof Week] = weekArray[i - 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 1].date)
+              
+              newWeek[Object.keys(newWeek)[6] as keyof Week] = weekArray[i + 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i + 1].date)
+            } else if (thisIndex === 6) {
+              newWeek[Object.keys(newWeek)[0] as keyof Week] = weekArray[i - 6].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 6].date)
+              newWeek[Object.keys(newWeek)[1] as keyof Week] = weekArray[i - 5].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 5].date)
+              newWeek[Object.keys(newWeek)[2] as keyof Week] = weekArray[i - 4].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 4].date)
+              newWeek[Object.keys(newWeek)[3] as keyof Week] = weekArray[i - 3].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 3].date)
+              newWeek[Object.keys(newWeek)[4] as keyof Week] = weekArray[i - 2].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 2].date)
+              newWeek[Object.keys(newWeek)[5] as keyof Week] = weekArray[i - 1].date
+              weekLineup = assignMovieNight(weekLineup, weekArray[i - 1].date)
             }
           }
         }
@@ -205,7 +203,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
     }
     setThisWeek(newWeek)
     setMovieNights(weekLineup)
-  }, [weekRange])
+  }, [])
 
   useEffect(()=> {
     let themes = Object.keys(theme)
