@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import { WeekGlanceProps, MonthRangeType } from '../../Types.types'
 import '../../style/week-view.css'
-import { format } from 'date-fns'
+import { format, eachDayOfInterval } from 'date-fns'
 
 const WeekGlance = (props: WeekGlanceProps) => {
   const theme = useContext(ThemeContext)
@@ -59,6 +59,32 @@ const WeekGlance = (props: WeekGlanceProps) => {
     }
     return lineup
   }
+  /*
+  useEffect(()=> {    
+    const oneYearAgo = format(new Date(parseInt(props.currentYear) - 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+
+    const oneYearFromToday = format(new Date(parseInt(props.currentYear) + 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')
+    
+    const thisRange = eachDayOfInterval({
+      start: new Date(oneYearAgo),
+      end: new Date(oneYearFromToday)
+    })
+    //props.setRangeOfDates(thisRange)
+    
+    let monthArray = []
+    for (let i = 0; i < thisRange.length; i++) {
+      let thisDay = new Date(thisRange[i])
+      let formattedThisYear = format(thisDay, 'y')
+      let formattedThisMonth = format(thisDay, 'MMMM')
+      
+      if (formattedThisMonth === props.currentMonth &&
+        props.currentYear === formattedThisYear) {
+            monthArray.push({"date":format(thisDay, 'MM/dd/y'), "day":format(thisDay, 'EEEE')})
+      }
+      props.setMonthRange(monthArray)
+    }
+  }, [props.currentMonth, props.currentYear])
+  */
 
   useEffect(()=> {
     let today = format(props.currentDate, 'MM/dd/y')
