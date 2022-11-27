@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
-import { WeekGlanceProps } from '../../Types.types'
+import { WeekGlanceProps, MonthRangeType } from '../../Types.types'
 import '../../style/week-view.css'
 import { format } from 'date-fns'
 
@@ -9,6 +9,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
   const [weekViewStyle, setWeekViewStyle] = useState<React.CSSProperties | Object>({})
   const [dayStyle, setDayStyle] = useState<React.CSSProperties | Object>({})
   const [weekFooterStyle, setWeekFooterStyle] = useState<React.CSSProperties | Object>({})
+  const [weekRange, setWeekRange] = useState<MonthRangeType | null>(null)
   
   type Week = {
     Sunday: string,
@@ -41,14 +42,14 @@ const WeekGlance = (props: WeekGlanceProps) => {
   })
 
   function assignMovieNight(lineup: Week, date: string): Week {
-    if (props.thisUser?.stacks && props.monthRange) {
+    if (props.thisUser?.stacks && weekRange) {
       for (let i = 0; i < props.thisUser?.stacks?.length; i++) {
         for (let x = 0; x < props.thisUser?.stacks[i].lineup.length; x++) {
           if (props.thisUser?.stacks[i].lineup[x].Date === date) {
-            for (let c = 0; c < props.monthRange.length; c++) {
-              if (props.monthRange[c].date === date) {
+            for (let c = 0; c < weekRange.length; c++) {
+              if (weekRange[c].date === date) {
                 
-                let day = props.monthRange[c].day
+                let day = weekRange[c].day
                 lineup[day as keyof Week] = props.thisUser?.stacks[i].lineup[x].Title
               }
             }
@@ -64,112 +65,112 @@ const WeekGlance = (props: WeekGlanceProps) => {
     let newWeek = thisWeek
     let weekLineup: Week = movieNights
 
-    if (props.monthRange) {
-      for (let i = 0; i < props.monthRange.length; i++) {
-        if (props.monthRange[i].date === today) {
+    if (weekRange) {
+      for (let i = 0; i < weekRange.length; i++) {
+        if (weekRange[i].date === today) {
           for (let prop in newWeek) {
-            if (prop === props.monthRange[i].day) {
-              newWeek[prop as keyof Week] = props.monthRange[i].date
-              weekLineup = assignMovieNight(weekLineup, props.monthRange[i].date)
+            if (prop === weekRange[i].day) {
+              newWeek[prop as keyof Week] = weekRange[i].date
+              weekLineup = assignMovieNight(weekLineup, weekRange[i].date)
               let arr = Object.entries(newWeek)
               let thisIndex = arr.findIndex(e => e[0] === prop);
               
               if (thisIndex === 0) {
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = props.monthRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = props.monthRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = props.monthRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 3].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = props.monthRange[i + 4].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 4].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = props.monthRange[i + 5].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 5].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = props.monthRange[i + 6].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 6].date)
+                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i + 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
+                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i + 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
+                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i + 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
+                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 4].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 4].date)
+                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 5].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 5].date)
+                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 6].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 6].date)
               } else if (thisIndex === 1) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = props.monthRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 1].date)
+                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
 
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = props.monthRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = props.monthRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = props.monthRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 3].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = props.monthRange[i + 4].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 4].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = props.monthRange[i + 5].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 5].date)
+                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i + 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
+                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i + 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
+                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
+                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 4].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 4].date)
+                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 5].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 5].date)
               } else if (thisIndex === 2) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = props.monthRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = props.monthRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 1].date)
+                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
+                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
 
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = props.monthRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = props.monthRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = props.monthRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 3].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = props.monthRange[i + 4].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 4].date)
+                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i + 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
+                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
+                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
+                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 4].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 4].date)
               } else if (thisIndex === 3) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = props.monthRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = props.monthRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = props.monthRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 1].date)
+                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
+                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
+                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
 
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = props.monthRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = props.monthRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 2].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = props.monthRange[i + 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 3].date)
+                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i + 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
+                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
+                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 3].date)
               } else if (thisIndex === 4) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = props.monthRange[i - 4].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 4].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = props.monthRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = props.monthRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = props.monthRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 1].date)
+                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 4].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 4].date)
+                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
+                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
+                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i - 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
                 
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = props.monthRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 1].date)
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = props.monthRange[i + 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 2].date)
+                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i + 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
+                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 2].date)
               } else if (thisIndex === 5) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = props.monthRange[i - 5].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 5].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = props.monthRange[i - 4].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 4].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = props.monthRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = props.monthRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = props.monthRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 1].date)
+                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 5].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 5].date)
+                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 4].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 4].date)
+                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
+                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i - 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
+                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i - 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
                 
-                newWeek[Object.keys(newWeek)[6] as keyof Week] = props.monthRange[i + 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i + 1].date)
+                newWeek[Object.keys(newWeek)[6] as keyof Week] = weekRange[i + 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i + 1].date)
               } else if (thisIndex === 6) {
-                newWeek[Object.keys(newWeek)[0] as keyof Week] = props.monthRange[i - 6].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 6].date)
-                newWeek[Object.keys(newWeek)[1] as keyof Week] = props.monthRange[i - 5].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 5].date)
-                newWeek[Object.keys(newWeek)[2] as keyof Week] = props.monthRange[i - 4].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 4].date)
-                newWeek[Object.keys(newWeek)[3] as keyof Week] = props.monthRange[i - 3].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 3].date)
-                newWeek[Object.keys(newWeek)[4] as keyof Week] = props.monthRange[i - 2].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 2].date)
-                newWeek[Object.keys(newWeek)[5] as keyof Week] = props.monthRange[i - 1].date
-                weekLineup = assignMovieNight(weekLineup, props.monthRange[i - 1].date)
+                newWeek[Object.keys(newWeek)[0] as keyof Week] = weekRange[i - 6].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 6].date)
+                newWeek[Object.keys(newWeek)[1] as keyof Week] = weekRange[i - 5].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 5].date)
+                newWeek[Object.keys(newWeek)[2] as keyof Week] = weekRange[i - 4].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 4].date)
+                newWeek[Object.keys(newWeek)[3] as keyof Week] = weekRange[i - 3].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 3].date)
+                newWeek[Object.keys(newWeek)[4] as keyof Week] = weekRange[i - 2].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 2].date)
+                newWeek[Object.keys(newWeek)[5] as keyof Week] = weekRange[i - 1].date
+                weekLineup = assignMovieNight(weekLineup, weekRange[i - 1].date)
               }
             }
           }
@@ -178,7 +179,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
     }
     setThisWeek(newWeek)
     setMovieNights(weekLineup)
-  }, [props.monthRange])
+  }, [weekRange])
 
   useEffect(()=> {
     let themes = Object.keys(theme)
@@ -200,17 +201,17 @@ const WeekGlance = (props: WeekGlanceProps) => {
     let movie
     if (props.thisUser?.stacks) {
       for (let i = 0; i < props.thisUser?.stacks.length; i++) {
-          for (let x = 0; x < props.thisUser?.stacks[i].lineup.length; x++) {
-              if (props.thisUser?.stacks[i].lineup[x].Title === movieTitle) {
-                  movie = props.thisUser?.stacks[i].lineup[x]
-              }
-          }
+        for (let x = 0; x < props.thisUser?.stacks[i].lineup.length; x++) {
+            if (props.thisUser?.stacks[i].lineup[x].Title === movieTitle) {
+                movie = props.thisUser?.stacks[i].lineup[x]
+            }
+        }
       }
     }
 
-    if (props.monthRange) {
-      for (let i = 0; i < props.monthRange.length; i++) {
-        if (props.monthRange[i].date === date) {
+    if (weekRange) {
+      for (let i = 0; i < weekRange.length; i++) {
+        if (weekRange[i].date === date) {
             props.setDateViewEnabled({"isOpen": true, "id": id, date: date, movie: movie})
         }
       }
