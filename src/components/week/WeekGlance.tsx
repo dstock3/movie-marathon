@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
-import { WeekGlanceProps, MonthRangeType } from '../../Types.types'
+import { WeekGlanceProps } from '../../Types.types'
 import '../../style/week-view.css'
 import { format, eachDayOfInterval } from 'date-fns'
 
@@ -230,7 +230,6 @@ const WeekGlance = (props: WeekGlanceProps) => {
         }
       }
     }
-
     if (props.monthRange) {
       for (let i = 0; i < props.monthRange.length; i++) {
         if (props.monthRange[i].date === date) {

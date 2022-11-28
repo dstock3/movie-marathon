@@ -290,6 +290,54 @@
                         "Notes": "After Black Friday shopping, of course."
                     }
                 ]
+            },
+            {
+                "name": "Robert Zemeckis Appreciation Time",
+                "desc": "A marathon composed purely of films directed by Robert Zemeckis",
+                "id": 2,
+                "lineup": [
+                    {
+                        "Title": "Back to the Future",
+                        "Year": "1985",
+                        "imdbID": "tt0088763",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+                        "Date": "12/02/2022",
+                        "Notes": "Hey, Chuck, it's your cousin, Marvin Berry. You know that new sound you been lookin for?"
+                    },
+                    {
+                        "Title": "Forrest Gump",
+                        "Year": "1994",
+                        "imdbID": "tt0109830",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+                        "Date": "12/07/2022",
+                        "Notes": "This movie marathon is like a box of chocolates..."
+                    },
+                    {
+                        "Title": "Who Framed Roger Rabbit",
+                        "Year": "1988",
+                        "imdbID": "tt0096438",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BMDhiOTM2OTctODk3Ny00NWI4LThhZDgtNGQ4NjRiYjFkZGQzXkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX300.jpg",
+                        "Date": "12/12/2022",
+                        "Notes": "People are sleeping on Roger Rabbit. It's a classic."
+                    },
+                    {
+                        "Title": "Cast Away",
+                        "Year": "2000",
+                        "imdbID": "tt0162222",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BN2Y5ZTU4YjctMDRmMC00MTg4LWE1M2MtMjk4MzVmOTE4YjkzXkEyXkFqcGdeQXVyNTc1NTQxODI@._V1_SX300.jpg",
+                        "Date": "12/17/2022",
+                        "Notes": "Oh god, I'm crying over a beach ball."
+                    },
+                    {
+                        "Title": "Back to the Future Part II",
+                        "Year": "1989",
+                        "imdbID": "tt0096874",
+                        "Poster": "https://m.media-amazon.com/images/M/MV5BZTMxMGM5MjItNDJhNy00MWI2LWJlZWMtOWFhMjI5ZTQwMWM3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+                        "Date": "12/22/2022",
+                        "Notes": "They used Crispin Glover's likeness without his consent!"
+                    }
+
+                ]
             }
         ]
     }
