@@ -9,7 +9,6 @@ const WeekGlance = (props: WeekGlanceProps) => {
   const [weekViewStyle, setWeekViewStyle] = useState<React.CSSProperties | Object>({})
   const [dayStyle, setDayStyle] = useState<React.CSSProperties | Object>({})
   const [weekFooterStyle, setWeekFooterStyle] = useState<React.CSSProperties | Object>({})
-  const [weekRange, setWeekRange] = useState<MonthRangeType | null>(null)
   
   type Week = {
     Sunday: string,
@@ -42,14 +41,14 @@ const WeekGlance = (props: WeekGlanceProps) => {
   })
 
   function assignMovieNight(lineup: Week, date: string): Week {
-    if (props.thisUser?.stacks && weekRange) {
+    if (props.thisUser?.stacks && props.monthRange) {
       for (let i = 0; i < props.thisUser?.stacks?.length; i++) {
         for (let x = 0; x < props.thisUser?.stacks[i].lineup.length; x++) {
           if (props.thisUser?.stacks[i].lineup[x].Date === date) {
-            for (let c = 0; c < weekRange.length; c++) {
-              if (weekRange[c].date === date) {
+            for (let c = 0; c < props.monthRange.length; c++) {
+              if (props.monthRange[c].date === date) {
                 
-                let day = weekRange[c].day
+                let day = props.monthRange[c].day
                 lineup[day as keyof Week] = props.thisUser?.stacks[i].lineup[x].Title
               }
             }
@@ -60,9 +59,6 @@ const WeekGlance = (props: WeekGlanceProps) => {
     return lineup
   }
   
-
-  
-
   useEffect(()=> {
     let currentYear = format(new Date(), 'y')
 
@@ -88,7 +84,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
       }
     }
 
-    setWeekRange(weekArray)
+    props.setMonthRange(weekArray)
 
     let newWeek = thisWeek
     let weekLineup: Week = movieNights
@@ -235,9 +231,9 @@ const WeekGlance = (props: WeekGlanceProps) => {
       }
     }
 
-    if (weekRange) {
-      for (let i = 0; i < weekRange.length; i++) {
-        if (weekRange[i].date === date) {
+    if (props.monthRange) {
+      for (let i = 0; i < props.monthRange.length; i++) {
+        if (props.monthRange[i].date === date) {
             props.setDateViewEnabled({"isOpen": true, "id": id, date: date, movie: movie})
         }
       }

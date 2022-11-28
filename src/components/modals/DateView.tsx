@@ -40,7 +40,6 @@ const DateView = (props: DateViewType) => {
             }
           }
           setMovieNight(dateElement?.parentElement?.firstChild?.textContent)
-
         }
 
         if (typeof index === "number") {

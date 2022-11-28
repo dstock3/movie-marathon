@@ -84,7 +84,7 @@ const Main = (props: MainProps) => {
       <Feed users={props.users} thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     
     props.page === "week" ? 
-      <WeekGlance thisStyle={props.thisStyle} thisUser={props.thisUser} currentDate={currentDate} monthRange={monthRange} setDateViewEnabled={props.setDateViewEnabled} /> :
+      <WeekGlance thisStyle={props.thisStyle} thisUser={props.thisUser} currentDate={currentDate} monthRange={monthRange} setDateViewEnabled={props.setDateViewEnabled} setMonthRange={setMonthRange} /> :
     
     props.page === "fav" ?
       <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :

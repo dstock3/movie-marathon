@@ -198,7 +198,8 @@ export type WeekGlanceProps = {
     thisUser?: ThisUser,
     currentDate: Date,
     monthRange: MonthRangeType,
-    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>
+    setDateViewEnabled: Dispatch<SetStateAction<DateViewEnabledType>>,
+    setMonthRange: Dispatch<SetStateAction<MonthRangeType>>
 }
 
 export type Stacks = {
