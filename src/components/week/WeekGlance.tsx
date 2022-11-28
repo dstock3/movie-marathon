@@ -88,6 +88,8 @@ const WeekGlance = (props: WeekGlanceProps) => {
       }
     }
 
+    setWeekRange(weekArray)
+
     let newWeek = thisWeek
     let weekLineup: Week = movieNights
 
