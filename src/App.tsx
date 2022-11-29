@@ -29,7 +29,7 @@ const App = () => {
     
     let themes = Object.keys(theme)
 
-    if (dateViewEnabled.isOpen) {
+    if (dateViewEnabled.isOpen || timeToPost) {
       if (App && user) {
         for (let i = 0; i < themes.length; i++) {
           if (themes[i] === user.theme) {
@@ -66,7 +66,7 @@ const App = () => {
         }
       }
     }
-  }, [dateViewEnabled])
+  }, [dateViewEnabled, timeToPost])
 
   useEffect(()=> {
     let themes = Object.keys(theme)
@@ -105,7 +105,7 @@ const App = () => {
           </section>
       </div>
       {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
-      {timeToPost ? <Compose thisStyle={thisStyle} thisUser={user} /> : null}
+      {timeToPost ? <Compose thisStyle={thisStyle} thisUser={user} setTimeToPost={setTimeToPost} /> : null}
     </>
   );
 }

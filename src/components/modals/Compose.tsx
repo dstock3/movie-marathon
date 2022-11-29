@@ -7,6 +7,7 @@ import { ThemeContext } from '../context/ThemeContext'
 const Compose = (props: ComposeProps) => {
     const theme = useContext(ThemeContext)
     const [composeStyle, setComposeStyle] = useState<React.CSSProperties | Object>({})
+    const [closeStyle, setCloseStyle] = useState<React.CSSProperties | Object>({})
     
     /*need to create useEffect hook to handle POST request
 
@@ -20,14 +21,18 @@ const Compose = (props: ComposeProps) => {
         if (props.thisUser) {
             for (let i = 0; i < themes.length; i++) {
                 if (themes[i] === props.thisUser.theme) {
-                
-                let thisTheme: any = theme[themes[i] as keyof Object]
-        
-                setComposeStyle({
-                    ...composeStyle, 
-                    ...{border: thisTheme.border},
-                    ...props.thisStyle 
-                })
+                    let thisTheme: any = theme[themes[i] as keyof Object]
+            
+                    setComposeStyle({
+                        ...composeStyle, 
+                        ...{border: thisTheme.border},
+                        ...props.thisStyle 
+                    })
+
+                    setCloseStyle({
+                        ...closeStyle,
+                        ...{color: thisTheme.text},
+                    })
                 }
             }
         }
@@ -36,6 +41,9 @@ const Compose = (props: ComposeProps) => {
 
     return ReactDOM.createPortal(
         <div className="compose" style={composeStyle}>
+            <div className="compose-button-container">
+                <div className="compose-close" style={closeStyle} onClick={()=>props.setTimeToPost(false)}>x</div>
+            </div>
             <div className="prompt">
                 What movies have your watched recently? Share your thoughts with friends.
             </div>
