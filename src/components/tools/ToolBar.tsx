@@ -28,7 +28,7 @@ const ToolBar = (props: ToolBarProps) => {
                 <div className="toolbar-btn" style={buttonStyle}>
                     S
                 </div>
-                <div className="toolbar-btn" style={buttonStyle}>
+                <div className="toolbar-btn" style={buttonStyle} onClick={()=>props.setTimeToPost(true)}>
                     P
                 </div>
             </div>

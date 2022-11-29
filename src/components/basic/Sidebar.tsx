@@ -62,7 +62,7 @@ const Sidebar = (props: SidebarProps) => {
             <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData}/>
           </div>
 
-          <ToolBar thisStyle={props.thisStyle} thisUser={props.thisUser} />
+          <ToolBar thisStyle={props.thisStyle} thisUser={props.thisUser} setTimeToPost={props.setTimeToPost} />
 
           <ul className="sidebar-options">
             <li className="sidebar-option no-select" id="calendar-option" onClick={()=>props.setPage("calendar")}>

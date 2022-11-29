@@ -1,0 +1,12 @@
+.compose {
+    position: fixed;
+    top: 15%;
+    left: 35%;
+    height: 27vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 5px 2px 7px rgba(34, 34, 34, 0.393);
+}

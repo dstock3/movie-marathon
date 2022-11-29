@@ -9,6 +9,7 @@ import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
 import { ResponseDataType, DateViewEnabledType, ThisUser } from './Types.types'
+import Compose from './components/modals/Compose';
 
 const App = () => {
   const theme = useContext(ThemeContext)
@@ -20,6 +21,7 @@ const App = () => {
   const [thisStyle, setThisStyle] = useState({ })
   const [appStyle, setAppStyle] = useState(thisStyle)
   const [page, setPage] = useState<string>("calendar")
+  const [timeToPost, setTimeToPost] = useState<boolean>(false)
 
   useEffect(()=> {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
@@ -93,7 +95,7 @@ const App = () => {
       <div 
         className="App" 
         style={appStyle}>
-          <Sidebar page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} />
+          <Sidebar page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} setTimeToPost={setTimeToPost} />
           <section className={`primary`} style={primeStyle}>
             <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
 
@@ -103,6 +105,7 @@ const App = () => {
           </section>
       </div>
       {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
+      {timeToPost ? <Compose thisStyle={thisStyle} thisUser={user} /> : null}
     </>
   );
 }

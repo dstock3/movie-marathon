@@ -83,12 +83,14 @@ export type SidebarProps = {
     setIsExpanded: Dispatch<SetStateAction<boolean>>,
     setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
     page: string,
-    setPage: Dispatch<SetStateAction<string>>
+    setPage: Dispatch<SetStateAction<string>>,
+    setTimeToPost: Dispatch<SetStateAction<boolean>>
 }
 
 export type ToolBarProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: ThisUser
+    thisUser?: ThisUser,
+    setTimeToPost: Dispatch<SetStateAction<boolean>>
 }
 
 export type Users = {
@@ -216,5 +218,10 @@ export type StackContainerProps = {
 export type FilmContainerProps = {
     film: Film,
     index: number
+}
+
+export type ComposeProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser
 }
 
