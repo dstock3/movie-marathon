@@ -44,12 +44,13 @@ const Compose = (props: ComposeProps) => {
             <div className="compose-button-container">
                 <div className="compose-close" style={closeStyle} onClick={()=>props.setTimeToPost(false)}>x</div>
             </div>
-            <div className="prompt">
-                What movies have your watched recently? Share your thoughts with friends.
-            </div>
             <form className="compose-form">
-
+                <input className="compose-input" placeholder='What movies have your watched recently? Share your thoughts with friends.'>
+                </input>
             </form>
+            <div className="compose-button-container">
+                <div className="compose-enter" style={closeStyle}>Confirm</div>
+            </div>
         </div>,
         document.getElementById('compose-modal')!
     )
