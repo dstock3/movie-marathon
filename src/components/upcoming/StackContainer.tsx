@@ -7,22 +7,22 @@ const StackContainer = (props: StackContainerProps):JSX.Element => {
     const [isActive, setIsActive] = useState(false)
     const [stackInfoStyle, setStackInfoStyle] = useState<React.CSSProperties | {}>({})
     const theme = useContext(ThemeContext)
-    
+
     useEffect(()=> {
-        if (isActive) {
-            setStackInfoStyle({
-                flexDirection: 'column',
-                justifyContent: 'flex-start'
-            })
-
-        } else {
-            setStackInfoStyle({
-                flexDirection: 'row',
-                justifyContent: 'space-between'
-            })
+        let themes = Object.keys(theme)
+        if (props.thisUser) {
+            console.log(props.thisUser)
+          for (let i = 0; i < themes.length; i++) {
+            if (themes[i] === props.thisUser.theme) {
+              
+              let thisTheme: any = theme[themes[i] as keyof Object]
+    
+              setStackInfoStyle({"border": thisTheme.border, "color": thisTheme.text})
+            }
+          }
         }
-    }, [isActive])
-
+    }, [props.thisUser])
+    
     const handleClick = ():void => {
         setIsActive(!isActive)
     }
@@ -33,13 +33,14 @@ const StackContainer = (props: StackContainerProps):JSX.Element => {
                 <div className="stack-name">{props.stack.name}</div>
                 <div className="stack-desc">{props.stack.desc}</div>
             </div>
-            {!isActive ? <div className="down-arrow">Down</div>:null}
-
-            <div className="stack-container">
-            {isActive ? props.stack.lineup.map((film: Film, thisIndex):JSX.Element => {
-                return (<FilmContainer index={thisIndex} film={film} />)
-            }) : null}
-            </div>
+            
+            {isActive ? 
+                <div className="stack-container">
+                {props.stack.lineup.map((film: Film, thisIndex):JSX.Element => {
+                    return (<FilmContainer index={thisIndex} film={film} />)
+                })}
+                </div> : <div className="down-arrow">Down</div>
+            }
         </li>
     )
 }

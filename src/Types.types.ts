@@ -212,7 +212,8 @@ export type Stacks = {
 export type StackContainerProps = {
     stack: ThisStack,
     index: number,
-    thisTheme: React.CSSProperties
+    thisTheme: React.CSSProperties,
+    thisUser?: ThisUser
 }
 
 export type FilmContainerProps = {
