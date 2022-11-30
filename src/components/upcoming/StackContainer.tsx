@@ -17,7 +17,7 @@ const StackContainer = (props: StackContainerProps):JSX.Element => {
               
               let thisTheme: any = theme[themes[i] as keyof Object]
     
-              setStackInfoStyle({"border": thisTheme.border, "color": thisTheme.text})
+              setStackInfoStyle({"border": thisTheme.border, "color": thisTheme.text, backgroundColor: thisTheme.main})
             }
           }
         }
@@ -36,10 +36,11 @@ const StackContainer = (props: StackContainerProps):JSX.Element => {
             
             {isActive ? 
                 <div className="stack-container">
-                {props.stack.lineup.map((film: Film, thisIndex):JSX.Element => {
-                    return (<FilmContainer index={thisIndex} film={film} />)
-                })}
-                </div> : <div className="down-arrow">Down</div>
+                    {props.stack.lineup.map((film: Film, thisIndex):JSX.Element => {
+                        return (<FilmContainer index={thisIndex} film={film} />)
+                    })}
+                </div> : 
+                <div className="down-arrow">Down</div>
             }
         </li>
     )

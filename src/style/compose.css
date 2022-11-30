@@ -21,6 +21,7 @@
 
 .compose-close {
     cursor: pointer;
+    font-weight: bold;
 }
 
 .compose-enter {
@@ -44,8 +45,9 @@
 
 .compose-input {
     height: 75%;
-    width: 75%;
+    width: 85%;
     border-radius: 5px;
+    font-size: 1.25em;
 }
 
 .compose-button-container {
