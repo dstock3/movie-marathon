@@ -40,7 +40,7 @@ const Upcoming = (props:Stacks) => {
     <div className="upcoming-stacks">
       {props.thisUser?.stacks ?
         <>
-          <h2>Upcoming Stacks</h2>
+          <h2 className="stacks-head">Upcoming Stacks</h2>
           <ul className="stack-list">
             {props.thisUser?.stacks.map((stack: ThisStack, index):JSX.Element  => {
               return (
