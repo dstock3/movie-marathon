@@ -7,7 +7,8 @@ import { ThemeContext } from '../context/ThemeContext'
 const Compose = (props: ComposeProps) => {
     const theme = useContext(ThemeContext)
     const [composeStyle, setComposeStyle] = useState<React.CSSProperties | Object>({})
-    const [closeStyle, setCloseStyle] = useState<React.CSSProperties | Object>({})
+    const [enterStyle, setEnterStyle] = useState<React.CSSProperties | Object>({})
+    const [inputStyle, setInputStyle] = useState<React.CSSProperties | Object>({})
     
     /*need to create useEffect hook to handle POST request
 
@@ -29,9 +30,15 @@ const Compose = (props: ComposeProps) => {
                         ...props.thisStyle 
                     })
 
-                    setCloseStyle({
-                        ...closeStyle,
-                        ...{color: thisTheme.text},
+                    setEnterStyle({
+                        ...{backgroundColor: thisTheme.text,
+                            color: thisTheme.main}
+                    })
+
+                    setInputStyle({
+                        ...inputStyle,
+                        ...{backgroundColor: thisTheme.text,
+                            color: thisTheme.main}
                     })
                 }
             }
@@ -42,14 +49,14 @@ const Compose = (props: ComposeProps) => {
     return ReactDOM.createPortal(
         <div className="compose" style={composeStyle}>
             <div className="compose-button-container">
-                <div className="compose-close" style={closeStyle} onClick={()=>props.setTimeToPost(false)}>x</div>
+                <div className="compose-close" onClick={()=>props.setTimeToPost(false)}>x</div>
             </div>
             <form className="compose-form">
-                <input className="compose-input" placeholder='What movies have your watched recently? Share your thoughts with friends.'>
-                </input>
+                <textarea className="compose-input" style={inputStyle} placeholder='What movies have your watched recently? Share your thoughts with friends.'>
+                </textarea>
             </form>
             <div className="compose-button-container">
-                <div className="compose-enter" style={closeStyle}>Confirm</div>
+                <div className="compose-enter" style={enterStyle}>Confirm</div>
             </div>
         </div>,
         document.getElementById('compose-modal')!
