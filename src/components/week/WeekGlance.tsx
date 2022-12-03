@@ -78,7 +78,7 @@ const WeekGlance = (props: WeekGlanceProps) => {
       let thisDay = format(new Date(thisRange[i]), 'MM/dd/y')
 
       if (today === thisDay) {
-        for (let x = -7; x < 7; x++) {
+        for (let x = -22; x < 22; x++) {
           weekArray.push({"date":format(new Date(thisRange[i + x]), 'MM/dd/y'), "day":format(new Date(thisRange[i + x]), 'EEEE')})
         }
       }

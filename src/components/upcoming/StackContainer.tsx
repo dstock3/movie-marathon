@@ -7,11 +7,11 @@ const StackContainer = (props: StackContainerProps):JSX.Element => {
     const [isActive, setIsActive] = useState(false)
     const [stackInfoStyle, setStackInfoStyle] = useState<React.CSSProperties | {}>({})
     const theme = useContext(ThemeContext)
+    const [stackRange, setStackRange] = useState<string | null>(null)
 
     useEffect(()=> {
         let themes = Object.keys(theme)
         if (props.thisUser) {
-            console.log(props.thisUser)
           for (let i = 0; i < themes.length; i++) {
             if (themes[i] === props.thisUser.theme) {
               
@@ -27,12 +27,28 @@ const StackContainer = (props: StackContainerProps):JSX.Element => {
         setIsActive(!isActive)
     }
 
+    useEffect(()=> {
+        if (props.stack) {
+            let range = props.stack.lineup[0].Date + "-" + props.stack.lineup[props.stack.lineup.length-1].Date
+            console.log(range)
+            setStackRange(range)
+            
+            console.log(stackRange)
+            
+        }
+    }, [])
+
     return (
         <li className="stack-info" style={stackInfoStyle} id={props.stack.name} key={props.index} onClick={()=>handleClick()}>
             <div className="stack-info-subcontainer">
                 <div className="stack-name">{props.stack.name}</div>
                 <div className="stack-desc">{props.stack.desc}</div>
             </div>
+            <div className="stack-info-subcontainer-two">
+                <div className="stack-range">{stackRange}</div>
+            </div>
+
+
             
             {isActive ? 
                 <div className="stack-container">
@@ -40,7 +56,7 @@ const StackContainer = (props: StackContainerProps):JSX.Element => {
                         return (<FilmContainer index={thisIndex} film={film} />)
                     })}
                 </div> : 
-                <div className="down-arrow">Down</div>
+                <div className="open-stack">Open</div>
             }
         </li>
     )
