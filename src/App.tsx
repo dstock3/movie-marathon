@@ -10,6 +10,7 @@ import Sidebar from './components/basic/Sidebar';
 import ToggleSidebar from './components/modals/ToggleSidebar';
 import { ResponseDataType, DateViewEnabledType, ThisUser } from './Types.types'
 import Compose from './components/modals/Compose';
+import Hero from './components/basic/Hero';
 
 const App = () => {
   const theme = useContext(ThemeContext)
@@ -95,14 +96,19 @@ const App = () => {
       <div 
         className="App" 
         style={appStyle}>
-          <Sidebar page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} setTimeToPost={setTimeToPost} />
-          <section className={`primary`} style={primeStyle}>
-            <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
+          {!user ? 
+            <Hero /> :
+            <>
+              <Sidebar page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} setTimeToPost={setTimeToPost} />
+              <section className={`primary`} style={primeStyle}>
+                <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
 
-            <Main users={dummyData.users} page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
+                <Main users={dummyData.users} page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
 
-            <Footer thisStyle={thisStyle} thisUser={user} />
-          </section>
+                <Footer thisStyle={thisStyle} thisUser={user} />
+              </section>
+            </>
+          }
       </div>
       {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
       {timeToPost ? <Compose thisStyle={thisStyle} thisUser={user} setTimeToPost={setTimeToPost} /> : null}
