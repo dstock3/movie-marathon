@@ -1,5 +1,4 @@
 import React from 'react'
-import filmImg from '../../assets/movie.png'
 import '../../style/hero.css'
 
 const Hero = () => {
@@ -7,11 +6,18 @@ const Hero = () => {
     <div className="hero">
         <div className="hero-top-container">
             <h1 className="main-head">FilmStack</h1>
-            <img className="hero-img" src={filmImg} alt="a group of friends watching a strange movie"></img>
+            <div className="login-container">
+                <div>Login</div>
+                <div>Sign Up</div>
+            </div>
+        </div>
+        <div className="intro-container">
+            <div className="intro-text">Our movie marathon application makes it easy to plan and schedule long movie marathons with your friends. Simply choose the movies you want to watch, invite your friends to join, and let our application handle the rest. With our intuitive interface and easy-to-use features, you can quickly and easily plan a month-long movie marathon that will keep you and your friends entertained for hours on end. So why wait? Start planning your epic movie marathon today!
+            </div>
         </div>
         <div className="hero-bottom-container">
-            <div className="intro-text">
-            Are you a movie lover who loves to watch back-to-back movies for hours on end? Do you wish you could plan a month-long movie marathon with your friends, but you're not sure where to start? Look no further! Our movie marathon application makes it easy to plan and schedule long movie marathons with your friends. Simply choose the movies you want to watch, invite your friends to join, and let our application handle the rest. With our intuitive interface and easy-to-use features, you can quickly and easily plan a month-long movie marathon that will keep you and your friends entertained for hours on end. So why wait? Start planning your epic movie marathon today!
+            <div className="pitch">
+            Here, you can write reviews, join discussions, and connect with other fans to share your passion for cinema. Whether you're a seasoned critic or simply a casual viewer, we invite you to join the conversation and share your love of movies with others. 
             </div>
             <div className="benefits-container">
                 <span>Watching a variety of movies and expanding your cinematic tastes can have many benefits. Some of the key benefits include:</span>
