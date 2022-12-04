@@ -1,0 +1,29 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vh;
+}
+
+.hero-top-container {
+    height: 33%;
+    width: 100%;
+}
+
+.hero-bottom-container {
+    height: 66%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.intro-text {
+    width: 45%;
+
+}
+
+.benefits-container {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
