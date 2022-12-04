@@ -4,6 +4,8 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+    color: white;
+    background-color: black;
 }
 
 .main-head {
@@ -12,12 +14,19 @@
 
 .hero-top-container {
     height: 50%;
-    width: 50%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-img {
+    width: 50vw;
 }
 
 .hero-bottom-container {
     height: 66%;
-    width: 100%;
+    width: 75%;
     display: flex;
     justify-content: space-between;
 }
