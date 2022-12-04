@@ -223,7 +223,7 @@ export type FilmContainerProps = {
 
 export type ComposeProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: ThisUser,
+    thisUser?: ThisUser | null,
     setTimeToPost: Dispatch<SetStateAction<boolean>>
 }
 

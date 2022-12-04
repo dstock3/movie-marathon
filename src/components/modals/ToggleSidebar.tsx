@@ -9,7 +9,7 @@ type ToggleProps = {
         handle: string,
         login: string,
         theme: string,
-    },
+    } | null,
     isExpanded: boolean,
     setIsExpanded: Dispatch<SetStateAction<boolean>>
 }

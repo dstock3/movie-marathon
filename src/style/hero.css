@@ -1,13 +1,18 @@
 .hero {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100vh;
-    width: 100vh;
+    width: 100vw;
+}
+
+.main-head {
+    text-align: center;
 }
 
 .hero-top-container {
-    height: 33%;
-    width: 100%;
+    height: 50%;
+    width: 50%;
 }
 
 .hero-bottom-container {
@@ -19,6 +24,7 @@
 
 .intro-text {
     width: 45%;
+    font-weight: bold;
 
 }
 

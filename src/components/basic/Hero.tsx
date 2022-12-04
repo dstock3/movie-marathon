@@ -1,11 +1,13 @@
 import React from 'react'
 import filmImg from '../../assets/movie.png'
+import '../../style/hero.css'
 
 const Hero = () => {
   return (
     <div className="hero">
         <div className="hero-top-container">
-            <img src={filmImg} alt="a group of friends watching a strange movie"></img>
+            <h1 className="main-head">FilmStack</h1>
+            <img className="hero-img" src={filmImg} alt="a group of friends watching a strange movie"></img>
         </div>
         <div className="hero-bottom-container">
             <div className="intro-text">
