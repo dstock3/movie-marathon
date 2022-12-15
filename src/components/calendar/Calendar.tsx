@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 import { format, eachDayOfInterval } from 'date-fns'
 import '../../style/calendar.css'
 import CalendarController from './CalendarController'
 import CalendarGrid from './CalendarGrid'
-import DateView from '../modals/DateView'
 import { CalendarProps } from '../../Types.types'
 
 const Calendar = (props: CalendarProps) => {
