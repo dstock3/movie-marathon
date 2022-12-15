@@ -51,3 +51,18 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.suggestions-container {
+    position: absolute;
+    left: 85%;
+    top: 15%;
+    height: 50%;
+}
+
+.friends-container {
+    position: absolute;
+    right: 65%;
+    top: 15%;
+    height: 50%;
+}
+

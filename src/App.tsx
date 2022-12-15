@@ -14,7 +14,7 @@ import Hero from './components/basic/Hero';
 
 const App = () => {
   const theme = useContext(ThemeContext)
-  const [user, setUser] = useState<ThisUser | null>(null)
+  const [user, setUser] = useState<ThisUser | null>(dummyData.users[0])
   const [isExpanded, setIsExpanded] = useState<boolean>(true)
   const [primeStyle, setPrimeStyle] = useState({})
   const [responseData, setResponseData] = useState<ResponseDataType | null>(null)

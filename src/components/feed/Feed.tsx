@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
+import Suggestions from './Suggestions'
+import Friends from './Friends'
 import uniqueid from 'uniqid'
 import '../../style/feed.css'
 import { ThemeContext } from '../context/ThemeContext'
@@ -66,6 +68,9 @@ const Feed = (props: FeedProps) => {
   }
 
   return (
+    <>
+    <Suggestions />
+    <Friends />
     <div className="feed-container" style={feedStyle}>
       {posts?.sort(function compare(a, b) {
         let dateA = new Date(a.date);
@@ -93,6 +98,7 @@ const Feed = (props: FeedProps) => {
         )
       })}
     </div>
+    </>
   )
 }
 

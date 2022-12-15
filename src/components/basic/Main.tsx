@@ -58,7 +58,7 @@ const Main = (props: MainProps) => {
 
   return (
     <>
-    <main style={props.thisStyle}>
+    <main style={props.thisStyle} id={props.page}>
       {props.responseData ?
         <>
         <h2>Total Results {props.responseData["totalResults"]}</h2>
@@ -93,8 +93,8 @@ const Main = (props: MainProps) => {
       <Upcoming thisStyle={props.thisStyle} thisUser={props.thisUser} /> : null
     }
     </main>
-    {props.dateViewEnabled.isOpen ? 
-          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonth} /> : null}
+    {props.dateViewEnabled.isOpen && 
+          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonth} />}
     </>
   )
 }
