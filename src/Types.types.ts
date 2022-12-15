@@ -227,3 +227,7 @@ export type ComposeProps = {
     setTimeToPost: Dispatch<SetStateAction<boolean>>
 }
 
+export type LoadingProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser
+}

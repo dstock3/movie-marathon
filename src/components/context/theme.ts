@@ -5,7 +5,9 @@ export const themeTemplate = {
         fade: '#9c9c9c',
         text: '#F9F9F9',
         highlight: '#131313',
-        border: "2px solid #F9F9F9"
+        border: "2px solid #F9F9F9",
+        loading: '10px solid #F9F9F9',
+        loadingTop: '10px solid #131313'
     },
     light: {
         name: "light",
@@ -13,7 +15,9 @@ export const themeTemplate = {
         fade: '#9c9c9c',
         text: '#0B0B0B',
         highlight: '#868686',
-        border: "2px solid #0B0B0B"
+        border: "2px solid #0B0B0B",
+        loading: '10px solid #0B0B0B',
+        loadingTop: '10px solid #868686'
     },
     mint: {
         name: "mint",
@@ -21,7 +25,9 @@ export const themeTemplate = {
         fade: '#2b7d5f',
         text: '#70415B',
         highlight: '#f7c9e23a',
-        border: "2px solid #70415B"
+        border: "2px solid #70415B",
+        loading: '10px solid #70415B',
+        loadingTop: '10px solid #f7c9e23a'
     },
     midnight: {
         name: "midnight",
@@ -29,6 +35,8 @@ export const themeTemplate = {
         fade: '#000311',
         text: '#FBF5B3 ',
         highlight: '#031a8e58',
-        border: "2px solid #FBF5B3"
+        border: "2px solid #FBF5B3",
+        loading: '10px solid #FBF5B3',
+        loadingTop: '10px solid #031a8e58'
     }
 }
