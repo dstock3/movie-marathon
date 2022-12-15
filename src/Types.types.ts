@@ -227,6 +227,11 @@ export type ComposeProps = {
     setTimeToPost: Dispatch<SetStateAction<boolean>>
 }
 
+export type SuggestionsProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser
+}
+
 export type LoadingProps = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser

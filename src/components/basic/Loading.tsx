@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import './loading.css'
+import '../../style/loading.css'
 import { ThemeContext } from '../context/ThemeContext'
 import { LoadingProps } from '../../Types.types'
 
@@ -20,11 +20,12 @@ const Loading = (props: LoadingProps) => {
         }
       }
     }
+    console.log(loadingStyle)
   }, [props.thisUser, props.thisStyle])
 
   return (
-    <div className="load-container" style={loadingStyle}>
-      <div className="load"></div>
+    <div className="load-container" >
+      <div className="load" style={loadingStyle}></div>
     </div>
   )
 }

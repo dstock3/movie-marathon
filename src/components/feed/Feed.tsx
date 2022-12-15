@@ -69,7 +69,7 @@ const Feed = (props: FeedProps) => {
 
   return (
     <>
-    <Suggestions />
+    <Suggestions thisStyle={props.thisStyle}/>
     <Friends />
     <div className="feed-container" style={feedStyle}>
       {posts?.sort(function compare(a, b) {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import Loading from '../basic/Loading'
+import { SuggestionsProps } from '../../Types.types'
 
-const Suggestions = () => {
+const Suggestions = (props: SuggestionsProps) => {
   const [suggestions, setSuggestions] = useState<Array<Object>>([])
 
   useEffect(()=> {
@@ -14,13 +16,14 @@ const Suggestions = () => {
     <div className="suggestions-container">
       <h3>Suggestions</h3>
       <div className="suggestions">
-        {suggestions && suggestions.map((suggestion: Object, index: number)=> {
+        {suggestions.length > 0 ? suggestions.map((suggestion: Object, index: number)=> {
           return ( 
             <div className="suggestion" key={index}>
 
             </div>
           )
-        })}
+        }) : 
+        <Loading thisUser={props.thisUser} thisStyle={props.thisStyle} /> }
       </div>
         
     </div>
