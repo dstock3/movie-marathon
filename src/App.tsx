@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useContext } from 'react'
 import { ThemeContext } from './components/context/ThemeContext'
 import './App.css';
@@ -7,9 +7,7 @@ import Main from './components/basic/Main';
 import Footer from './components/basic/Footer';
 import dummyData from './dummyData.json'
 import Sidebar from './components/basic/Sidebar';
-import ToggleSidebar from './components/modals/ToggleSidebar';
 import { ResponseDataType, DateViewEnabledType, ThisUser } from './Types.types'
-import Compose from './components/modals/Compose';
 import Hero from './components/basic/Hero';
 import ModalController from './components/controller/ModalController';
 
@@ -72,20 +70,23 @@ const App = () => {
     }
   }, [dateViewEnabled, timeToPost])
 
-  useEffect(()=> {
-    let themes = Object.keys(theme)
+  const memoizedStyle = useMemo(() => {
+    let themes = Object.keys(theme);
     if (user) {
       for (let i = 0; i < themes.length; i++) {
         if (themes[i] === user.theme) {
-          
-          let thisTheme: any = theme[themes[i] as keyof Object]
-
-          setThisStyle({ backgroundColor: thisTheme.main, color: thisTheme.text })  
+          let thisTheme: any = theme[themes[i] as keyof Object];
+          return { backgroundColor: thisTheme.main, color: thisTheme.text };
         }
       }
     }
-  }, [user])
-
+    return {};
+  }, [user, theme]);
+  
+  useEffect(() => {
+    setThisStyle(memoizedStyle);
+  }, [memoizedStyle]);
+  
   useEffect(()=> {
     if (isExpanded) {
       setPrimeStyle({"width":"80vw"})
