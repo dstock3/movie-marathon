@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Loading from '../basic/Loading'
+import Loader from '../basic/Loader'
 import { SuggestionsProps } from '../../Types.types'
 
 const Suggestions = (props: SuggestionsProps) => {
@@ -23,7 +23,7 @@ const Suggestions = (props: SuggestionsProps) => {
             </div>
           )
         }) : 
-        <Loading thisUser={props.thisUser} thisStyle={props.thisStyle} /> }
+        <Loader thisUser={props.thisUser} thisStyle={props.thisStyle} isMini={true} /> }
       </div>
         
     </div>

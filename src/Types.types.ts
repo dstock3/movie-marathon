@@ -234,7 +234,8 @@ export type SuggestionsProps = {
 
 export type LoadingProps = {
     thisStyle: React.CSSProperties,
-    thisUser?: ThisUser
+    thisUser?: ThisUser,
+    isMini: boolean
 }
 
 export type ModalControllerProps = {
@@ -244,7 +245,4 @@ export type ModalControllerProps = {
     timeToPost: boolean,
     setIsExpanded: Dispatch<SetStateAction<boolean>>,
     setTimeToPost: Dispatch<SetStateAction<boolean>>
-
-
-
 }

@@ -3,7 +3,7 @@ import '../../style/loading.css'
 import { ThemeContext } from '../context/ThemeContext'
 import { LoadingProps } from '../../Types.types'
 
-const Loading = (props: LoadingProps) => {
+const Loader = (props: LoadingProps) => {
   const theme = useContext(ThemeContext)
   const [loadingStyle, setLoadingStyle] = useState({})
 
@@ -23,11 +23,19 @@ const Loading = (props: LoadingProps) => {
     }
   }, [props.thisUser, props.thisStyle])
 
-  return (
-    <div className="load-container">
-      <div className="load" style={loadingStyle}></div>
-    </div>
-  )
+  if (props.isMini) {
+    return (
+      <div className="mini-load-container">
+        <div className="mini-load" style={loadingStyle}></div>
+      </div>
+    )
+  } else {
+    return (
+      <div className="load-container">
+        <div className="load" style={loadingStyle}></div>
+      </div>
+    )
+  }
 }
 
-export default Loading
+export default Loader
