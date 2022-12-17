@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useMemo } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/header.css'
 import { HeaderProps } from '../../Types.types'
@@ -7,7 +7,9 @@ const Header = (props: HeaderProps) => {
   const theme = useContext(ThemeContext)
   const [headStyle, setHeadStyle] = useState({})
   
-  useEffect(()=> {
+  // Calculate the headStyle object using useMemo to optimize the calculation
+  const headStyleCalculated = useMemo(() => {
+    let styles: any = {}
     let themes = Object.keys(theme)
     let menuPath = document.getElementById("menu-path")
 
@@ -17,12 +19,18 @@ const Header = (props: HeaderProps) => {
           
           let thisTheme: any = theme[themes[i] as keyof Object]
 
-          setHeadStyle({...headStyle, ...{"borderBottom": thisTheme.border}, ...props.thisStyle})
+          styles = {...styles, ...{"borderBottom": thisTheme.border}, ...props.thisStyle}
           menuPath?.setAttribute("fill", thisTheme.text)
         }
       }
     }
-  }, [props.thisUser, props.thisStyle])
+    return styles
+  }, [props.thisUser, props.thisStyle, theme])
+
+  useEffect(() => {
+    // Set the headStyle state with the calculated value
+    setHeadStyle(headStyleCalculated)
+  }, [headStyleCalculated])
 
   return (
     <header 
