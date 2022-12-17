@@ -99,19 +99,41 @@ const App = () => {
     <div 
       className="App" 
       style={appStyle}>
-        {!user ? 
-          <Hero /> :
+        {!user && <Hero />}
+        {user && (
           <>
-            <Sidebar page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} setResponseData={setResponseData} setTimeToPost={setTimeToPost} />
-            <section className={`primary`} style={primeStyle}>
-              <Header thisStyle={thisStyle} thisUser={user} setResponseData={setResponseData} />
+            <Sidebar
+              page={page}
+              setPage={setPage}
+              thisStyle={thisStyle}
+              thisUser={user}
+              isExpanded={isExpanded}
+              setIsExpanded={setIsExpanded}
+              setResponseData={setResponseData}
+              setTimeToPost={setTimeToPost}
+            />
+            <div className={`primary`} style={primeStyle}>
+              <Header
+                thisStyle={thisStyle}
+                thisUser={user}
+                setResponseData={setResponseData}
+              />
 
-              <Main users={dummyData.users} page={page} setPage={setPage} thisStyle={thisStyle} thisUser={user} responseData={responseData} dateViewEnabled={dateViewEnabled} setDateViewEnabled={setDateViewEnabled} />
+              <Main
+                users={dummyData.users}
+                page={page}
+                setPage={setPage}
+                thisStyle={thisStyle}
+                thisUser={user}
+                responseData={responseData}
+                dateViewEnabled={dateViewEnabled}
+                setDateViewEnabled={setDateViewEnabled}
+              />
 
               <Footer thisStyle={thisStyle} thisUser={user} />
-            </section>
+            </div>
           </>
-        }
+        )}
 
         <ModalController thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} timeToPost={timeToPost} setTimeToPost={setTimeToPost} />
     </div>
