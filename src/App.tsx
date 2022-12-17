@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useContext } from 'react'
 import { ThemeContext } from './components/context/ThemeContext'
 import './App.css';
@@ -101,7 +101,7 @@ const App = () => {
       style={appStyle}>
         {!user && <Hero />}
         {user && (
-          <>
+          <React.Fragment>
             <Sidebar
               page={page}
               setPage={setPage}
@@ -132,10 +132,17 @@ const App = () => {
 
               <Footer thisStyle={thisStyle} thisUser={user} />
             </div>
-          </>
+          </React.Fragment>
         )}
 
-        <ModalController thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} timeToPost={timeToPost} setTimeToPost={setTimeToPost} />
+        <ModalController 
+          thisStyle={thisStyle} 
+          thisUser={user} 
+          isExpanded={isExpanded} 
+          setIsExpanded={setIsExpanded} 
+          timeToPost={timeToPost} 
+          setTimeToPost={setTimeToPost} 
+        />
     </div>
   );
 }

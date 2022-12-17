@@ -16,14 +16,15 @@ const Loading = (props: LoadingProps) => {
           
           let thisTheme: any = theme[themes[i] as keyof Object]
   
-          setLoadingStyle({ "borderTop": thisTheme.loadingTop, "border": thisTheme.loading })
+          setLoadingStyle({ "border": thisTheme.loading, "borderTop": thisTheme.loadingTop })
+          
         }
       }
     }
   }, [props.thisUser, props.thisStyle])
 
   return (
-    <div className="load-container" >
+    <div className="load-container">
       <div className="load" style={loadingStyle}></div>
     </div>
   )
