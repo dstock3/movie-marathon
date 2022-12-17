@@ -5,6 +5,8 @@ import CalendarController from './CalendarController'
 import CalendarGrid from './CalendarGrid'
 import { CalendarProps } from '../../Types.types'
 
+// Calendar is responsible for rendering a calendar for a given month and year
+
 const Calendar = (props: CalendarProps) => {
     useEffect(()=> {    
         const oneYearAgo = format(new Date(parseInt(props.currentYear) - 1, parseInt(format(new Date(), 'MM')) - 1, parseInt(format(new Date(), 'dd'))), 'MM/dd/y')

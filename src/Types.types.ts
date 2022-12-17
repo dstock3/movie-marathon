@@ -236,3 +236,15 @@ export type LoadingProps = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser
 }
+
+export type ModalControllerProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser | null,
+    isExpanded: boolean,
+    timeToPost: boolean,
+    setIsExpanded: Dispatch<SetStateAction<boolean>>,
+    setTimeToPost: Dispatch<SetStateAction<boolean>>
+
+
+
+}

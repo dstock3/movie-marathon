@@ -11,6 +11,9 @@ import ToggleSidebar from './components/modals/ToggleSidebar';
 import { ResponseDataType, DateViewEnabledType, ThisUser } from './Types.types'
 import Compose from './components/modals/Compose';
 import Hero from './components/basic/Hero';
+import ModalController from './components/controller/ModalController';
+
+// App is responsible for managing the overall layout and functionality of the web application, and rendering the various components that make up the user interface.
 
 const App = () => {
   const theme = useContext(ThemeContext)
@@ -109,9 +112,7 @@ const App = () => {
           </>
         }
 
-        {!isExpanded ? <ToggleSidebar thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} /> : null}
-
-        {timeToPost ? <Compose thisStyle={thisStyle} thisUser={user} setTimeToPost={setTimeToPost} /> : null}
+        <ModalController thisStyle={thisStyle} thisUser={user} isExpanded={isExpanded} setIsExpanded={setIsExpanded} timeToPost={timeToPost} setTimeToPost={setTimeToPost} />
     </div>
   );
 }
