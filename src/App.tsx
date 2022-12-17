@@ -87,13 +87,13 @@ const App = () => {
     setThisStyle(memoizedStyle);
   }, [memoizedStyle]);
   
-  useEffect(()=> {
-    if (isExpanded) {
-      setPrimeStyle({"width":"80vw"})
-    } else {
-      setPrimeStyle({"width":"100vw"})
-    }
-  }, [isExpanded])
+  const memoizedPrimeStyle = useMemo(() => {
+    return isExpanded ? {"width":"80vw"} : {"width":"100vw"};
+  }, [isExpanded]);
+  
+  useEffect(() => {
+    setPrimeStyle(memoizedPrimeStyle);
+  }, [memoizedPrimeStyle]);
 
   return (
     <div 
