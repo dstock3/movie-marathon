@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useMemo } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/footer.css'
 import { FooterProps } from '../../Types.types'
@@ -7,12 +7,16 @@ const Footer = (props: FooterProps) => {
   const theme = useContext(ThemeContext)
   const [footStyle, setFootStyle] = useState({})
 
+  // Use the useMemo hook to memoize the themes array
+  // This means that the array will only be computed when the dependencies (in this case, the theme object) change
+  const themes = useMemo(() => Object.keys(theme), [theme])
+
   useEffect(()=> {
     let gitPath = document.getElementById("github-path")
     let codePath = document.getElementById("code-path") 
     let codePath2 = document.getElementById("code-path-2")
-    
-    let themes = Object.keys(theme)
+
+    // Use the memoized themes array here instead of recomputing it every time
     if (props.thisUser) {
       for (let i = 0; i < themes.length; i++) {
         if (themes[i] === props.thisUser.theme) {
@@ -27,10 +31,8 @@ const Footer = (props: FooterProps) => {
         }
       }
     }
-  }, [props.thisUser, props.thisStyle])
-
-
-
+  }, [props.thisUser, props.thisStyle, theme])
+  
   return (
     <footer className="main-footer" style={footStyle} >
       <div className="attribution">
