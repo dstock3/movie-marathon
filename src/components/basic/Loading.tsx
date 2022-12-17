@@ -7,20 +7,19 @@ const Loading = (props: LoadingProps) => {
   const theme = useContext(ThemeContext)
   const [loadingStyle, setLoadingStyle] = useState({})
 
-  useEffect(()=> {
+  useEffect(() => {
     let themes = Object.keys(theme)
-    
+
     if (props.thisUser) {
       for (let i = 0; i < themes.length; i++) {
         if (themes[i] === props.thisUser.theme) {
           
           let thisTheme: any = theme[themes[i] as keyof Object]
-
-          setLoadingStyle({...loadingStyle, ...{"borderTop": thisTheme.loadingTop, "border": thisTheme.loading}})
+  
+          setLoadingStyle({ "borderTop": thisTheme.loadingTop, "border": thisTheme.loading })
         }
       }
     }
-    console.log(loadingStyle)
   }, [props.thisUser, props.thisStyle])
 
   return (
