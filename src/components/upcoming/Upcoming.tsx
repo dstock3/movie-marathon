@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Stacks, ThisStack } from '../../Types.types'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/upcoming.css'
@@ -38,7 +38,7 @@ const Upcoming = (props:Stacks) => {
   return (
     <div className="upcoming-stacks">
       {props.thisUser?.stacks ?
-        <>
+        <React.Fragment>
           <h2 className="stacks-head">Upcoming Stacks</h2>
           <ul className="stack-list">
             {props.thisUser?.stacks.map((stack: ThisStack, index):JSX.Element  => {
@@ -47,7 +47,8 @@ const Upcoming = (props:Stacks) => {
               )
             })}    
           </ul>
-        </> : <div className="stack-msg">You don't currently have any stacks planned.</div>
+        </React.Fragment> : 
+        <div className="stack-msg">You don't currently have any stacks planned.</div>
       }
     </div>
   )
