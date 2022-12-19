@@ -232,6 +232,11 @@ export type SuggestionsProps = {
     thisUser?: ThisUser
 }
 
+export type FriendsProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser
+}
+
 export type LoadingProps = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser,

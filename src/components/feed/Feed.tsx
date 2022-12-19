@@ -70,7 +70,7 @@ const Feed = (props: FeedProps) => {
   return (
     <>
     <Suggestions thisUser={props.thisUser} thisStyle={props.thisStyle}/>
-    <Friends />
+    <Friends thisUser={props.thisUser} thisStyle={props.thisStyle}/>
     <div className="feed-container" style={feedStyle}>
       {posts?.sort(function compare(a, b) {
         let dateA = new Date(a.date);

@@ -64,7 +64,7 @@
     border-radius: 15px;
 }
 
-.suggestion-head {
+.suggestion-head, .friends-head {
     width: 100%;
     text-align: center;
     padding-bottom: 15px;
@@ -80,8 +80,10 @@
 
 .friends-container {
     position: absolute;
-    right: 65%;
+    right: 58%;
     top: 15%;
     height: 50%;
+    border-radius: 15px;
+    width: 17%;
 }
 
