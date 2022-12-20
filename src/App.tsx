@@ -24,6 +24,7 @@ const App = () => {
   const [appStyle, setAppStyle] = useState(thisStyle)
   const [page, setPage] = useState<string>("calendar")
   const [timeToPost, setTimeToPost] = useState<boolean>(false)
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
   useEffect(()=> {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
@@ -117,6 +118,8 @@ const App = () => {
                 thisStyle={thisStyle}
                 thisUser={user}
                 setResponseData={setResponseData}
+                isMenuOpen={isMenuOpen}
+                setIsMenuOpen={setIsMenuOpen}
               />
 
               <Main
@@ -141,7 +144,8 @@ const App = () => {
           isExpanded={isExpanded} 
           setIsExpanded={setIsExpanded} 
           timeToPost={timeToPost} 
-          setTimeToPost={setTimeToPost} 
+          setTimeToPost={setTimeToPost}
+          isMenuOpen={isMenuOpen} 
         />
     </div>
   );

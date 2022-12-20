@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/sidebar.css'
 import SearchBar from '../SearchBar'

@@ -40,7 +40,9 @@ export type ThisUser = {
 export type HeaderProps = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser,
-    setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
+    setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>,
+    isMenuOpen: boolean,
+    setIsMenuOpen: Dispatch<SetStateAction<boolean>>,
 }
 
 export type FooterProps = {
@@ -249,5 +251,6 @@ export type ModalControllerProps = {
     isExpanded: boolean,
     timeToPost: boolean,
     setIsExpanded: Dispatch<SetStateAction<boolean>>,
-    setTimeToPost: Dispatch<SetStateAction<boolean>>
+    setTimeToPost: Dispatch<SetStateAction<boolean>>,
+    isMenuOpen: boolean
 }

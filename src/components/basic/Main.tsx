@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
 import Feed from '../feed/Feed'
@@ -59,7 +59,7 @@ const Main = (props: MainProps) => {
   }
 
   return (
-    <>
+    <React.Fragment>
     <main style={props.thisStyle} id={props.page}>
       {props.responseData ?
         <>
@@ -97,7 +97,7 @@ const Main = (props: MainProps) => {
     </main>
     {props.dateViewEnabled.isOpen && 
           <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonth} />}
-    </>
+    </React.Fragment>
   )
 }
 

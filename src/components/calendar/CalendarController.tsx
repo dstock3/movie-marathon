@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/calendar.css'
 import { ControllerProps } from '../../Types.types'

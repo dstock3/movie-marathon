@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react'
+import { useState, useEffect, useContext, useMemo } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/footer.css'
 import { FooterProps } from '../../Types.types'
