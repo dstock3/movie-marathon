@@ -263,7 +263,7 @@ export type MenuProps = {
 export type PostContainerProps = {
     post: Post,
     postStyle: React.CSSProperties,
-    clickHandler: (post: Post) => void,
+    clickHandler: (post: Post, pathId: string) => void,
     fillColor: string,
-    postId: number
+    pathId: number
 }

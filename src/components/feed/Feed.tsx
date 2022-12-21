@@ -62,13 +62,27 @@ const Feed = (props: FeedProps) => {
     }
   }, [props.thisStyle])
 
-  const clickHandler = (post:Post):void => {
+  const clickHandler = (post:Post, pathId: string):void => {
     /*need to do a POST request once API is developed:
       -add like to corresponding post
       -notify the author that a user has liked their post
     */
     //if post is liked, change color of heart
+    let themes = Object.keys(theme)
 
+    if (props.thisUser) {
+      for (let i = 0; i < themes.length; i++) {
+        if (themes[i] === props.thisUser.theme) {
+          
+          let thisTheme: any = theme[themes[i] as keyof Object]
+
+          let path = document.getElementById(pathId)
+          if (path) {
+            path.style.stroke = thisTheme.text
+          }
+        }
+      }
+    }
 
     console.log(props.thisUser?.handle + " likes " + post.content)
   }
@@ -86,7 +100,7 @@ const Feed = (props: FeedProps) => {
       })
       .map((post: Post, index)=> {
         return(
-          <PostContainer post={post} clickHandler={clickHandler} postStyle={postStyle} fillColor={fillColor} postId={index} />
+          <PostContainer post={post} clickHandler={clickHandler} postStyle={postStyle} fillColor={fillColor} pathId={index} />
         )
       })}
     </div>
