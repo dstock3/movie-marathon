@@ -264,5 +264,6 @@ export type PostContainerProps = {
     post: Post,
     postStyle: React.CSSProperties,
     clickHandler: (post: Post) => void,
-    fillColor: string
+    fillColor: string,
+    postId: number
 }

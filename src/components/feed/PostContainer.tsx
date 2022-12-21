@@ -2,7 +2,7 @@ import { PostContainerProps } from '../../Types.types'
 
 const Post = (props: PostContainerProps) => {
   return (
-    <div key={props.post.id} className="post-container" style={props.postStyle}>
+    <div key={props.post.id} id={props.postId.toString()} className="post-container" style={props.postStyle}>
         <div className="post-head">
             <div className="post-handle">{props.post.handle}</div>
             <div className="post-date">{props.post.date}</div>

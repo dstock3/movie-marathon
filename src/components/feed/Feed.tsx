@@ -67,6 +67,8 @@ const Feed = (props: FeedProps) => {
       -add like to corresponding post
       -notify the author that a user has liked their post
     */
+    //if post is liked, change color of heart
+
 
     console.log(props.thisUser?.handle + " likes " + post.content)
   }
@@ -84,7 +86,7 @@ const Feed = (props: FeedProps) => {
       })
       .map((post: Post, index)=> {
         return(
-          <PostContainer post={post} clickHandler={clickHandler} postStyle={postStyle} fillColor={fillColor} />
+          <PostContainer post={post} clickHandler={clickHandler} postStyle={postStyle} fillColor={fillColor} postId={index} />
         )
       })}
     </div>
