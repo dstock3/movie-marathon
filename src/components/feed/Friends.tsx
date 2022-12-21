@@ -28,7 +28,6 @@ const Friends = (props: FriendsProps) => {
         }
       }
     } 
-    
   }, [props.thisStyle])
 
   return (

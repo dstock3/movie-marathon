@@ -254,3 +254,15 @@ export type ModalControllerProps = {
     setTimeToPost: Dispatch<SetStateAction<boolean>>,
     isMenuOpen: boolean
 }
+
+export type MenuProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser | null,
+}
+
+export type PostContainerProps = {
+    post: Post,
+    postStyle: React.CSSProperties,
+    clickHandler: (post: Post) => void,
+    fillColor: string
+}

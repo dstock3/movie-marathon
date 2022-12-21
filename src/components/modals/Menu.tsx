@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { MenuProps } from '../../Types.types'
 
-const Menu = () => {
+const Menu = (props: MenuProps) => {
     return ReactDOM.createPortal(
         <div className="menu-container">
             <ul className="menu">
