@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import '../../style/main.css'
 import Calendar from '../calendar/Calendar'
 import Feed from '../feed/Feed'
@@ -33,14 +33,17 @@ const Main = (props: MainProps) => {
   const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
   const [currentYear, setCurrentYear] = useState<string>(format(currentDate, 'y'))
 
-  const changeMonth = (directive: string):void => {
+
+  
+
+  const handleChangeMonth = useCallback((directive: string):void => {
     let index
     for (let i = 0; i < months.length; i++) {
       if (months[i] === currentMonth) {
         index = i
       }
     }
-
+  
     if (directive === "back" && index !== undefined) {
       if (index > 0) {
         setCurrentMonth(months[index - 1])
@@ -56,7 +59,11 @@ const Main = (props: MainProps) => {
         setCurrentMonth(months[0])
       }
     }
-  }
+  }, [months, currentMonth, currentYear]);
+
+  const changeMonthRef = useRef(handleChangeMonth);
+  
+  changeMonthRef.current = handleChangeMonth;
 
   return (
     <React.Fragment>
@@ -80,7 +87,7 @@ const Main = (props: MainProps) => {
         </>
     : null}
     {props.page === "calendar" ? 
-      <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled} currentYear={currentYear} setRangeOfDates={setRangeOfDates} currentMonth={currentMonth} setMonthRange={setMonthRange} setCurrentMonth={setCurrentMonth} months={months} setCurrentYear={setCurrentYear} monthRange={monthRange} changeMonth={changeMonth} /> : 
+      <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled} currentYear={currentYear} setRangeOfDates={setRangeOfDates} currentMonth={currentMonth} setMonthRange={setMonthRange} setCurrentMonth={setCurrentMonth} months={months} setCurrentYear={setCurrentYear} monthRange={monthRange} changeMonth={changeMonthRef.current} /> : 
     
     props.page === "feed" ? 
       <Feed users={props.users} thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
@@ -96,7 +103,7 @@ const Main = (props: MainProps) => {
     }
     </main>
     {props.dateViewEnabled.isOpen && 
-          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonth} />}
+          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonthRef.current} />}
     </React.Fragment>
   )
 }
