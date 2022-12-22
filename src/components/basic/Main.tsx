@@ -33,9 +33,6 @@ const Main = (props: MainProps) => {
   const [monthRange, setMonthRange] = useState<MonthRangeType>(null)
   const [currentYear, setCurrentYear] = useState<string>(format(currentDate, 'y'))
 
-
-  
-
   const handleChangeMonth = useCallback((directive: string):void => {
     let index
     for (let i = 0; i < months.length; i++) {

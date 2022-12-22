@@ -1,6 +1,6 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
 import { MenuProps } from '../../Types.types'
+import '../../style/menu.css'
 
 const Menu = (props: MenuProps) => {
     return ReactDOM.createPortal(

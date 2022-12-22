@@ -1,0 +1,15 @@
+.menu-container {
+    position: fixed;
+    top: 10%;
+    left: 85%;
+    height: 25vh;
+    width: 15vw;
+    border-bottom-left-radius: 15px;
+}
+
+.menu {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
