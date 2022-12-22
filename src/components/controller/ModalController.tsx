@@ -15,7 +15,7 @@ const ModalController = (props: ModalControllerProps) => {
       );
     case props.isMenuOpen:
       return (
-        <Menu thisStyle={props.thisStyle} thisUser={props.thisUser} />
+        <Menu thisStyle={props.thisStyle} thisUser={props.thisUser} setPage={props.setPage} setIsMenuOpen={props.setIsMenuOpen} />
       );
     default:
       return null;

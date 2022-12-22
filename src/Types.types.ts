@@ -252,12 +252,16 @@ export type ModalControllerProps = {
     timeToPost: boolean,
     setIsExpanded: Dispatch<SetStateAction<boolean>>,
     setTimeToPost: Dispatch<SetStateAction<boolean>>,
-    isMenuOpen: boolean
+    isMenuOpen: boolean,
+    setPage: Dispatch<SetStateAction<string>>,
+    setIsMenuOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export type MenuProps = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser | null,
+    setPage: Dispatch<SetStateAction<string>>,
+    setIsMenuOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export type PostContainerProps = {

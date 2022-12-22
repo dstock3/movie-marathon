@@ -8,6 +8,7 @@ import Upcoming from '../upcoming/Upcoming'
 import { MainProps, MovieType, MonthRangeType } from '../../Types.types'
 import { format } from 'date-fns'
 import DateView from '../modals/DateView'
+import { Profile } from '../../user/Profile'
 
 // Main is responsible for rendering the main content area of the user interface based on the current page being displayed and maintaining state for a number of variables related to the current date and month
 
@@ -96,8 +97,12 @@ const Main = (props: MainProps) => {
       <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
     
     props.page === "upcoming" ?
-      <Upcoming thisStyle={props.thisStyle} thisUser={props.thisUser} /> : null
+      <Upcoming thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
+    
+    props.page === "profile" ?
+      <Profile /> : null
     }
+
     </main>
     {props.dateViewEnabled.isOpen && 
           <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonthRef.current} />}

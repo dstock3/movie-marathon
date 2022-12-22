@@ -23,11 +23,16 @@ const Menu = (props: MenuProps) => {
             }
         }
     }, [])
+
+    const profileClickHandler = () => {
+        props.setPage("profile")
+        props.setIsMenuOpen(false)
+    }
     
     return ReactDOM.createPortal(
         <div className="menu-container" style={menuStyle}>
             <ul className="menu">
-                <li className="menu-item">Profile</li>
+                <li className="menu-item" onClick={profileClickHandler}>Profile</li>
                 <li className="menu-item">Settings</li>
                 <li className="menu-item">Logout</li>
             </ul>

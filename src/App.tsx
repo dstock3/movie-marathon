@@ -26,6 +26,7 @@ const App = () => {
   const [timeToPost, setTimeToPost] = useState<boolean>(false)
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
+
   useEffect(()=> {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
     let App = AppArray[0]
@@ -146,6 +147,8 @@ const App = () => {
           timeToPost={timeToPost} 
           setTimeToPost={setTimeToPost}
           isMenuOpen={isMenuOpen} 
+          setPage={setPage}
+          setIsMenuOpen={setIsMenuOpen}
         />
     </div>
   );
