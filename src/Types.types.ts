@@ -271,3 +271,9 @@ export type PostContainerProps = {
     fillColor: string,
     pathId: number
 }
+
+export type ProfileProps = {
+}
+
+export type SettingsProps = {
+}

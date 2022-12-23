@@ -1,6 +1,6 @@
-import React from 'react'
+import { SettingsProps } from "../Types.types"
 
-const Settings = () => {
+const Settings = (props: SettingsProps) => {
   return (
     <div>Settings</div>
   )

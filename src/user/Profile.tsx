@@ -1,6 +1,6 @@
-import React from 'react'
+import { ProfileProps } from "../Types.types"
 
-export const Profile = () => {
+export const Profile = (props: ProfileProps) => {
   return (
     <div>Profile</div>
   )
