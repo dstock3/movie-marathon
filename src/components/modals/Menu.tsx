@@ -24,21 +24,16 @@ const Menu = (props: MenuProps) => {
         }
     }, [])
 
-    const profileClickHandler = () => {
-        props.setPage("profile")
-        props.setIsMenuOpen(false)
-    }
-
-    const settingsClickHandler = () => {
-        props.setPage("settings")
+    const clickHandler = (page: string) => {
+        props.setPage(page)
         props.setIsMenuOpen(false)
     }
     
     return ReactDOM.createPortal(
         <div className="menu-container" style={menuStyle}>
             <ul className="menu">
-                <li className="menu-item" onClick={profileClickHandler}>Profile</li>
-                <li className="menu-item" onClick={settingsClickHandler}>Settings</li>
+                <li className="menu-item" onClick={()=>clickHandler("profile")}>Profile</li>
+                <li className="menu-item" onClick={()=>clickHandler("settings")}>Settings</li>
                 <li className="menu-item">Logout</li>
             </ul>
         </div>,
