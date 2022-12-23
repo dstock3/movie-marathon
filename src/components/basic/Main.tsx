@@ -101,10 +101,10 @@ const Main = (props: MainProps) => {
       <Upcoming thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
     
     props.page === "profile" ?
-      <Profile /> : 
+      <Profile thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
     
     props.page === "settings" ?
-      <Settings /> : null
+      <Settings thisStyle={props.thisStyle} thisUser={props.thisUser} /> : null
     }
 
     </main>

@@ -1,8 +1,12 @@
 import { SettingsProps } from "../Types.types"
+import '../style/settings.css'
 
 const Settings = (props: SettingsProps) => {
   return (
-    <div>Settings</div>
+    <div className="settings-container">
+      settings
+
+    </div>
   )
 }
 

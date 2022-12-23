@@ -273,7 +273,11 @@ export type PostContainerProps = {
 }
 
 export type ProfileProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser | null,
 }
 
 export type SettingsProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser | null,
 }
