@@ -2,6 +2,7 @@
     { 
         "handle":"DaveyLovesFilms", 
         "login":"dstock3@gmail.com",
+        "description": "I'm a film buff, and I love to talk about movies.",
         "theme":"dark",
         "friends": [
             "HorrorEnthusiast",
@@ -52,6 +53,7 @@
     { 
         "handle":"HorrorEnthusiast", 
         "login":"horror-fan@gmail.com",
+        "description": "I'm a big fan of the horror genre, and I'm always looking for new recommendations.",
         "theme":"light",
         "friends": [
             "DaveyLovesFilms",
@@ -102,7 +104,8 @@
     { 
         "handle":"ClassicKarl", 
         "login":"karl91@protonmail.com",
-        "theme":"mint",
+        "description": "I'm a big fan of classic movies. The older the better!",
+        "theme": "mint",
         "friends": [
             "DavisTheFilmMan"
         ],
@@ -199,6 +202,7 @@
     { 
         "handle":"DavisTheFilmMan", 
         "login":"DDSFilm@protonmail.com",
+        "description": "Well, I guess you could say I'm a film buff. I love movies. I love talking about movies. I love watching movies. I love making movies. I love everything about movies.",
         "theme":"midnight",
         "friends": [
             "HorrorEnthusiast",
