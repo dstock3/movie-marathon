@@ -3,6 +3,10 @@
         "handle":"DaveyLovesFilms", 
         "login":"dstock3@gmail.com",
         "theme":"dark",
+        "friends": [
+            "HorrorEnthusiast",
+            "DavisTheFilmMan"
+        ],
         "metadataIsAllowed": true,
         "searchData": [],
         "posts": [
@@ -49,6 +53,10 @@
         "handle":"HorrorEnthusiast", 
         "login":"horror-fan@gmail.com",
         "theme":"light",
+        "friends": [
+            "DaveyLovesFilms",
+            "DavisTheFilmMan"
+        ],
         "metadataIsAllowed": false,
         "searchData": [],
         "posts": [
@@ -95,6 +103,9 @@
         "handle":"ClassicKarl", 
         "login":"karl91@protonmail.com",
         "theme":"mint",
+        "friends": [
+            "DavisTheFilmMan"
+        ],
         "metadataIsAllowed": true,
         "searchData": [],
         "posts": [
@@ -189,6 +200,10 @@
         "handle":"DavisTheFilmMan", 
         "login":"DDSFilm@protonmail.com",
         "theme":"midnight",
+        "friends": [
+            "HorrorEnthusiast",
+            "DaveyLovesFilms"
+        ],
         "metadataIsAllowed": true,
         "searchData": [],
         "posts": [
