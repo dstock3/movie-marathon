@@ -25,8 +25,7 @@ const App = () => {
   const [page, setPage] = useState<string>("calendar")
   const [timeToPost, setTimeToPost] = useState<boolean>(false)
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-
-
+  
   useEffect(()=> {
     let AppArray = Array.from(document.getElementsByClassName('App') as HTMLCollectionOf<HTMLElement>)
     let App = AppArray[0]
