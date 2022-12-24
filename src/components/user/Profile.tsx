@@ -1,5 +1,5 @@
-import { ProfileProps } from "../Types.types"
-import '../style/profile.css'
+import { ProfileProps } from "../../Types.types"
+import  '../../style/settings.css'
 
 export const Profile = (props: ProfileProps) => {
   //enable user to edit their handle, profile description, email, password, and profile picture
