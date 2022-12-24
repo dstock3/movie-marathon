@@ -1,6 +1,6 @@
 import React, { useState, useEffect,  useContext } from 'react'
-import { SearchProps,  } from '../Types.types'
-import { ThemeContext } from '../components/context/ThemeContext'
+import { SearchProps,  } from '../../Types.types'
+import { ThemeContext } from '../context/ThemeContext'
 
 const SearchBar = (props: SearchProps) => {
   const [searchInput, setSearchInput] = useState("");

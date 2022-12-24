@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import '../../style/sidebar.css'
-import SearchBar from '../SearchBar'
+import SearchBar from '../search/SearchBar'
 import { SidebarProps } from '../../Types.types'
 import ToolBar from '../tools/ToolBar'
 
