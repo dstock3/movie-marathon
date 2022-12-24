@@ -10,6 +10,8 @@ import { format } from 'date-fns'
 import DateView from '../modals/DateView'
 import { Profile } from '../../user/Profile'
 import Settings from '../../user/Settings'
+import SearchBar from '../SearchBar'
+import SearchResults from '../search/SearchResults'
 
 // Main is responsible for rendering the main content area of the user interface based on the current page being displayed and maintaining state for a number of variables related to the current date and month
 
@@ -66,50 +68,53 @@ const Main = (props: MainProps) => {
 
   return (
     <React.Fragment>
-    <main style={props.thisStyle} id={props.page}>
-      {props.responseData ?
-        <>
-        <h2>Total Results {props.responseData["totalResults"]}</h2>
-        <div className="search-results">
-          {props.responseData.Search.map((movie:MovieType, index):JSX.Element => {
-            return (
-              <div className="movie-list-item" key={index}>
-                <div className="movie-title">
-                  {movie.Title} ({movie.Year})
+      <main style={props.thisStyle} id={props.page}>
+        {props.responseData ?
+          <>
+          <h2>Total Results {props.responseData["totalResults"]}</h2>
+          <div className="search-results">
+            {props.responseData.Search.map((movie:MovieType, index):JSX.Element => {
+              return (
+                <div className="movie-list-item" key={index}>
+                  <div className="movie-title">
+                    {movie.Title} ({movie.Year})
+                  </div>
+                  <img className="movie-img" src={movie.Poster} alt={movie.Title + "poster"}></img>
                 </div>
-                <img className="movie-img" src={movie.Poster} alt={movie.Title + "poster"}></img>
-              </div>
-            );
-          })}
-          
-        </div>
-        </>
-    : null}
-    {props.page === "calendar" ? 
-      <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled} currentYear={currentYear} setRangeOfDates={setRangeOfDates} currentMonth={currentMonth} setMonthRange={setMonthRange} setCurrentMonth={setCurrentMonth} months={months} setCurrentYear={setCurrentYear} monthRange={monthRange} changeMonth={changeMonthRef.current} /> : 
-    
-    props.page === "feed" ? 
-      <Feed users={props.users} thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
-    
-    props.page === "week" ? 
-      <WeekGlance thisStyle={props.thisStyle} thisUser={props.thisUser} currentDate={currentDate} monthRange={monthRange} setDateViewEnabled={props.setDateViewEnabled} setMonthRange={setMonthRange} /> :
-    
-    props.page === "fav" ?
-      <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
-    
-    props.page === "upcoming" ?
-      <Upcoming thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
-    
-    props.page === "profile" ?
-      <Profile thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
-    
-    props.page === "settings" ?
-      <Settings thisStyle={props.thisStyle} thisUser={props.thisUser} /> : null
-    }
+              );
+            })}
+            
+          </div>
+          </>
+      : null}
+      {props.page === "calendar" ? 
+        <Calendar thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} dateViewEnabled={props.dateViewEnabled} setDateViewEnabled={props.setDateViewEnabled} currentYear={currentYear} setRangeOfDates={setRangeOfDates} currentMonth={currentMonth} setMonthRange={setMonthRange} setCurrentMonth={setCurrentMonth} months={months} setCurrentYear={setCurrentYear} monthRange={monthRange} changeMonth={changeMonthRef.current} /> : 
+      
+      props.page === "feed" ? 
+        <Feed users={props.users} thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
+      
+      props.page === "week" ? 
+        <WeekGlance thisStyle={props.thisStyle} thisUser={props.thisUser} currentDate={currentDate} monthRange={monthRange} setDateViewEnabled={props.setDateViewEnabled} setMonthRange={setMonthRange} /> :
+      
+      props.page === "fav" ?
+        <Favs thisStyle={props.thisStyle} thisUser={props.thisUser} /> :
+      
+      props.page === "upcoming" ?
+        <Upcoming thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
+      
+      props.page === "profile" ?
+        <Profile thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
+      
+      props.page === "settings" ?
+        <Settings thisStyle={props.thisStyle} thisUser={props.thisUser} /> : 
+      
+      props.page === "search" ?
+          <SearchResults thisStyle={props.thisStyle} thisUser={props.thisUser} responseData={props.responseData} /> : null
+      }
 
-    </main>
-    {props.dateViewEnabled.isOpen && 
-          <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonthRef.current} />}
+      </main>
+      {props.dateViewEnabled.isOpen && 
+            <DateView dateViewEnabled={props.dateViewEnabled} thisStyle={props.thisStyle} thisUser={props.thisUser} setDateViewEnabled={props.setDateViewEnabled} monthRange={monthRange} changeMonth={changeMonthRef.current} />}
     </React.Fragment>
   )
 }

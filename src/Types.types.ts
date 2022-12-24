@@ -194,7 +194,14 @@ export type DateViewType = {
 export type SearchProps = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser,
+    setPage: Dispatch<SetStateAction<string>>,
     setResponseData: Dispatch<SetStateAction<ResponseDataType | null>>
+}
+
+export type SearchResultsProps = {
+    thisStyle: React.CSSProperties,
+    thisUser?: ThisUser,
+    responseData: ResponseDataType | null
 }
 
 export type WeekGlanceProps = {
@@ -242,7 +249,7 @@ export type FriendsProps = {
 export type LoadingProps = {
     thisStyle: React.CSSProperties,
     thisUser?: ThisUser,
-    isMini: boolean
+    isMini?: boolean
 }
 
 export type ModalControllerProps = {

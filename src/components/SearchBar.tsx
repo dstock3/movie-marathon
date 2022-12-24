@@ -27,6 +27,7 @@ const SearchBar = (props: SearchProps) => {
   }, [props.thisUser])
 
   const handleSearch = () => {
+    props.setPage("search")
 
     //When App API is developed, app post request in order to record search metadata (if user allows), e.g. if props.thisUser.metadataIsAllowed...
     /*
@@ -45,6 +46,7 @@ const SearchBar = (props: SearchProps) => {
         props.setResponseData(response)})
       .catch(err => console.error(err));
       */
+
   }
 
   return (

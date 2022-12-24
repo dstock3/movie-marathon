@@ -59,7 +59,7 @@ const Sidebar = (props: SidebarProps) => {
                 Hide
               </div>
             </div>
-            <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData}/>
+            <SearchBar thisStyle={props.thisStyle} thisUser={props.thisUser} setResponseData={props.setResponseData} setPage={props.setPage}/>
           </div>
 
           <ToolBar thisStyle={props.thisStyle} thisUser={props.thisUser} setTimeToPost={props.setTimeToPost} />
