@@ -10,6 +10,26 @@ const Settings = (props: SettingsProps) => {
     event.preventDefault();
     setTheme(theme);
     setCollectMetadata(collectMetadata);
+
+    /*
+    fetch('/api/settings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ theme, collectMetadata }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // handle the response data
+        console.log(data);
+      })
+      .catch((error) => {
+        // handle the error
+        console.error(error);
+      });
+    */
+
   };
 
   return (
@@ -21,8 +41,8 @@ const Settings = (props: SettingsProps) => {
           <select id="theme-select" value={theme} onChange={(event) => setTheme(event.target.value)}>
             <option value="light">Light</option>
             <option value="dark">Dark</option>
-            <option value="dark">Midnight</option>
-            <option value="dark">Mint</option>
+            <option value="midnight">Midnight</option>
+            <option value="mint">Mint</option>
           </select>
           <br />
           <label htmlFor="metadata-toggle">Allow collection of metadata:</label>
