@@ -36,7 +36,8 @@ export type ThisUser = {
     posts: Array<PostType>,
     stacks?: Array<ThisStack> | undefined,
     metadataIsAllowed: boolean,
-    emailNotifications: boolean
+    emailNotifications: boolean,
+    friends: Array<string>
 }
 
 export type HeaderProps = {
