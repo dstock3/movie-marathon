@@ -35,7 +35,8 @@ export type ThisUser = {
     movies: Array<Movie>,
     posts: Array<PostType>,
     stacks?: Array<ThisStack> | undefined,
-    metadataIsAllowed: boolean
+    metadataIsAllowed: boolean,
+    emailNotifications: boolean
 }
 
 export type HeaderProps = {

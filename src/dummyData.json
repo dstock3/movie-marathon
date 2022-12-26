@@ -9,6 +9,7 @@
             "DavisTheFilmMan"
         ],
         "metadataIsAllowed": true,
+        "emailNotifications": true,
         "searchData": [],
         "posts": [
             {
@@ -60,6 +61,7 @@
             "DavisTheFilmMan"
         ],
         "metadataIsAllowed": false,
+        "emailNotifications": true,
         "searchData": [],
         "posts": [
             {
@@ -110,6 +112,7 @@
             "DavisTheFilmMan"
         ],
         "metadataIsAllowed": true,
+        "emailNotifications": false,
         "searchData": [],
         "posts": [
             {
@@ -209,6 +212,7 @@
             "DaveyLovesFilms"
         ],
         "metadataIsAllowed": true,
+        "emailNotifications": false,
         "searchData": [],
         "posts": [
 

@@ -5,6 +5,7 @@ import { useState } from 'react';
 const Settings = (props: SettingsProps) => {
   const [theme, setTheme] = useState<string | undefined>(props.thisUser?.theme);
   const [collectMetadata, setCollectMetadata] = useState<boolean | undefined>(props.thisUser?.metadataIsAllowed);
+  const [emailNotifications, setEmailNotifications] = useState<boolean | undefined>(props.thisUser?.emailNotifications);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,6 +38,7 @@ const Settings = (props: SettingsProps) => {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Settings</legend>
+
           <label htmlFor="theme-select">Select a theme:</label>
           <select id="theme-select" value={theme} onChange={(event) => setTheme(event.target.value)}>
             <option value="light">Light</option>
@@ -44,7 +46,7 @@ const Settings = (props: SettingsProps) => {
             <option value="midnight">Midnight</option>
             <option value="mint">Mint</option>
           </select>
-          <br />
+          
           <label htmlFor="metadata-toggle">Allow collection of metadata:</label>
           <input
             type="checkbox"
@@ -52,8 +54,21 @@ const Settings = (props: SettingsProps) => {
             checked={collectMetadata}
             onChange={(event) => setCollectMetadata(event.target.checked)}
           />
-          <br />
-          <button type="submit">Update Settings</button>
+
+        
+          <label htmlFor="email-notifications">Email notifications:</label>
+          <input
+            type="checkbox"
+            id="email-notifications"
+            checked={emailNotifications}
+            onChange={(event) => setEmailNotifications(event.target.checked)}
+          />
+
+          <div className="button-container">
+            <button className="settings-button" id="reset-button" type="reset">Reset Form</button>
+            <button className="settings-button" id="update-button" type="submit">Update Settings</button>
+          </div>
+          
         </fieldset>
       </form>
     </div>
