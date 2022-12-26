@@ -11,6 +11,7 @@ const Settings = (props: SettingsProps) => {
     event.preventDefault();
     setTheme(theme);
     setCollectMetadata(collectMetadata);
+    setEmailNotifications(emailNotifications);
 
     /*
     fetch('/api/settings', {
@@ -43,7 +44,7 @@ const Settings = (props: SettingsProps) => {
             <p>Update your settings.</p>
           </div>
 
-          <div className="theme-settings">
+          <div className="settings-subcontainer" id="theme-settings">
             <label htmlFor="theme-select">Select a theme:</label>
             <select id="theme-select" value={theme} onChange={(event) => setTheme(event.target.value)}>
               <option value="light">Light</option>
@@ -53,7 +54,7 @@ const Settings = (props: SettingsProps) => {
             </select>
           </div>
 
-          <div className="metadata-settings">
+          <div className="settings-subcontainer" id="metadata-settings">
             <label htmlFor="metadata-toggle">Allow collection of metadata:</label>
             <input
               type="checkbox"
@@ -63,7 +64,7 @@ const Settings = (props: SettingsProps) => {
             />
           </div>
 
-          <div className="email-settings">
+          <div className="settings-subcontainer" id="email-settings">
             <label htmlFor="email-notifications">Email notifications:</label>
             <input
               type="checkbox"
