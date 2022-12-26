@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import Loader from '../basic/Loader'
 import { FriendsProps } from '../../Types.types'
 import { ThemeContext } from '../context/ThemeContext'
@@ -33,14 +33,16 @@ const Friends = (props: FriendsProps) => {
 
   return (
     <div className="friends-container" style={friendsContainerStyle}>
-      <h3 className="friends-head" style={friendsHeadStyle}>Friends</h3>
+      <h3 className="friends-head" style={friendsHeadStyle}>
+        Friends <span>({friends?.length})</span>
+      </h3>
       {friends ?
-          <div className="friends">
-            {friends.length > 0 && friends.map((friend: string, index: number)=> {
-              return (
-                <div className="friend" key={index}>{friend}</div>
-              )
-            })}
+        <div className="friends">
+          {friends.length > 0 && friends.map((friend: string, index: number)=> {
+            return (
+              <div className="friend" key={index}>{friend}</div>
+            )
+          })}
         </div> : 
         <Loader thisUser={props.thisUser} thisStyle={props.thisStyle} isMini={true} /> 
       }
