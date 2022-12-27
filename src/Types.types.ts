@@ -272,6 +272,7 @@ export type MenuProps = {
     thisUser?: ThisUser | null,
     setPage: Dispatch<SetStateAction<string>>,
     setIsMenuOpen: Dispatch<SetStateAction<boolean>>
+
 }
 
 export type PostContainerProps = {

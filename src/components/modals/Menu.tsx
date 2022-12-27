@@ -30,7 +30,7 @@ const Menu = (props: MenuProps) => {
     }
     
     return ReactDOM.createPortal(
-        <div className="menu-container" style={menuStyle}>
+        <div className="menu-container"  style={menuStyle}>
             <ul className="menu">
                 <li className="menu-item" onClick={()=>clickHandler("profile")}>Profile</li>
                 <li className="menu-item" onClick={()=>clickHandler("settings")}>Settings</li>
@@ -38,7 +38,7 @@ const Menu = (props: MenuProps) => {
             </ul>
         </div>,
         document.getElementById('menu-modal')!
-  )
+    )
 }
 
 export default Menu
