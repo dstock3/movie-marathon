@@ -87,3 +87,16 @@
     width: 17%;
 }
 
+.friends {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.friend {
+    margin-bottom: 10px;
+}
+

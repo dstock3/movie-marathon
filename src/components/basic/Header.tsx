@@ -41,7 +41,7 @@ const Header = (props: HeaderProps) => {
         <div className="welcome">Welcome {props.thisUser.handle}!</div>: 
         <div className="welcome">Login to Access Features</div>}
 
-      <div className="menu" onClick={()=>props.setIsMenuOpen(!props.isMenuOpen)}>
+      <div className="menu-icon" onClick={()=>props.setIsMenuOpen(!props.isMenuOpen)}>
           <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
             <path id="menu-path" d="M6 36v-3h36v3Zm0-10.5v-3h36v3ZM6 15v-3h36v3Z"/>
           </svg>
